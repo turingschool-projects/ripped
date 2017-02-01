@@ -1,5 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe Exercise, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "validations" do
+    it "is invalid without a name" do
+      exercise = Exercise.create(content: "exercise content")
+      expect(exercise).to_not be_valid
+    end
+    it "is invalid without content" do
+      exercise = Exercise.create(name: "exercise name")
+      expect(exercise).to_not be_valid
+    end
+    it "is valid with all attributes" do
+      exercise = Exercise.create(name: "exercise name", content: "exercise content")
+      expect(exercise).to be_valid
+    end
+  end
 end
