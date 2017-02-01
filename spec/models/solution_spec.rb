@@ -25,4 +25,14 @@ RSpec.describe Solution, type: :model do
       expect(solution).to be_valid
     end
   end
+  describe "relationships" do
+    it "belongs to a user" do
+      solution = create(:solution)
+      expect(solution).to respond_to(:user)
+    end
+    it "belongs to an exercise" do
+      solution = create(:solution)
+      expect(solution).to respond_to(:exercise)
+    end
+  end
 end

@@ -11,4 +11,10 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end
   end
+  describe "relationships" do
+    it "has many solutions" do
+      user = create(:user)
+      expect(user).to respond_to(:solutions)
+    end
+  end
 end
