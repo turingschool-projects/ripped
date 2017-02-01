@@ -1,0 +1,7 @@
+<h2>Submit Solution</h2>
+
+<%= form_for @solution do |f| %>
+  <%= f.label "Paste solution here:" %>
+  <%= f.text_area :content %>
+  <%= f.submit "Submit Solution" %>
+<% end %>

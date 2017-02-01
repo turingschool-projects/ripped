@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   resources :exercises, only: [:index, :show]
 
+  resources :solutions, only: [:show, :new, :create]
+
 end
