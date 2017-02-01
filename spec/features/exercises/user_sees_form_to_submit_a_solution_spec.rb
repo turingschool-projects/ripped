@@ -11,4 +11,23 @@ describe "/exercises/:id" do
     expect(page).to have_content("Paste solution here:")
     expect(page).to have_content("Submit Solution")
   end
+  it "user can submit a solution" do
+    exercise = create(:exercise)
+    visit exercise_path(exercise)
+
+    user_solution = "my solution"
+
+    click_on "Submit your solution"
+    fill_in "solution[content]", with: user_solution
+    click_on "Submit Solution"
+
+    solution = Solution.last
+
+    expect(current_path).to eq(solution_path(solution))
+    expect(page).to have_content("You have successfully submitted your solution.")
+    expect(page).to have_content(user_solution)
+  end
+  xit "user sees errors message if their solution does not submit" do
+
+  end
 end
