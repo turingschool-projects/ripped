@@ -5,10 +5,20 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <%= javascript_include_tag 'application' %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
   </head>
 
   <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Ripped</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li> <%=link_to "Exercises", exercises_path%> </li>
+        </ul>
+      </div>
+    </nav>
     <% flash.each do |type, message| %>
       <div class="alert alert-<%= type %>">
        <strong><%= message %></strong>
