@@ -18,3 +18,9 @@
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore coverage
+/coverage
+
+# Ignore vcr fixtures
+/spec/fixtures
