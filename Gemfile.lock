@@ -1,6 +1,6 @@
 GIT
-  remote: https://github.com/bcgoss/omniauth-census
-  revision: b11426f6045461104561a13e2617f141e9d72cb4
+  remote: https://github.com/NZenitram/census_staging_oauth
+  revision: 96267f1f4b22b51124021d24950d9e58364d4891
   specs:
     omniauth-census (0.1.1)
       omniauth-oauth2
