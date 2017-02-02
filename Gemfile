@@ -48,6 +48,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'vcr'
   gem 'webmock'
+  gem 'pry'
 end
 
 group :development do
