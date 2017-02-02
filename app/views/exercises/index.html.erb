@@ -1,5 +1,7 @@
-<h2>All Exercises</h2>
-<% @exercises.each do |exercise| %>
+<div class="container">
+  <h2>All Exercises</h2>
+  <% @exercises.each do |exercise| %>
   <h4><%= link_to exercise.name, exercise_path(exercise)%></h4>
-  <p><%= exercise.content %></p>
-<% end %>
+  <p><%= CodeRay.scan(exercise.content, :ruby).div.html_safe %></p>
+  <% end %>
+</div>

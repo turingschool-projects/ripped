@@ -1,2 +1,5 @@
-<h2>Your solution for <%=@solution.exercise.name %> </h2>
-<%= @solution.content %>
+<div class="container">
+  <h3>Your solution for <%=@solution.exercise.name %> </h3>
+
+  <%= CodeRay.scan(@solution.content, :ruby).div.html_safe %>
+</div>
