@@ -1,8 +1,6 @@
 <h2>Submit Solution</h2>
 
-<%= form_for @solution do |f| %>
-  <%= f.hidden_field :user_id %>
-  <%= f.hidden_field :exercise_id %>
+<%= form_for [@exercise, @solution] do |f| %>
   <%= f.label "Paste solution here:" %>
   <%= f.text_area :content %>
   <%= f.submit "Submit Solution" %>
