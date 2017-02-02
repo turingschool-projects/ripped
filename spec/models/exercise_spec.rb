@@ -15,4 +15,10 @@ RSpec.describe Exercise, type: :model do
       expect(exercise).to be_valid
     end
   end
+  describe "relationships" do
+    it "has many solutions" do
+      exercise = create(:exercise)
+      expect(exercise).to respond_to(:solutions)
+    end
+  end
 end

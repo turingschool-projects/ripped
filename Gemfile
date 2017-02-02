@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails_12factor', group: :production
 gem 'figaro'
 gem 'rails', '~> 5.0.1'
 gem 'pg', '~> 0.18'
@@ -20,6 +19,11 @@ gem 'omniauth-oauth2'
 gem 'omniauth-census', git: "https://github.com/NZenitram/census_staging_oauth"
 gem 'thin'
 
+group :production do
+  gem 'rails_12factor'
+  gem 'puma', '~> 3.0'
+end
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
@@ -31,6 +35,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'vcr'
   gem 'webmock'
+  gem 'pry'
 end
 
 group :development do

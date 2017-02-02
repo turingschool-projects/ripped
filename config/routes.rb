@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :exercises, only: [:index, :show]
+  resources :exercises, only: [:index, :show] do
+    resources :solutions, only: [:show, :new, :create]
+  end
+
 
   get 'auth/:provider/callback', to: 'sessions#create'
 

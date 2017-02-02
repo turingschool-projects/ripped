@@ -1,6 +1,8 @@
 FactoryGirl.define do
   factory :exercise do
-    name "exercise name"
+    sequence :name do |n|
+      "Exercise #{n}"
+    end
     content "exercise content"
   end
 end
