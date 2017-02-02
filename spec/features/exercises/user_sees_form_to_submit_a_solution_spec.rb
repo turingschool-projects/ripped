@@ -26,9 +26,16 @@ describe "/exercises/:id" do
 
     expect(current_path).to eq(exercise_solution_path(exercise, solution))
     expect(page).to have_content("You have successfully submitted your solution.")
+    expect(page).to have_content("Your solution for #{exercise.name}")
     expect(page).to have_content(user_solution)
   end
-  xit "user sees errors message if their solution does not submit" do
+  it "user sees errors message if their solution does not submit" do
+    exercise = create(:exercise)
+    visit exercise_path(exercise)
 
+    click_on "Submit your solution"
+    click_on "Submit Solution"
+
+    expect(page).to have_content("Your solution did not save.")
   end
 end

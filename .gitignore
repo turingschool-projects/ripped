@@ -21,3 +21,6 @@
 
 # Ignore coverage
 /coverage
+
+# Ignore vcr fixtures
+/spec/fixtures
