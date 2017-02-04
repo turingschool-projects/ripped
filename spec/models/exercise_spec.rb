@@ -24,5 +24,13 @@ RSpec.describe Exercise, type: :model do
       exercise = create(:exercise)
       expect(exercise).to respond_to(:solutions)
     end
+    it "has many exercise_tags" do
+      exercise = create(:exercise)
+      expect(exercise).to respond_to(:exercise_tags)
+    end
+    it "has many tags" do
+      exercise = create(:exercise)
+      expect(exercise).to respond_to(:tags)
+    end
   end
 end

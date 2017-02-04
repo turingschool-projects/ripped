@@ -1,5 +1,8 @@
 <div class="container">
   <h3><%= @exercise.name %></h3>
+  <p><% @exercise.tags.each do |tag| %>
+      <span class="badge tag-badges"><%= tag.name %></span>
+    <% end %></p></br>
   <%= @exercise.description %>
   <%= CodeRay.scan(@exercise.content, :ruby).div.html_safe %>
 
