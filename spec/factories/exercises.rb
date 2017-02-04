@@ -3,6 +3,11 @@ FactoryGirl.define do
     sequence :name do |n|
       "Exercise #{n}"
     end
-    content "exercise content"
+    sequence :description do |n|
+      "exercise description #{n}"
+    end
+    sequence :content do |n|
+      "exercise content #{n}"
+    end
   end
 end
