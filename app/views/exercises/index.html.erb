@@ -3,7 +3,6 @@
   <% @exercises.each do |exercise| %>
   <h4><%= link_to exercise.name, exercise_path(exercise)%></h4>
   <p><%= exercise.description %></p>
-  Status: <%= exercise.status %>
   <p><% exercise.tags.each do |tag| %>
       <span class="badge tag-badges"><%= tag.name %></span>
     <% end %></p></br>

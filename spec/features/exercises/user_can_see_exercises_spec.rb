@@ -8,6 +8,5 @@ describe "/exercises" do
 
     expect(page).to have_content(exercise.name)
     expect(page).to have_content(exercise.description)
-    expect(page).to have_content(exercise.status)
   end
 end

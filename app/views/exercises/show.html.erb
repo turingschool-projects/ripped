@@ -4,7 +4,6 @@
       <span class="badge tag-badges"><%= tag.name %></span>
     <% end %></p></br>
   <%= @exercise.description %>
-  Status: <%= @exercise.status %>
   <%= CodeRay.scan(@exercise.content, :ruby).div.html_safe %>
 
   <%= link_to "Submit your solution", new_exercise_solution_path(@exercise), class: "waves-effect waves-light btn" %>

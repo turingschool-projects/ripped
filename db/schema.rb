@@ -25,18 +25,18 @@ ActiveRecord::Schema.define(version: 20170205172503) do
   create_table "exercises", force: :cascade do |t|
     t.text     "name"
     t.text     "content"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.text     "description"
-    t.integer  "status",      default: 0
   end
 
   create_table "solutions", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
     t.integer  "exercise_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "status",      default: 0
     t.index ["exercise_id"], name: "index_solutions_on_exercise_id", using: :btree
     t.index ["user_id"], name: "index_solutions_on_user_id", using: :btree
   end
