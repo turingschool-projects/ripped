@@ -41,6 +41,7 @@ describe "a user submits a solution" do
     stub_2 = stub_omniauth
     user_1 = User.create!(census_id: stub_1.uid)
     user_2 = User.create!(census_id: stub_2.uid)
+    solution_1 = Solution.create!(content: "Hello", user_id: user_1.id, exercise_id: exercise.id, status: 0)
     solution_2 = Solution.create!(content: "Hello", user_id: user_2.id, exercise_id: exercise.id, status: 1)
     visit '/'
     expect(page).to have_content('Login with Census')
@@ -49,20 +50,12 @@ describe "a user submits a solution" do
 
     click_link "Login with Census"
     
-    visit exercise_path(exercise)
+    visit exercise_solution_path(id: solution_1.id, exercise_id: exercise.id)
 
-    user_1_solution = "my solution"
-
-    click_on "Submit your solution"
-    fill_in "solution[content]", with: user_1_solution
-    click_on "Submit Solution"
-
-    solution = Solution.where(user_id: user_1.id)
-
-    expect(page).to have_content("You have successfully submitted your solution.")
     expect(page).to have_content("Your solution for #{exercise.name}")
     expect(page).to have_content("Status: Submitted")
     expect(page).to_not have_content("Status: Solved")
-    expect(page).to have_content(user_1_solution)
+    expect(page).to have_content(solution_1.content)
+    expect(Solution.second.status).to eq("Solved")
   end
 end
