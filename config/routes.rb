@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
 
 
+  get 'signout', to: 'sessions#destroy', as: 'signout'
   get 'auth/:provider/callback', to: 'sessions#create'
 
   root to: 'home#index'
