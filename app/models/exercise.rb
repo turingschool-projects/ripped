@@ -6,4 +6,6 @@ class Exercise < ApplicationRecord
   has_many :solutions
   has_many :exercise_tags
   has_many :tags, through: :exercise_tags
+  
+  enum status: [:unstarted, :started, :attempted]
 end
