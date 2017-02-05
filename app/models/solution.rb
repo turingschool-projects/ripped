@@ -6,5 +6,5 @@ class Solution < ApplicationRecord
   # belongs_to :user
   belongs_to :exercise
   
-  enum status: [:submitted, :solved]
+  enum status: [:Submitted, :Solved]
 end

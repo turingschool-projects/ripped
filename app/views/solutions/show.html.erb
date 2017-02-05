@@ -1,5 +1,5 @@
 <div class="container">
   <h3>Your solution for <%=@solution.exercise.name %> </h3>
-
+  <h4>Status: <%= @solution.status %>
   <%= CodeRay.scan(@solution.content, :ruby).div.html_safe %>
 </div>
