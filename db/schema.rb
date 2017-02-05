@@ -25,10 +25,10 @@ ActiveRecord::Schema.define(version: 20170205172503) do
   create_table "exercises", force: :cascade do |t|
     t.text     "name"
     t.text     "content"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.text     "description"
-    t.integer  "status"
+    t.integer  "status",      default: 0
   end
 
   create_table "solutions", force: :cascade do |t|
