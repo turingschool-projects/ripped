@@ -2,11 +2,11 @@ require "rails_helper"
 
 describe "/exercises" do
   it "a user can view exercises" do
-    Exercise.create(name: "exercise name", content: "exercise content")
+    exercise = create(:exercise)
 
     visit exercises_path
 
-    expect(page).to have_content("exercise name")
-    expect(page).to have_content("exercise content")
+    expect(page).to have_content(exercise.name)
+    expect(page).to have_content(exercise.description)
   end
 end

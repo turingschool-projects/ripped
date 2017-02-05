@@ -2,6 +2,33 @@ nav {
   background-color: #7c8c8e !important;
 }
 
+p {
+  font-family: 'Open Sans', sans-serif;
+  color: #7c8c8e;
+}
+
+a {
+  color: #05c2d1;
+  font-family: 'Open Sans', sans-serif;
+}
+
+a:hover {
+  font-weight: bold;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Open Sans', sans-serif;
+  color: #3c4040;
+}
+
 .submission-box{
   height: 200px;
+}
+
+.tag-badges {
+  margin: 0px;
+  float: left !important;
+  background-color: #05c2d1;
+  border-radius: 2px;
+  color: #fff !important;
 }
