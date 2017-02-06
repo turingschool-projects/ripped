@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
+  get 'signout', to: 'sessions#destroy', as: 'signout'
   get 'auth/:provider/callback', to: 'sessions#create'
 
   root to: 'home#index'

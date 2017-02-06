@@ -13,23 +13,30 @@ describe "/exercises/:id" do
   end
 
   it "user can submit a solution" do
-    exercise = create(:exercise)
-    visit exercise_path(exercise)
-
-    user_solution = "my solution"
-
-    click_on "Submit your solution"
-    fill_in "solution[content]", with: user_solution
-    click_on "Submit Solution"
-
-    solution = Solution.last
-
-    expect(current_path).to eq(exercise_solution_path(exercise, solution))
-    expect(page).to have_content("You have successfully submitted your solution.")
-    expect(page).to have_content("Your solution for #{exercise.name}")
-    expect(page).to have_content("Status: Submitted")
-    expect(page).to have_content(user_solution)
+        exercise = create(:exercise)
+        stub = stub_omniauth
+        user = User.create!(census_id: stub.uid)
+    
+        visit '/'
+        expect(page).to have_content('Login with Census')
+    
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    
+        click_link "Login with Census"
+        
+        visit exercise_path(exercise)
+    
+        user_solution = "my solution"
+    
+        click_on "Submit your solution"
+        fill_in "solution[content]", with: user_solution
+        click_on "Submit Solution"
+    
+        solution = Solution.last
+    
+        expect(current_path).to eq(exercise_solution_path(exercise, solution))
   end
+  
   it "user sees errors message if their solution does not submit" do
     exercise = create(:exercise)
     visit exercise_path(exercise)
