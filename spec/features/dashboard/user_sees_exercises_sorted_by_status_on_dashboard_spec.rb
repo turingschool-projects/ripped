@@ -1,13 +1,16 @@
 require 'rails_helper'
 
-describe "/users/:id" do
+describe "/dashboard" do
   it "a user can see a list of exercises in progress on their dashboard" do
     user = User.create(census_id: 1)
     exercise1 = create(:exercise)
     exercise2 = create(:exercise)
     solution1 = create(:solution, exercise_id: exercise2.id, user_id: user.id, status: "Submitted")
     solution2 = create(:solution, exercise_id: exercise1.id, user_id: user.id, status: "Solved")
-    visit user_path(user)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit dashboard_path
 
     expect(page).to have_content("Exercises in Progress")
 
@@ -23,7 +26,10 @@ describe "/users/:id" do
     exercise2 = create(:exercise)
     solution1 = create(:solution, exercise_id: exercise2.id, user_id: user.id, status: "Submitted")
     solution2 = create(:solution, exercise_id: exercise1.id, user_id: user.id, status: "Solved")
-    visit user_path(user)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit dashboard_path
 
     expect(page).to have_content("Completed Exercises")
     within(:css, "#completed") do
