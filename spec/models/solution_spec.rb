@@ -13,7 +13,8 @@ RSpec.describe Solution, type: :model do
     end
     it "is valid with all attributes" do
       exercise = create(:exercise)
-      solution = Solution.create(content: "solution name", exercise_id: exercise.id)
+      user = create(:user)
+      solution = Solution.create(content: "solution name", user_id: user.id, exercise_id: exercise.id)
       expect(solution).to be_valid
     end
   end

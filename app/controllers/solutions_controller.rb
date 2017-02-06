@@ -13,6 +13,7 @@ class SolutionsController < ApplicationController
     @exercise = Exercise.find(params[:exercise_id])
     @solution = Solution.new(solution_params)
     @solution.exercise = @exercise
+    @solution.user = current_user
     if @solution.save
       flash[:success] = "You have successfully submitted your solution."
       redirect_to exercise_solution_path(@exercise, @solution)
