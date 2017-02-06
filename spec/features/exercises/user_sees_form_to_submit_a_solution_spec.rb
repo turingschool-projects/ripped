@@ -16,19 +16,17 @@ describe "/exercises/:id" do
     exercise = create(:exercise)
     visit exercise_path(exercise)
 
-    user_solution = "my solution"
+    user_solution = "puts hello world"
 
     click_on "Submit your solution"
     fill_in "solution[content]", with: user_solution
     click_on "Submit Solution"
-
-    solution = Solution.last
-
-    expect(current_path).to eq(exercise_solution_path(exercise, solution))
+        
     expect(page).to have_content("You have successfully submitted your solution.")
     expect(page).to have_content("Your solution for #{exercise.name}")
     expect(page).to have_content(user_solution)
   end
+  
   it "user sees errors message if their solution does not submit" do
     exercise = create(:exercise)
     visit exercise_path(exercise)
