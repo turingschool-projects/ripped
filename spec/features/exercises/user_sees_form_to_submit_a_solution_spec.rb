@@ -27,6 +27,7 @@ describe "/exercises/:id" do
     expect(current_path).to eq(exercise_solution_path(exercise, solution))
     expect(page).to have_content("You have successfully submitted your solution.")
     expect(page).to have_content("Your solution for #{exercise.name}")
+    expect(page).to have_content("Status: Submitted")
     expect(page).to have_content(user_solution)
   end
   it "user sees errors message if their solution does not submit" do
