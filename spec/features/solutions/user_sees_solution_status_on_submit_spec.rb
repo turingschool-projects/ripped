@@ -1,8 +1,3 @@
-# As a user,
-# When I view a solution
-# Then I see a label indicated if the solution is submitted or solved
-# And it is specific to my user account
-
 require "rails_helper"
 
 describe "a user submits a solution" do
