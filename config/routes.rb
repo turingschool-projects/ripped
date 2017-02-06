@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :solutions, only: [:show, :new, :create]
   end
 
-resources :users, only: [:show]
+  resources :users, only: [:show]
 
   get 'auth/:provider/callback', to: 'sessions#create'
 

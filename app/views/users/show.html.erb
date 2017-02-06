@@ -5,10 +5,20 @@
       <h5>Feedback</h5>
     </div>
     <div class="col s4">
-      <h5 id="in-progress">Exercises in Progress</h5>
+      <h5>Exercises in Progress</h5>
+      <ul id="in-progress">
+        <% @in_progress.each do |solution| %>
+          <li><%= solution.exercise.name %></li>
+        <% end %>
+      </ul>
     </div>
     <div class="col s4">
-      <h5 id="completed"> Completed Exercises</h5>
+      <h5> Completed Exercises</h5>
+      <ul id="completed">
+        <% @completed.each do |solution| %>
+          <li><%= solution.exercise.name %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>
