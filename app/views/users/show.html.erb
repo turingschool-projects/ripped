@@ -8,7 +8,7 @@
       <h5>Exercises in Progress</h5>
       <ul id="in-progress">
         <% @in_progress.each do |solution| %>
-          <li><%= solution.exercise.name %></li>
+          <li><%= link_to solution.exercise.name, exercise_solution_path(solution.exercise, solution) %></li>
         <% end %>
       </ul>
     </div>
@@ -16,7 +16,7 @@
       <h5> Completed Exercises</h5>
       <ul id="completed">
         <% @completed.each do |solution| %>
-          <li><%= solution.exercise.name %></li>
+          <li><%= link_to solution.exercise.name, exercise_solution_path(solution.exercise, solution) %></li>
         <% end %>
       </ul>
     </div>
