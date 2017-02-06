@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     resources :solutions, only: [:show, :new, :create]
   end
 
+  get '/dashboard', to: 'dashboard#show'
 
+  get 'signout', to: 'sessions#destroy', as: 'signout'
   get 'auth/:provider/callback', to: 'sessions#create'
 
   root to: 'home#index'
