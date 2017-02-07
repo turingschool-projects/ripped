@@ -5,6 +5,7 @@ class Solution < ApplicationRecord
 
   belongs_to :user
   belongs_to :exercise
-  
+  has_many :feedbacks
+
   enum status: [:Submitted, :Solved]
 end
