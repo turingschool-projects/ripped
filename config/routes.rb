@@ -4,7 +4,10 @@ Rails.application.routes.draw do
     resources :solutions, only: [:show, :new, :create]
   end
 
-  resources :feedbacks, only: [:new, :create]
+  resources :solutions do
+    resources :feedbacks, only: [:new, :create]    
+  end
+
 
   get '/dashboard', to: 'dashboard#show'
 

@@ -13,7 +13,7 @@
     <% end %>
   </ul>
   <h5>Leave Feedback</h5>
-  <%= form_for @feedback do |f| %>
+  <%= form_for [@solution, @feedback] do |f| %>
     <p><%= f.text_area :comment, id: "feedback-content" %></p>
     <p><%= f.submit %></p>
   <% end %>
