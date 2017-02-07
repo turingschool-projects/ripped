@@ -8,4 +8,8 @@ class Exercise < ApplicationRecord
   has_many :exercise_tags
   has_many :tags, through: :exercise_tags
 
+  def user_solution?(user)
+    solutions.where(user: user).count > 0
+  end
+
 end

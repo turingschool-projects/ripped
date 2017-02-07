@@ -4,6 +4,11 @@ Rails.application.routes.draw do
     resources :solutions, only: [:show, :new, :create]
   end
 
+  resources :solutions do
+    resources :feedbacks, except: [:show]
+  end
+
+
   get '/dashboard', to: 'dashboard#show'
 
   get 'signout', to: 'sessions#destroy', as: 'signout'

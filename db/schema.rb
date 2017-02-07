@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170205172503) do
+ActiveRecord::Schema.define(version: 20170207210329) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +29,16 @@ ActiveRecord::Schema.define(version: 20170205172503) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.text     "description"
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "solution_id"
+    t.text     "comment"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["solution_id"], name: "index_feedbacks_on_solution_id", using: :btree
+    t.index ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
   end
 
   create_table "solutions", force: :cascade do |t|
@@ -49,12 +60,15 @@ ActiveRecord::Schema.define(version: 20170205172503) do
 
   create_table "users", force: :cascade do |t|
     t.integer  "census_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "role",       default: 0
   end
 
   add_foreign_key "exercise_tags", "exercises"
   add_foreign_key "exercise_tags", "tags"
+  add_foreign_key "feedbacks", "solutions"
+  add_foreign_key "feedbacks", "users"
   add_foreign_key "solutions", "exercises"
   add_foreign_key "solutions", "users"
 end
