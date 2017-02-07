@@ -106,5 +106,29 @@ describe "when a user visits the site" do
       click_link "Login with Census"
       expect(page).to have_content("0")
     end
+    
+    scenario "they see the correct notification on other pages" do
+      stub_1 = stub_omniauth
+      stub_2 = stub_omniauth
+      exercise_1 = create(:exercise, name: "Hats")
+      exercise_2 = create(:exercise, name: "Umbrellas")
+      user_1 = User.create!(census_id: stub_1.uid, role: 1)
+      user_2 = User.create!(census_id: stub_2.uid, role: 0)
+      solution_1 = Solution.create!(content: "Hello", user_id: user_2.id, exercise_id: exercise_1.id, status: 0)
+      solution_2 = Solution.create!(content: "Hello", user_id: user_2.id, exercise_id: exercise_2.id, status: 0)
+
+      visit '/'
+      expect(page).to have_content('Login with Census')
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+
+      click_link "Login with Census"
+      
+      visit exercises_path
+      expect(page).to have_content("2")
+      dashboard_path 
+      expect(page).to have_content("2")
+    end
+
   end
 end
