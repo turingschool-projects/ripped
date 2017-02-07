@@ -5,6 +5,7 @@ describe "a user visits a show page for another user's solution" do
     user = create(:user)
     user2 = create(:user)
     exercise = create(:exercise)
+    create(:solution, user: user, exercise: exercise)
     solution = create(:solution, user: user2, exercise: exercise)
     feedback = create(:feedback, solution_id: solution.id, comment: "Comment1")
     feedback2 = create(:feedback, solution_id: solution.id, comment: "Comment2")
@@ -24,6 +25,7 @@ describe "a user visits a show page for another user's solution" do
     user = create(:user)
     user2 = create(:user)
     exercise = create(:exercise)
+    create(:solution, user: user, exercise: exercise)
     solution = create(:solution, user: user2, exercise: exercise)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)

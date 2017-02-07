@@ -5,6 +5,7 @@ describe "a user visits a show page for another user's solution" do
     user = create(:user)
     user2 = create(:user)
     exercise = create(:exercise)
+    create(:solution, user: user, exercise: exercise)
     solution = create(:solution, user: user2, exercise: exercise)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -25,6 +26,7 @@ describe "a user visits a show page for another user's solution" do
     user = create(:user)
     user2 = create(:user)
     exercise = create(:exercise)
+    create(:solution, user: user, exercise: exercise)
     solution = create(:solution, user: user2, exercise: exercise)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -37,5 +39,18 @@ describe "a user visits a show page for another user's solution" do
     expect(current_path).to eq(exercise_solution_path(exercise, solution))
     expect(page).to have_content("Feedback")
     expect(page).to have_content("Something went wrong.")
+  end
+
+  scenario "and has not already submitted a solution for the exercise" do
+    user = create(:user)
+    user2 = create(:user)
+    exercise = create(:exercise)
+    solution = create(:solution, user: user2, exercise: exercise)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit exercise_solution_path(exercise, solution)
+
+    expect(page).to have_content("404")
   end
 end

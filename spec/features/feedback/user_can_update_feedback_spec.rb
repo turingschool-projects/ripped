@@ -5,6 +5,7 @@ describe "a user visits a show page for another user's solution that they have l
     user = create(:user)
     user2 = create(:user)
     exercise = create(:exercise)
+    create(:solution, user: user, exercise: exercise)
     solution = create(:solution, user: user2, exercise: exercise)
     feedback = create(:feedback, solution_id: solution.id, user: user, comment: "Comment1")
 
@@ -26,6 +27,7 @@ describe "a user visits a show page for another user's solution that they have l
     user = create(:user)
     user2 = create(:user)
     exercise = create(:exercise)
+    create(:solution, user: user, exercise: exercise)
     solution = create(:solution, user: user2, exercise: exercise)
     feedback = create(:feedback, solution_id: solution.id, user: user, comment: "Comment1")
 
