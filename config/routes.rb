@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :solutions, only: [:show, :new, :create]
   end
 
-  resources :solutions do
+  resources :solutions, except: [:index] do
     resources :feedbacks, except: [:show]
   end
 
