@@ -32,3 +32,10 @@ h1, h2, h3, h4, h5, h6{
   border-radius: 2px;
   color: #fff !important;
 }
+
+/* Notification Styles */
+
+.notification-button {
+  font-size: 1.8rem !important;
+  background: rgba(0,0,0,0) !important;
+}
