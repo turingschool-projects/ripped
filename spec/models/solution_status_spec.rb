@@ -11,6 +11,7 @@ RSpec.describe Solution, type: :model do
     it "can have status Solved" do
       exercise = create(:exercise)
       solution = Solution.create(content: "solution name", exercise_id: exercise.id)
+      expect(solution.status).to eq("Submitted")
       solution.status = 1
       expect(solution.status).to eq("Solved")
     end

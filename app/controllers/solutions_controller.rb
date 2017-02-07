@@ -2,6 +2,9 @@ class SolutionsController < ApplicationController
 
   def show
     @solution = Solution.find(params[:id])
+    @exercise = @solution.exercise
+    @feedbacks = @solution.feedbacks.all
+    @feedback = @solution.feedbacks.new()
   end
 
   def new
