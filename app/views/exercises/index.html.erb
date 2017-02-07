@@ -1,3 +1,6 @@
-<div id="ruby-exercises"
-  <%= render partial: "ruby_exercises" %>
-  <%= render partial: "js_exercises" %>
+<div id="ruby-exercises">
+  <%= link_to "Ruby Exercises", exercises_path(lang: "ruby") %>
+</div>
+<div id="js-exercises">
+  <%= link_to "JavaScript Exercises", exercises_path(lang: "js") %>
+</div>

@@ -1,15 +1,6 @@
 require "rails_helper"
 
 describe "/exercises" do
-  it "a user can view exercises" do
-    exercise = create(:exercise)
-
-    visit exercises_path
-
-    expect(page).to have_content(exercise.name)
-    expect(page).to have_content(exercise.description)
-  end
-
   it "a user can view exercises by track" do
     tag_1 = create(:tag, name: "js")
     tag_2 = create(:tag, name: "ruby")
@@ -21,8 +12,15 @@ describe "/exercises" do
     exercise_ruby.tags = [tag_2]
 
     visit exercises_path
+    click_link "JavaScript Exercises"
 
     expect(page).to have_content(exercise_js.name)
     expect(page).to have_content(exercise_js.description)
+
+    visit exercises_path
+    click_link "Ruby Exercises"
+
+    expect(page).to have_content(exercise_ruby.name)
+    expect(page).to have_content(exercise_ruby.description)
   end
 end
