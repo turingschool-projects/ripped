@@ -35,6 +35,14 @@ class FeedbacksController < ApplicationController
     end
   end
 
+  def destroy
+    @feedback = Feedback.find(params[:id])
+    @solution = Solution.find(params[:solution_id])
+    @feedback.delete
+    redirect_to exercise_solution_path(@solution.exercise, @solution)
+    flash[:success] = "Your feedback has been deleted."
+  end
+
   private
     def feedback_params
       params.require(:feedback).permit(:comment, :user_id, :solution_id)

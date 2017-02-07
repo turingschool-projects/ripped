@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
   resources :solutions do
-    resources :feedbacks, only: [:new, :create, :edit, :update]
+    resources :feedbacks, except: [:show]
   end
 
 
