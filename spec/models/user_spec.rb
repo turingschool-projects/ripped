@@ -17,4 +17,17 @@ RSpec.describe User, type: :model do
       expect(user).to respond_to(:solutions)
     end
   end
+  describe "roles" do
+    it { should define_enum_for(:role).with([:student, :instructor])}
+    it "is created with the role of student" do
+      user = create(:user)
+      expect(user.role).to eq("student")
+    end
+    it "can have the role of instructor" do
+      user = create(:user)
+      expect(user.role).to eq("student")
+      user.role = 1
+      expect(user.role).to eq("instructor")
+    end
+  end
 end
