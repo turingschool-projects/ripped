@@ -18,6 +18,23 @@ class FeedbacksController < ApplicationController
     end
   end
 
+  def edit
+    @feedback = Feedback.find(params[:id])
+    @solution = Solution.find(params[:solution_id])
+  end
+
+  def update
+    @solution = Solution.find(params[:solution_id])
+    @feedback = Feedback.find(params[:id])
+    if @feedback.update(feedback_params)
+      flash[:success] = "Your feedback has been updated"
+      redirect_to exercise_solution_path(@solution.exercise, @solution)
+    else
+      render :edit
+      flash.now[:danger] = "your feedback has not been updated"
+    end
+  end
+
   private
     def feedback_params
       params.require(:feedback).permit(:comment, :user_id, :solution_id)
