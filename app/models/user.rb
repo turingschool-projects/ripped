@@ -3,4 +3,6 @@ class User < ApplicationRecord
 
   has_many :solutions
   has_many :feedbacks
+
+  enum role: [:student, :instructor]
 end
