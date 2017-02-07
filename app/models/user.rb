@@ -5,4 +5,8 @@ class User < ApplicationRecord
   has_many :feedbacks
 
   enum role: [:student, :instructor]
+
+  def instructor?
+    role == "instructor"
+  end
 end
