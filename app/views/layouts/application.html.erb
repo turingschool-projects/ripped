@@ -18,7 +18,7 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li> <%=link_to "Exercises", exercises_path%> </li>
           <% if current_user %>
-            <li><a href=""><span class="new badge notification-button" data-badge-caption="🔔" id="notification-logo"></span></a></li>
+            <li><a href=""><span class="new badge notification-button" data-badge-caption="🔔" id="notification-logo"><%= current_user.notification_display %></span></a></li>
           <% end %>
         </ul>
       </div>
