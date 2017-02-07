@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20170207210329) do
     t.text     "description"
   end
 
+  create_table "feedbacks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "solution_id"
+    t.text     "comment"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["solution_id"], name: "index_feedbacks_on_solution_id", using: :btree
+    t.index ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
+  end
+
   create_table "solutions", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
@@ -56,6 +66,8 @@ ActiveRecord::Schema.define(version: 20170207210329) do
 
   add_foreign_key "exercise_tags", "exercises"
   add_foreign_key "exercise_tags", "tags"
+  add_foreign_key "feedbacks", "solutions"
+  add_foreign_key "feedbacks", "users"
   add_foreign_key "solutions", "exercises"
   add_foreign_key "solutions", "users"
 end
