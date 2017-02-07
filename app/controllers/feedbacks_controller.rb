@@ -27,11 +27,11 @@ class FeedbacksController < ApplicationController
     @solution = Solution.find(params[:solution_id])
     @feedback = Feedback.find(params[:id])
     if @feedback.update(feedback_params)
-      flash[:success] = "Your feedback has been updated"
+      flash[:success] = "Your feedback has been updated."
       redirect_to exercise_solution_path(@solution.exercise, @solution)
     else
       render :edit
-      flash.now[:danger] = "your feedback has not been updated"
+      flash.now[:danger] = "Your feedback has not been updated, please try again."
     end
   end
 
