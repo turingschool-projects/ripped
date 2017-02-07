@@ -1,7 +1,7 @@
 require "rails_helper"
 
-describe "a user isits a show page for another user's solution" do
-  scenario "and creates feedback on that solution" do
+describe "a user visits a show page for another user's solution" do
+  scenario "and successfully creates feedback on that solution" do
     user = create(:user)
     user2 = create(:user)
     exercise = create(:exercise)
