@@ -1,5 +1,32 @@
 <div class="container">
-  <h3>Your solution for <%=@solution.exercise.name %> </h3>
-  <h4>Status: <%= @solution.status %>
-  <%= CodeRay.scan(@solution.content, :ruby).div.html_safe %>
+  <% if @exercise.user_solution?(current_user) %>
+    <h3>Your solution for <%=@exercise.name %> </h3>
+    <h4>Status: <%= @solution.status %>
+    <%= CodeRay.scan(@solution.content, :ruby).div.html_safe %>
+    <br>
+    <h4>Feedback</h4>
+    <ul>
+      <% @feedbacks.each do |fb| %>
+        <li>
+          <p><%= fb.user.census_id %>
+            <% if fb.user.instructor? %>
+              (Instructor)
+            <% end %>
+          </p>
+          <p><%= fb.comment %></p>
+          <% if fb.user == current_user %>
+            <%= link_to "Edit Feedback", edit_solution_feedback_path(@solution, fb) %>
+            <%= link_to "Delete", [@solution, fb], :method => :delete %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <h5>Leave Feedback</h5>
+    <%= form_for [@solution, @feedback] do |f| %>
+      <p><%= f.text_area :comment, id: "feedback-content" %></p>
+      <p><%= f.submit %></p>
+    <% end %>
+  <% else %>
+    <%= render :file => 'public/404.html' %>
+  <% end %>
 </div>
