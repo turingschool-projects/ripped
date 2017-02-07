@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :exercises, only: [:index, :show] do
+  resources :exercises do
     resources :solutions, only: [:show, :new, :create]
   end
+
+  resources :solutions, except: [:index] do
+    resources :feedbacks, except: [:show]
+  end
+
 
   get '/dashboard', to: 'dashboard#show'
 

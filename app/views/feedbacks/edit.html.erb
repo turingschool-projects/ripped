@@ -1,0 +1,10 @@
+<% if @feedback.user == current_user %>
+  <h3>Edit your feedback</h3>
+
+  <%= form_for [ @solution, @feedback ] do |f| %>
+    <%= f.text_area :comment, id: "feedback-update" %>
+    <%= f.submit %>
+  <% end %>
+<% else %>
+  <%= render :file => 'public/404.html' %>
+<% end %>

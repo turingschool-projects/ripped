@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <%= javascript_include_tag 'application' %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
   </head>
@@ -17,6 +18,9 @@
         <a href="#" class="brand-logo">Ripped</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li> <%=link_to "Exercises", exercises_path%> </li>
+          <% if current_user %>
+            <li><a href=""><span class="new badge notification-button" data-badge-caption="🔔" id="notification-logo"><%= current_user.notification_display %></span></a></li>
+          <% end %>
         </ul>
       </div>
     </nav>
