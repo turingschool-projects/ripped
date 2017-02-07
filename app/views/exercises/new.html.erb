@@ -1,0 +1,17 @@
+<div class="container">
+  <h2>Create a new exercise</h2>
+
+  <%= form_for @exercise do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "submission-box" %>
+
+    <%= f.label :content %>
+    <%= f.text_area :content, class: "submission-box" %>
+
+    <%= f.submit class: "waves-effect waves-light btn" %>
+  <% end %>
+
+</div>
