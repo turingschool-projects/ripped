@@ -2,7 +2,12 @@
   <h2>All Exercises</h2>
   <%= link_to "Create New Exercise", new_exercise_path, class: "waves-effect waves-light btn" %>
   <% @exercises.each do |exercise| %>
-  <h4><%= link_to exercise.name, exercise_path(exercise)%></h4>
+  <h4>
+    <%= link_to exercise.name, exercise_path(exercise)%>
+    <%= link_to edit_exercise_path(exercise), class: "btn-floating btn-small waves-effect waves-light red" do %>
+      <i class="material-icons">mode_edit</i>
+    <% end %>
+  </h4>
   <p><%= exercise.description %></p>
   <p><% exercise.tags.each do |tag| %>
       <span class="badge tag-badges"><%= tag.name %></span>

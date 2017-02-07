@@ -23,6 +23,21 @@ class ExercisesController < ApplicationController
     end
   end
 
+  def edit
+    @exercise = Exercise.find(params[:id])
+  end
+
+  def update
+    @exercise = Exercise.find(params[:id])
+    if @exercise.update(exercise_params)
+      flash[:success] = "You have successfully updated this exercise."
+      redirect_to exercise_path(@exercise)
+    else
+      flash[:alert] = "There was a problem updating your exercise. Please try again."
+      render :edit
+    end
+  end
+
   private
 
   def exercise_params
