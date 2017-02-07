@@ -2,11 +2,14 @@ require "rails_helper"
 
 describe "/exercises/new" do
   scenario "an instructor can create an exercise" do
+    create(:tag)
+
     visit new_exercise_path
 
     fill_in "exercise[name]", with: "exercise name"
     fill_in "exercise[description]", with: "exercise description"
     fill_in "exercise[content]", with: "exercise content"
+    find(:css, "#exercise_tag_ids_1").set(true)
     click_on "Create Exercise"
 
     exercise = Exercise.last
@@ -17,10 +20,13 @@ describe "/exercises/new" do
     expect(page).to have_content("You have successfully created an exercise")
   end
   scenario "an instructor sees error when an exercise does not successfully create" do
+    create(:tag)
+    
     visit new_exercise_path
 
     fill_in "exercise[name]", with: "exercise name"
     fill_in "exercise[description]", with: "exercise description"
+    find(:css, "#exercise_tag_ids_1").set(true)
     click_on "Create Exercise"
 
     expect(page).to have_content("There was a problem creating your exercise. Please try again.")
