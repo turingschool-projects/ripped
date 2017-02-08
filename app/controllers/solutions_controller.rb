@@ -1,4 +1,10 @@
 class SolutionsController < ApplicationController
+  load_and_authorize_resource only: [:index, :show, :new, :create]
+
+  def index
+    exercise = Exercise.find(params[:exercise_id])
+    @solutions = exercise.solutions
+  end
 
   def show
     @solution = Solution.find(params[:id])
