@@ -1,3 +1,16 @@
+<button type='button' class='ruby-button'>Ruby</button>
+<button type='button' class='js-button'>JavaScript</button>
+
+<div id="exercises">
+  <div id='ruby_exercises' style="visibility: hidden">
+    <%= render partial: 'ruby_exercises' %>
+  </div>
+  <div id='js_exercises' style="visibility: hidden">
+    <%= render partial: 'js_exercises' %>
+  </div>
+</div>
+
+
 <div class="container">
   <h2>All Exercises</h2>
   <% if current_user.instructor? %>
