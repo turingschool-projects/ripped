@@ -2,12 +2,14 @@ require "rails_helper"
 
 describe "/exercises/:id/solutions" do
   scenario "instructor sees all solutions for an exercise" do
+    user = create(:user, role: 1)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    exercise = create(:exercise)
+    solution = create(:solution)
+    exercise.solutions = [solution]
 
-  end
-  xscenario "student sees all solutions for an exercise if they've submitted their own solution" do
+    visit exercise_solutions_path(exercise)
 
-  end
-  xscenario "student sees error for an exercise if they haven't submitted their own solution" do
-
+    expect(page).to have_content(solution.content)
   end
 end
