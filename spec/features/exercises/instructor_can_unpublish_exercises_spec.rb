@@ -8,7 +8,7 @@ describe "/exercises/:id" do
 
     visit exercise_path(exercise)
 
-    click_on "unpublish"
+    click_on "delete"
 
     expect(page).to have_content("#{exercise.name} has been unpublished")
     expect(current_path).to eq(exercises_path)
@@ -21,7 +21,7 @@ describe "/exercises/:id" do
 
     visit exercise_path(exercise)
 
-    click_on "publish"
+    click_on "note_add"
 
     expect(page).to have_content("#{exercise.name} has been published")
     expect(current_path).to eq(exercise_path(exercise))
@@ -34,7 +34,7 @@ describe "/exercises/:id" do
 
     visit exercise_path(exercise)
 
-    expect(page).to_not have_link("unpublish")
+    expect(page).to_not have_link("delete")
   end
 end
 
@@ -46,7 +46,7 @@ describe "/exercises" do
 
     visit exercises_path
 
-    click_on "unpublish"
+    click_on "delete"
 
     expect(page).to have_content("#{exercise.name} has been unpublished")
     expect(current_path).to eq(exercises_path)
@@ -59,6 +59,6 @@ describe "/exercises" do
 
     visit exercises_path
 
-    expect(page).to_not have_link("unpublish")
+    expect(page).to_not have_link("delete")
   end
 end

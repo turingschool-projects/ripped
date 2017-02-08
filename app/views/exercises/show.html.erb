@@ -8,9 +8,14 @@
         <i class="small material-icons">mode_edit</i>
       <% end %>
       <% if @exercise.published? %>
-        <%= link_to 'unpublish', exercise_path(@exercise), method: 'delete' %>
+        <%= link_to exercise_path(@exercise), method: 'delete', class: "btn-floating btn-small waves-effect waves-light red" do %>
+          <i class="material-icons">delete</i>
+        <% end %>
+
       <% else %>
-        <%= link_to 'publish', exercise_path(@exercise), method: 'delete' %>
+        <%= link_to exercise_path(@exercise), method: 'delete', class: "btn-floating btn-small waves-effect waves-light red" do %>
+          <i class="material-icons">note_add</i>
+        <% end %>
       <% end %>
     <% end %>
 
