@@ -62,3 +62,14 @@ h1, h2, h3, h4, h5, h6{
   text-align: center;
   margin-top: 10px;
  }
+ 
+/* Homepage Image */
+
+.root-page {
+  background-image: url(https://source.unsplash.com/ttbCwN_mWic/);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover !important;
+  background-color: transparent;
+}
