@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
         binding.pry
       redirect_to exercises_path
     else
-      user = User.create!(user_params)
+      user = User.create!(first_name: user_credentials.info.first_name, last_name: user_credentials.info.last_name, token: user_credentials.credentials.token)
       session[:user_id] = user.id
       redirect_to exercises_path
     end

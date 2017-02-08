@@ -11,7 +11,7 @@ describe "/exercises" do
     expect(page).to have_content(exercise.name)
     expect(page).to have_content(exercise.description)
   end
-  
+
   it "student can view exercises" do
     exercise = create(:exercise)
     user = create(:user)
@@ -24,6 +24,10 @@ describe "/exercises" do
   end
 
   it "a user can view exercises by track" do
+    user = create(:user)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
     tag_1 = create(:tag, name: "javascript")
     tag_2 = create(:tag, name: "ruby")
     exercise_js = create(:exercise)
