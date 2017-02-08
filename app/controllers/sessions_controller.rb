@@ -3,10 +3,12 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(census_id: user_credentials.uid)
     if User.exists?(census_id: user_credentials.uid)
+        user.update!(first_name: user_credentials.info.first_name, last_name: user_credentials.info.last_name, token: user_credentials.credentials.token)
         session[:user_id] = user.id
+        binding.pry
       redirect_to exercises_path
     else
-      user = User.create!(census_id: user_credentials.uid)
+      user = User.create!(first_name: user_credentials.info.first_name, last_name: user_credentials.info.last_name, token: user_credentials.credentials.token)
       session[:user_id] = user.id
       redirect_to exercises_path
     end
