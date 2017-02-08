@@ -1,7 +1,10 @@
 class ExercisesController < ApplicationController
+  load_and_authorize_resource only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   def index
     @exercises = Exercise.all
+    @ruby_exercises = Exercise.joins(:tags).where({ tags: {name: "ruby"} })
+    @js_exercises = Exercise.joins(:tags).where({ tags: {name: "javascript"}})
   end
 
   def show

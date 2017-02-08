@@ -5,6 +5,9 @@ describe "/exercises/:id/edit" do
     tag = create(:tag)
     exercise = Exercise.create(name: "old name", description: "old description", content: "old content")
     exercise.tags = [tag]
+    user = create(:user, role: 1)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
     visit edit_exercise_path(exercise)
 
     fill_in "exercise[name]", with: "new exercise name"
@@ -25,6 +28,9 @@ describe "/exercises/:id/edit" do
   scenario "an instructor sees error when an exercise does not successfully update" do
     exercise = create(:exercise)
     create(:tag)
+    user = create(:user, role: 1)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
     visit edit_exercise_path(exercise)
 
     fill_in "exercise[name]", with: "new exercise name"
@@ -40,32 +46,40 @@ end
 describe "/exercises" do
   scenario "instructor sees 'update exercise' button" do
     create(:exercise)
+    user = create(:user, role: 1)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit exercises_path
 
     expect(page).to have_link("mode_edit")
   end
 
-  xscenario "student does not see 'update exercise' button" do
+  scenario "student does not see 'update exercise' button" do
     create(:exercise)
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit exercises_path
 
-    expect(page).to_not have_link("Edit")
+    expect(page).to_not have_link("mode_edit")
   end
 end
 
 describe "/exercises/:id" do
   scenario "instructor sees 'update exercise' button on individual exercise" do
     exercise = create(:exercise)
+    user = create(:user, role: 1)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit exercises_path(exercise)
 
     expect(page).to have_link("mode_edit")
   end
 
-  xscenario "student does not see 'update exercise' button on individual exercise" do
+  scenario "student does not see 'update exercise' button on individual exercise" do
     exercise = create(:exercise)
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit exercises_path(exercise)
 
