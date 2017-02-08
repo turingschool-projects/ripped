@@ -24,4 +24,5 @@ class SessionsController < ApplicationController
   def user_credentials
     env["omniauth.auth"]
   end
+
 end

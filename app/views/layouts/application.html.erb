@@ -19,11 +19,16 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li> <%=link_to "Exercises", exercises_path%> </li>
           <% if current_user %>
-            <li><a href=""><span class="badge notification-button" data-badge-caption="Recent Updates" id="notification-logo"><%= current_user.notification_display %></span></a></li>
-            <a class="btn notification-alert" onclick="Materialize.toast('I am a toast', 4000)">Toast!</a>
+            <li><a href="#" class="dropdown-button btn" data-activates='dropdown1' data-beloworigin="true" data-gutter="16", data-constrainwidth="true"><span class="badge notification-button" data-badge-caption="Recent Updates" id="notification-logo"><%= current_user.notification_display %></span></a></li>
           <% end %>
+
         </ul>
       </div>
+      <ul id='dropdown1' class='dropdown-content dropdown-custom'>
+          <% Solution.where(user_id: current_user.id).each do |solution| %>
+            <li><%= link_to solution.exercise.name, exercise_solution_path(solution.exercise.id, solution.id) %></li>
+          <% end %>
+      </ul>
     </nav>
     <% flash.each do |type, message| %>
       <div class="alert alert-<%= type %>">
