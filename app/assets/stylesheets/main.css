@@ -14,7 +14,7 @@ a {
 
 a:hover {
   text-decoration: none;
-  color: #0c2231;
+  color: #22A7F0;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -48,3 +48,17 @@ h1, h2, h3, h4, h5, h6{
 .dropdown-button {
   background-color: #1C2833 !important;
 }
+
+.navbar-button {
+  background-color: #1C2833 !important;
+}
+
+.brand-logo {
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+.alert {
+  text-align: center;
+  margin-top: 10px;
+ }

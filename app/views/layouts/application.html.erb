@@ -16,11 +16,22 @@
   <body>
     <nav>
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Ripped</a>
+        <a href="/" class="brand-logo">Ripped</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li> <%=link_to "Exercises", exercises_path%> </li>
+          <li> <%=link_to "Exercises", exercises_path, class:"btn waves-effect waves-light navbar-button"%> </li>
+          <% if logged_in? %>
+            <li> <%=link_to "Dashboard", dashboard_path, class:"btn waves-effect waves-light navbar-button"%> </li>
+            <li><%= link_to 'Log Out', signout_path, class:"btn waves-effect waves-light navbar-button" %></li>
+            
+          <% else %>
+            <li><%= link_to 'Login with Census', '/auth/census', class:"btn waves-effect waves-light navbar-button" %></li>
+          <% end %>
+          
           <% if current_user %>
-            <li><a href="#" class="dropdown-button btn" data-activates='dropdown1' data-beloworigin="true" data-gutter="16", data-constrainwidth="true"><span class="badge notification-button" data-badge-caption="Recent Updates" id="notification-logo"><%= current_user.notification_display %></span></a></li>
+            <li><a href="#" class="dropdown-button btn waves-effect waves-light" 
+              data-activates='dropdown1' data-beloworigin="true" data-gutter="16", data-constrainwidth="true">
+              <span class="btn badge notification-button" data-badge-caption="Recent Updates" id="notification-logo">
+                <%= current_user.notification_display %></span></a></li>
           <% end %>
 
         </ul>
