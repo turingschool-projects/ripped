@@ -59,6 +59,6 @@ describe "a user visits a show page for another user's solution that they have l
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit edit_solution_feedback_path(solution, feedback)
-    expect(page).to have_content("404")
+    expect(page).to have_content("You are not authorized to access this page.")
   end
 end

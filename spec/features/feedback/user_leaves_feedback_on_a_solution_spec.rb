@@ -51,7 +51,7 @@ describe "a user visits a show page for another user's solution" do
 
     visit exercise_solution_path(exercise, solution)
 
-    expect(page).to have_content("404")
+    expect(page).to have_content("You are not authorized to access this page.")
   end
 end
 
