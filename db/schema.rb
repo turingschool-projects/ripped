@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170208212706) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,9 +26,10 @@ ActiveRecord::Schema.define(version: 20170208212706) do
   create_table "exercises", force: :cascade do |t|
     t.text     "name"
     t.text     "content"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.text     "description"
+    t.integer  "status",      default: 0
   end
 
   create_table "feedbacks", force: :cascade do |t|
