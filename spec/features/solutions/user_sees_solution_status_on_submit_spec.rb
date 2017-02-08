@@ -3,16 +3,10 @@ require "rails_helper"
 describe "a user submits a solution" do
   scenario "and sees a status for that solution" do
     exercise = create(:exercise)
-    stub = stub_omniauth
-    user = User.create!(census_id: stub.uid)
-
-    visit '/'
-    expect(page).to have_content('Login with Census')
+    user = create(:user)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    click_link "Login with Census"
-    
     visit exercise_path(exercise)
 
     user_solution = "my solution"
@@ -32,19 +26,14 @@ describe "a user submits a solution" do
 
   scenario "and it is specific for their account" do
     exercise = create(:exercise)
-    stub_1 = stub_omniauth
-    stub_2 = stub_omniauth
-    user_1 = User.create!(census_id: stub_1.uid)
-    user_2 = User.create!(census_id: stub_2.uid)
+    user_1 = create(:user)
+    user_2 = create(:user)
+
     solution_1 = Solution.create!(content: "Hello", user_id: user_1.id, exercise_id: exercise.id, status: 0)
     solution_2 = Solution.create!(content: "Hello", user_id: user_2.id, exercise_id: exercise.id, status: 1)
-    visit '/'
-    expect(page).to have_content('Login with Census')
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
-    click_link "Login with Census"
-    
     visit exercise_solution_path(id: solution_1.id, exercise_id: exercise.id)
 
     expect(page).to have_content("Your solution for #{exercise.name}")
