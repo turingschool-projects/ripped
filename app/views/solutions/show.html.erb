@@ -1,7 +1,7 @@
 <div class="container">
   <% if @exercise.user_solution?(current_user) %>
     <h3>Your solution for <%=@exercise.name %> </h3>
-    <h4>Status: <%= @solution.status %>
+    <h4>Status: <%= @solution.status %></h4>
     <%= CodeRay.scan(@solution.content, :ruby).div.html_safe %>
     <br>
     <h4>Feedback</h4>
