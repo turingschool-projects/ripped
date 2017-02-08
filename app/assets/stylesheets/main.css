@@ -13,7 +13,8 @@ a {
 }
 
 a:hover {
-  font-weight: bold;
+  text-decoration: none;
+  color: #0c2231;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -37,9 +38,13 @@ h1, h2, h3, h4, h5, h6{
 
 .notification-button {
   color: #fff !important; 
-  background: rgba(0,0,0,0) !important;
+  background: rgba(255,0,0,0) !important;
 }
 
 .dropdown-custom {
   margin-top: 20px;
+}
+
+.dropdown-button {
+  background-color: #1C2833 !important;
 }
