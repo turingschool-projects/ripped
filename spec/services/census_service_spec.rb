@@ -15,7 +15,7 @@ describe "CensusService" do
       end
     end
   end
-  context "#get_user" do
+  context "#get_one_user" do
     it "returns a single user" do
       VCR.use_cassette("#get_one_user") do
         user = CensusService.new(ENV["census_token"]).get_one_user(55)
