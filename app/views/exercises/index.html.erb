@@ -11,10 +11,12 @@
       <%= link_to edit_exercise_path(exercise), class: "btn-floating btn-small waves-effect waves-light red" do %>
         <i class="material-icons">mode_edit</i>
       <% end %>
+      <% if exercise.published? %>
+        <%= link_to 'unpublish', exercise_path(exercise), method: 'delete' %>
+      <% else %>
+        <%= link_to 'publish', exercise_path(exercise), method: 'delete' %>
+      <% end %>
     <% end %>
-    <%#= link_to exercise_path(exercise), method: 'delete', class: "btn-floating btn-small waves-effect waves-light red" do %>
-      <!-- <i class="material-icons">delete</i> -->
-    <%# end %>
   </h4>
   <p><%= exercise.description %></p>
   <p><% exercise.tags.each do |tag| %>

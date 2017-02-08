@@ -2,7 +2,7 @@ class ExercisesController < ApplicationController
   load_and_authorize_resource only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   def index
-    @exercises = Exercise.all
+    @exercises = Exercise.where(status: 0)
   end
 
   def show
@@ -41,9 +41,15 @@ class ExercisesController < ApplicationController
 
   def destroy
     @exercise = Exercise.find(params[:id])
-    @exercise.destroy
-    flash[:alert] = "#{@exercise.name} has been deleted."
-    redirect_to exercises_path
+    if @exercise.published?
+      @exercise.update(status: 1)
+      flash[:alert] = "#{@exercise.name} has been unpublished."
+      redirect_to exercises_path
+    else
+      @exercise.update(status: 0)
+      flash[:alert] = "#{@exercise.name} has been published."
+      redirect_to exercise_path(@exercise)
+    end
   end
 
   private
