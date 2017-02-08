@@ -3,6 +3,8 @@ class ExercisesController < ApplicationController
 
   def index
     @exercises = Exercise.where(status: 0)
+    @ruby_exercises = Exercise.joins(:tags).where({ tags: {name: "ruby"} })
+    @js_exercises = Exercise.joins(:tags).where({ tags: {name: "javascript"}})
   end
 
   def show
