@@ -1,5 +1,6 @@
 <button type='button' class='ruby-button'>Ruby</button>
 <button type='button' class='js-button'>JavaScript</button>
+<button type='button' class='all-button'>All</button>
 
 <div id="exercises">
   <div id='ruby_exercises' style="display: none">
@@ -8,30 +9,9 @@
   <div id='js_exercises' style="display: none">
     <%= render partial: 'js_exercises' %>
   </div>
-</div>
 
+  <div id="all-exercises" class="container" style="display: show">
+    <%= render partial: 'all_exercises' %>
+  </div>
 
-<div class="container">
-  <h2>All Exercises</h2>
-  <% if current_user.instructor? %>
-    <%= link_to "Create New Exercise", new_exercise_path, class: "waves-effect waves-light btn" %>
-  <% end %>
-  <% @exercises.each do |exercise| %>
-  <h4>
-    <%= link_to exercise.name, exercise_path(exercise)%>
-
-    <% if current_user.instructor? %>
-      <%= link_to edit_exercise_path(exercise), class: "btn-floating btn-small waves-effect waves-light red" do %>
-        <i class="material-icons">mode_edit</i>
-      <% end %>
-      <%= link_to exercise_path(exercise), method: 'delete', class: "btn-floating btn-small waves-effect waves-light red" do %>
-        <i class="material-icons">delete</i>
-      <% end %>
-    <% end %>
-  </h4>
-  <p><%= exercise.description %></p>
-  <p><% exercise.tags.each do |tag| %>
-      <span class="badge tag-badges"><%= tag.name %></span>
-    <% end %></p></br>
-  <% end %>
 </div>
