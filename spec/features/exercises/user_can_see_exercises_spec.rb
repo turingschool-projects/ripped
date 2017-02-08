@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "/exercises" do
   it "a user can view exercises by track" do
-    tag_1 = create(:tag, name: "js")
+    tag_1 = create(:tag, name: "javascript")
     tag_2 = create(:tag, name: "ruby")
     exercise_js = create(:exercise)
     exercise_js_1 = create(:exercise)

@@ -1,8 +1,15 @@
-<div id="ruby-exercises">
-  <%= link_to "Ruby Exercises", exercises_path(lang: "ruby") %>
+<button type='button' class='ruby-button'>Ruby</button>
+<button type='button' class='js-button'>JavaScript</button>
+
+<div id="exercises">
+  <div id='ruby_exercises' style="visibility: hidden">
+    <%= render partial: 'ruby_exercises' %>
+  </div>
+  <div id='js_exercises' style="visibility: hidden">
+    <%= render partial: 'js_exercises' %>
+  </div>
 </div>
-<div id="js-exercises">
-  <%= link_to "JavaScript Exercises", exercises_path(lang: "js") %>
+
 
 <div class="container">
   <h2>All Exercises</h2>
