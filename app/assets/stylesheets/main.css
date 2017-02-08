@@ -36,6 +36,10 @@ h1, h2, h3, h4, h5, h6{
 /* Notification Styles */
 
 .notification-button {
-  font-size: 1.8rem !important;
+  color: #fff !important; 
   background: rgba(0,0,0,0) !important;
+}
+
+.notification-alert {
+  float: right;
 }
