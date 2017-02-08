@@ -19,6 +19,7 @@ gem 'omniauth-oauth2'
 gem 'omniauth-census', git: "https://github.com/NZenitram/census_staging_oauth"
 gem 'thin'
 gem "select2-rails"
+gem 'faraday'
 
 group :production do
   gem 'rails_12factor'

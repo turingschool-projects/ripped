@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(census_id: user_credentials.uid)
+    binding.pry
     if User.exists?(census_id: user_credentials.uid)
         session[:user_id] = user.id
       redirect_to exercises_path
