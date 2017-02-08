@@ -1,8 +1,10 @@
 <div class="container">
   <h3>
     <%= @exercise.name %>
-    <%= link_to edit_exercise_path(@exercise), class: "btn-floating btn-small waves-effect waves-light red" do %>
-      <i class="small material-icons">mode_edit</i>
+    <% if current_user.instructor? %>
+      <%= link_to edit_exercise_path(@exercise), class: "btn-floating btn-small waves-effect waves-light red" do %>
+        <i class="small material-icons">mode_edit</i>
+      <% end %>
     <% end %>
   </h3>
   <p><% @exercise.tags.each do |tag| %>
