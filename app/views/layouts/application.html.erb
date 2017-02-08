@@ -29,7 +29,7 @@
           <% if current_user %>
             <li><a href="#" class="dropdown-button btn waves-effect waves-light" 
               data-activates='dropdown1' data-beloworigin="true" data-gutter="16", data-constrainwidth="true">
-              <span class="badge notification-button" data-badge-caption="Recent Updates" id="notification-logo">
+              <span class="badge notification-button" id="notification-logo">
                 <%= current_user.notification_display(current_user) %></span></a></li>
           <% end %>
 
