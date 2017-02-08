@@ -7,11 +7,13 @@ RSpec.describe Exercise, type: :model do
       exercise_tag = ExerciseTag.create(tag_id: tag.id)
       expect(exercise_tag).to be_invalid
     end
+
     it "is invalid without a tag id" do
       exercise = create(:exercise)
       exercise_tag = ExerciseTag.create(exercise_id: exercise.id)
       expect(exercise_tag).to be_invalid
     end
+
     it "is valid with all attributes" do
       exercise = create(:exercise)
       tag = create(:tag)
@@ -19,6 +21,7 @@ RSpec.describe Exercise, type: :model do
       expect(exercise_tag).to be_valid
     end
   end
+
   describe "relationships" do
     it "belongs to a tag" do
       exercise_tag = create(:exercise_tag)

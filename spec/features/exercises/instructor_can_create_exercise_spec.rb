@@ -48,7 +48,7 @@ describe "/exercises" do
   scenario "student does not see 'create new exercise' button" do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    
+
     visit exercises_path
 
     expect(page).to_not have_link("Create New Exercise")
