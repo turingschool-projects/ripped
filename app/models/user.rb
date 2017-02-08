@@ -31,12 +31,17 @@ class User < ApplicationRecord
     elsif notifier_count == 1
       "Recent Updates: 1"
     else
-      "Recent Updates: " + notifier_count
+      "Recent Updates: " + notifier_count.to_s
     end
   end
   
   def solution_display(current_user)
-    Solution.where(user_id: current_user.id, status: 1)
+    if current_user.role == 0
+      results = Solution.where(user_id: current_user.id, status: 1)
+    else 
+      results = Solution.where(status: 0)
+    end
+    results
   end
   
 end

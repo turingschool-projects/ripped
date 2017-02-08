@@ -24,7 +24,7 @@ describe "when a user visits the site" do
       expect(page).to have_css("#notification-logo")
     end
     
-    scenario "they see a number next to the notification alert" do
+    scenario "they see the word none if there are no notifications" do
       stub = stub_omniauth
       exercise = create(:exercise)
       user_1 = User.create!(census_id: stub.uid)
@@ -36,7 +36,7 @@ describe "when a user visits the site" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
       click_link "Login with Census"
-      expect(page).to have_content("0")
+      expect(page).to have_content("None")
     end
     
     scenario "they see the correct notification number as a student" do
@@ -85,7 +85,7 @@ describe "when a user visits the site" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
       click_link "Login with Census"
-      expect(page).to have_content("0")
+      expect(page).to have_content("None")
     end
 
     scenario "they see the correct notification number as an instructor with nothing to grade" do
@@ -104,7 +104,7 @@ describe "when a user visits the site" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
       click_link "Login with Census"
-      expect(page).to have_content("0")
+      expect(page).to have_content("None")
     end
     
     scenario "they see the correct notification on other pages" do

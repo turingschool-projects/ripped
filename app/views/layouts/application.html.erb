@@ -38,7 +38,7 @@
       <ul id='dropdown1' class='dropdown-content dropdown-custom'>
         <% if current_user %>
           <% current_user.solution_display(current_user).each do |solution| %>
-            <li><%= link_to solution.exercise.name, exercise_solution_path(solution.exercise.id, solution.id) %></li>
+            <li><%= link_to "#{solution.exercise.name}, submitted by: #{solution.user_id}", exercise_solution_path(solution.exercise.id, solution.id) %></li>
           <% end %>
           <% end %>
       </ul>
