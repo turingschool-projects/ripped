@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :exercises, only: [:index, :show] do
-    resources :solutions, only: [:show, :new, :create]
+  resources :exercises do
+    resources :solutions, only: [:index, :show, :new, :create]
   end
 
   resources :solutions, except: [:index] do

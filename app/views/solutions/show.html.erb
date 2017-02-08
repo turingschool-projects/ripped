@@ -14,7 +14,7 @@
             <% end %>
           </p>
           <p><%= fb.comment %></p>
-          <% if fb.user == current_user %>
+          <% if fb.user == current_user || current_user.instructor? %>
             <%= link_to "Edit Feedback", edit_solution_feedback_path(@solution, fb) %>
             <%= link_to "Delete", [@solution, fb], :method => :delete %>
           <% end %>

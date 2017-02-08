@@ -10,4 +10,5 @@ class Exercise < ApplicationRecord
   def user_solution?(user)
     solutions.where(user: user).count > 0
   end
+
 end

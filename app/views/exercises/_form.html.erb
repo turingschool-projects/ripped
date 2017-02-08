@@ -1,0 +1,14 @@
+<%= form_for @exercise do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, class: "submission-box" %>
+
+  <%= f.label :content %>
+  <%= f.text_area :content, class: "submission-box" %>
+
+  <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %>
+</br>
+  <%= f.submit class: "waves-effect waves-light btn" %>
+<% end %>
