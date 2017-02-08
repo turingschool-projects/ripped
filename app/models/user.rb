@@ -14,12 +14,19 @@ class User < ApplicationRecord
     role == "student"
   end
   
-  def notification_display
+  attr_reader :notification_display, :solution_display
+  
+  def notification_display(current_user)
     if instructor?
       notifier_count = Solution.where(status: 0).count
     else
-      notifier_count = Solution.where(status: 1).count
+      notifier_count = (Solution.where(user_id: current_user.id, status: 1)).count
     end
     notifier_count
   end
+  
+  def solution_display(current_user)
+    Solution.where(user_id: current_user.id, status: 1)
+  end
+  
 end
