@@ -12,13 +12,13 @@ describe "/exercises" do
     exercise_ruby.tags = [tag_2]
 
     visit exercises_path
-    click_link "JavaScript Exercises"
+    click_button "JavaScript"
 
     expect(page).to have_content(exercise_js.name)
     expect(page).to have_content(exercise_js.description)
 
     visit exercises_path
-    click_link "Ruby Exercises"
+    click_button "Ruby"
 
     expect(page).to have_content(exercise_ruby.name)
     expect(page).to have_content(exercise_ruby.description)
