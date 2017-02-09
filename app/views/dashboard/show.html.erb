@@ -3,6 +3,14 @@
   <div class="row">
     <div class="col s4">
       <h5>Feedback</h5>
+      <% @solutions.each do |solution| %>
+        <% if solution.feedbacks.count > 0 %>
+          <% solution.feedbacks.each do |fb| %>
+            <p>User <%= fb.user.census_id %>:
+            <%= fb.comment %></p>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
     <div class="col s4">
       <h5>Exercises in Progress</h5>
