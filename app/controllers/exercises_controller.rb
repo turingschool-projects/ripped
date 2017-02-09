@@ -55,9 +55,17 @@ class ExercisesController < ApplicationController
   end
 
   private
+  attr_reader :student_notifications
 
   def exercise_params
     params.require(:exercise).permit(:id, :name, :description, :content, :tag_ids => [])
+  end
+
+  def student_notifications(current_user)
+      if current_user.role == 0 && current_user.solutions
+        assessed_solutions = current_user.solutions.where(status: 1)
+      end
+    assessed_solutions
   end
 
 end
