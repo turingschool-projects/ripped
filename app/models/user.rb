@@ -9,11 +9,10 @@ class User < ApplicationRecord
   def instructor?
     role == "instructor"
   end
-  
+
   def student?
     role == "student"
   end
-  
   attr_reader :notification_display, :solution_display
   
   def notification_display(current_user)
@@ -43,5 +42,4 @@ class User < ApplicationRecord
     end
     results
   end
-  
 end

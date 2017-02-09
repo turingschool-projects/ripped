@@ -25,3 +25,6 @@ public/assets/
 
 # Ignore vcr fixtures
 /spec/fixtures
+
+# Ignore public assets
+/public/assets
