@@ -12,7 +12,6 @@ describe "when a user visits the site" do
 
   context "and they are logged in" do
     scenario "they do see a notification bell" do
-      stub = stub_omniauth
       user = create(:user)
 
       visit '/'
@@ -24,8 +23,7 @@ describe "when a user visits the site" do
       expect(page).to have_css("#notification-logo")
     end
 
-    scenario "they see a number next to the notification alert" do
-      stub = stub_omniauth
+    scenario "they see the word none if there are no notifications" do
       exercise = create(:exercise)
       user_1 = create(:user)
       solution_1 = Solution.create!(content: "Hello", user_id: user_1.id, exercise_id: exercise.id, status: 0)
@@ -35,12 +33,15 @@ describe "when a user visits the site" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
+      visit '/'
+
+      expect(page).to have_content("None")
+
       visit "/exercises"
-      expect(page).to have_content("0")
+      expect(page).to have_content("None")
     end
 
     scenario "they see the correct notification number as a student" do
-      stub = stub_omniauth
       exercise = create(:exercise)
       user_1 = create(:user)
       solution_1 = Solution.create!(content: "Hello", user_id: user_1.id, exercise_id: exercise.id, status: 1)
@@ -71,8 +72,7 @@ describe "when a user visits the site" do
       expect(page).to have_content("2")
     end
 
-    scenario "they see the correct notification number as a student with nothing gradded" do
-      stub = stub_omniauth
+    scenario "they see the correct notification number as a student with nothing graded" do
       exercise = create(:exercise)
       user_1 = create(:user)
       solution_1 = Solution.create!(content: "Hello", user_id: user_1.id, exercise_id: exercise.id, status: 0)
@@ -82,13 +82,14 @@ describe "when a user visits the site" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
+      visit '/'
+      
+      expect(page).to have_content("None")
       visit "/exercises"
-      expect(page).to have_content("0")
+      expect(page).to have_content("None")    
     end
 
     scenario "they see the correct notification number as an instructor with nothing to grade" do
-      stub_1 = stub_omniauth
-      stub_2 = stub_omniauth
       exercise_1 = create(:exercise)
       exercise_2 = create(:exercise)
       user_1 = create(:user, role: 1)
@@ -101,13 +102,14 @@ describe "when a user visits the site" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
+      visit '/'
+
+      expect(page).to have_content("None")
       visit "/exercises"
-      expect(page).to have_content("0")
+      expect(page).to have_content("None")
     end
 
     scenario "they see the correct notification on other pages" do
-      stub_1 = stub_omniauth
-      stub_2 = stub_omniauth
       exercise_1 = create(:exercise, name: "Hats")
       exercise_2 = create(:exercise, name: "Umbrellas")
       user_1 = create(:user, role: 1)
@@ -125,6 +127,5 @@ describe "when a user visits the site" do
       dashboard_path
       expect(page).to have_content("2")
     end
-
   end
 end
