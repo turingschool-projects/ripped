@@ -8,7 +8,7 @@
     <ul>
       <% @feedbacks.each do |fb| %>
         <li>
-          <p><%= fb.user.census_id %>
+          <p>User <%= fb.user.census_id %>
             <% if fb.user.instructor? %>
               (Instructor)
             <% end %>
