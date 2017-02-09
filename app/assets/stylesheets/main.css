@@ -1,5 +1,5 @@
 nav {
-  background-color: #7c8c8e !important;
+  background-color: #67809F !important;
 }
 
 p {
@@ -13,7 +13,8 @@ a {
 }
 
 a:hover {
-  font-weight: bold;
+  text-decoration: none;
+  color: #22A7F0;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -36,6 +37,39 @@ h1, h2, h3, h4, h5, h6{
 /* Notification Styles */
 
 .notification-button {
-  font-size: 1.8rem !important;
-  background: rgba(0,0,0,0) !important;
+  color: #fff !important; 
+  background: rgba(255,0,0,0) !important;
+}
+
+.dropdown-custom {
+  margin-top: 20px;
+}
+
+.dropdown-button {
+  background-color: #1C2833 !important;
+}
+
+.navbar-button {
+  background-color: #1C2833 !important;
+}
+
+.brand-logo {
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+.alert {
+  text-align: center;
+  margin-top: 10px;
+ }
+ 
+/* Homepage Image */
+
+.root-page {
+  background-image: url(https://source.unsplash.com/ttbCwN_mWic/);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover !important;
+  background-color: transparent;
 }
