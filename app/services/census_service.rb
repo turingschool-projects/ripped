@@ -9,7 +9,7 @@ class CensusService
 
   def get_users
     response = conn.get("/api/v1/users")
-    if response.code == 200
+    if response.status == 200
       parsed = JSON.parse(response.body, symbolize_names: true)
     else 
       parsed = "Error."
