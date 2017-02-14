@@ -25,7 +25,7 @@
     <h5>Leave Feedback</h5>
     <%= form_for [@solution, @feedback] do |f| %>
       <p><%= f.text_area :comment, id: "feedback-content" %></p>
-      <p><%= f.submit %></p>
+      <p><%= f.submit class: "waves-effect waves-light btn" %></p>
     <% end %>
   <% else %>
     <%= render :file => 'public/404.html' %>

@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6{
 /* Notification Styles */
 
 .notification-button {
-  color: #fff !important; 
+  color: #fff !important;
   background: rgba(255,0,0,0) !important;
 }
 
@@ -62,7 +62,16 @@ h1, h2, h3, h4, h5, h6{
   text-align: center;
   margin-top: 10px;
  }
- 
+
+ .waves-effect.waves-light.btn{
+   background-color: #67809F;
+ }
+
+ .waves-effect.waves-light.btn:hover{
+   color: #fff;
+   background-color: #1C2833;
+ }
+
 /* Homepage Image */
 
 .root-page {
