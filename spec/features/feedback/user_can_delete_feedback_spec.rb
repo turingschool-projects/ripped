@@ -1,7 +1,7 @@
 require "rails_helper"
 
-describe "a user visits a show page for another user's solution that they have left feedback on" do
-  scenario "and clicks the delete button next to their own feedback", :vcr do
+describe "a user visits a show page for a solution that they have left feedback on" do
+  xscenario "and clicks the delete button next to their own feedback", :vcr do
     user = create(:user)
     user2 = create(:user)
     exercise = create(:exercise)

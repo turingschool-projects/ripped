@@ -7,7 +7,6 @@ describe "a user visits a show page for another user's solution" do
     exercise = create(:exercise)
     create(:solution, user: user, exercise: exercise)
     solution = create(:solution, user: user2, exercise: exercise)
-    create(:solution, user: user, exercise: exercise)
     feedback = create(:feedback, solution_id: solution.id, comment: "Comment1")
     feedback2 = create(:feedback, solution_id: solution.id, comment: "Comment2")
     feedback3 = create(:feedback, solution_id: solution.id, comment: "Comment3")
