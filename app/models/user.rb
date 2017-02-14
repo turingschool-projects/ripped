@@ -5,7 +5,12 @@ class User < ApplicationRecord
   has_many :feedbacks
 
   enum role: [:student, :instructor]
-  
+
+  def census_name(token)
+    profile = Profile.find_user(token, self.census_id)
+    name = "#{profile.first_name} #{profile.last_name}"
+  end
+
   def instructor?
     role == "instructor"
   end
@@ -14,7 +19,7 @@ class User < ApplicationRecord
     role == "student"
   end
   attr_reader :notification_display, :solution_display
-  
+
   def notification_display(current_user)
     if instructor?
       notifier_count = Solution.where(status: 0).count
@@ -23,7 +28,7 @@ class User < ApplicationRecord
     end
     notifier_count_handler(notifier_count)
   end
-  
+
   def notifier_count_handler(notifier_count)
     if notifier_count == 0
       "Recent Updates: None"
@@ -33,11 +38,11 @@ class User < ApplicationRecord
       "Recent Updates: " + notifier_count.to_s
     end
   end
-  
+
   def solution_display(current_user)
     if current_user.role == 0
       results = Solution.where(user_id: current_user.id, status: 1)
-    else 
+    else
       results = Solution.where(status: 0)
     end
     results

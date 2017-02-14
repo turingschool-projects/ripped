@@ -1,8 +1,8 @@
 require "rails_helper"
 
 describe "a user visits a show page for another user's solution" do
-  scenario "and successfully creates feedback on that solution" do
-    
+  scenario "and successfully creates feedback on that solution", :vcr do
+
     user = create(:user)
     user2 = create(:user)
     exercise = create(:exercise)
@@ -23,7 +23,7 @@ describe "a user visits a show page for another user's solution" do
 
   end
 
-  scenario "and does not add any content in the comment form" do
+  scenario "and does not add any content in the comment form", :vcr do
     user = create(:user)
     user2 = create(:user)
     exercise = create(:exercise)
@@ -42,7 +42,7 @@ describe "a user visits a show page for another user's solution" do
     expect(page).to have_content("Something went wrong.")
   end
 
-  scenario "and has not already submitted a solution for the exercise" do
+  scenario "and has not already submitted a solution for the exercise", :vcr do
     user = create(:user)
     user2 = create(:user)
     exercise = create(:exercise)
@@ -57,7 +57,7 @@ describe "a user visits a show page for another user's solution" do
 end
 
 describe "a staff member visits a show page for a user's solution" do
-  scenario "and successfully creates feedback on that solution" do
+  scenario "and successfully creates feedback on that solution", :vcr do
     user = create(:user, role: "instructor")
     user2 = create(:user)
     exercise = create(:exercise)

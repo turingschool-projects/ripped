@@ -13,8 +13,6 @@ FactoryGirl.define do
       "Do#{n}"
     end
 
-    sequence :token do |n|
-      "#{n}"
-    end
+    token "1d7ff31ba472ed175978ac864cb9b74076208bb9b38798c42e14a0817f804a1b"
   end
 end

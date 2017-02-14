@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "a user visits a show page for another user's solution that they have left feedback on" do
+describe "a user visits a show page for another user's solution that they have left feedback on", :vcr do
   scenario "and clicks the edit button next to their own feedback" do
     user = create(:user)
     user2 = create(:user)
