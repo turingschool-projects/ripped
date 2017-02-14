@@ -1,4 +1,11 @@
-<% @solutions.each do |solution| %>
-  <%= solution.content %>
-  <%= solution.user.id %>
-<% end %>
+<div class="container">
+  <h2>All solutions for <%= @solutions.first.exercise.name %> </h2>
+
+  <% @solutions.each do |solution| %>
+    <div>
+      <%= CodeRay.scan(solution.content, :ruby).div.html_safe %>
+      <%= solution.user.id %>
+      <%= link_to "Leave feedback", exercise_solution_path(solution.exercise, solution)%>
+  <% end %>
+  </div>
+</div>

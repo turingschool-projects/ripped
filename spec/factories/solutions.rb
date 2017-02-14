@@ -1,6 +1,8 @@
 FactoryGirl.define do
   factory :solution do
-    content "solution"
+    sequence :content do |n|
+      "solution content #{n}"
+    end
     user
     exercise
   end
