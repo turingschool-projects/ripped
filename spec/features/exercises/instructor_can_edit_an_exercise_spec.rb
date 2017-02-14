@@ -2,9 +2,7 @@ require "rails_helper"
 
 describe "/exercises/:id/edit" do
   scenario "an instructor can edit an existing exercise" do
-    tag = create(:tag)
-    exercise = Exercise.create(name: "old name", description: "old description", content: "old content")
-    exercise.tags = [tag]
+    exercise = create(:exercise, content: "old content", description: "old description")
     user = create(:user, role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
