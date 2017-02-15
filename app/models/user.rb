@@ -11,6 +11,11 @@ class User < ApplicationRecord
     name = "#{profile.first_name} #{profile.last_name}"
   end
 
+  def census_cohort(token)
+    profile = Profile.find_user(token, self.census_id)
+    cohort = profile.cohort
+  end
+
   def instructor?
     role == "instructor"
   end

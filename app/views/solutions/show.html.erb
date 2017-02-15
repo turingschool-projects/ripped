@@ -5,20 +5,23 @@
     <%= CodeRay.scan(@solution.content, :ruby).div.html_safe %>
     <br>
     <%= link_to "All submissions for #{@solution.exercise.name}", exercise_solutions_path(@solution.exercise), class: "waves-effect waves-light btn" %>
+    <br>
     <h4>Feedback</h4>
     <ul>
       <% @feedbacks.each do |fb| %>
         <li>
-          <p><%= fb.user.census_name(current_user.token) %>
+          <strong><%= fb.user.census_name(current_user.token) %></strong> <%= fb.user.census_cohort(current_user.token) %>
+          <span style="float:right; font-size: 12px;"> <%= time_ago_in_words(fb.time_posted_or_updated) %> ago</span>
             <% if fb.user.instructor? %>
               (Instructor)
             <% end %>
-          </p>
+
           <p><%= fb.comment %></p>
           <% if fb.user == current_user || current_user.instructor? %>
             <%= link_to "Edit Feedback", edit_solution_feedback_path(@solution, fb) %>
-            <%= link_to "Delete", [@solution, fb], :method => :delete %>
+            <span style="float:right"><%= link_to "Delete", [@solution, fb], :method => :delete %></span>
           <% end %>
+          <hr>
         </li>
       <% end %>
     </ul>
