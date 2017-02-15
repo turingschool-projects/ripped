@@ -1,7 +1,7 @@
 require "rails_helper"
 
-describe "dashboard", :vcr  do
-  xit "a user can see feedback on dashboard" do
+describe "dashboard"  do
+  it "a user can see feedback on dashboard", :vcr do
     user = create(:user, census_id: 55)
     solution = create(:solution, user: user)
     feedback = create(:feedback, solution: solution)

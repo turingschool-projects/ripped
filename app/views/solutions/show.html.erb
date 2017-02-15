@@ -1,6 +1,10 @@
 <div class="container">
   <% if @solution.exercise.user_solution?(current_user) %>
-    <h3>Your solution for <%=@solution.exercise.name %> </h3>
+    <% if @user == current_user %>
+      <h3>Your solution for <%=@solution.exercise.name %> </h3>
+    <% else %>
+      <h3><%= @user.census_name(current_user.token) %>'s solution for <%=@solution.exercise.name %> </h3>
+    <% end %>
     <h5>Status: <%= @solution.status %></h5>
     <%= CodeRay.scan(@solution.content, :ruby).div.html_safe %>
     <br>

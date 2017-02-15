@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe "/dashboard", :vcr do
-  it "a user can see a list of exercises in progress on their dashboard" do
+describe "/dashboard" do
+  it "a user can see a list of exercises in progress on their dashboard", :vcr do
     user = create(:user)
     exercise1 = create(:exercise)
     exercise2 = create(:exercise)
@@ -20,7 +20,7 @@ describe "/dashboard", :vcr do
     end
   end
 
-  xit "a user can see finished exercises" do
+  it "a user can see finished exercises" do
     user = create(:user)
     exercise1 = create(:exercise)
     exercise2 = create(:exercise)
