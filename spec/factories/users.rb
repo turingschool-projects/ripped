@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :user do
 
     sequence :census_id do |n|
-      n = rand(50)
+      n = rand(59)
       "#{n}"
     end
 

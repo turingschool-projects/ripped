@@ -2,8 +2,8 @@ require "rails_helper"
 
 describe "a user visits a show page for another user's solution that they have left feedback on" do
   scenario "and clicks the edit button next to their own feedback", :vcr do
-    user = create(:user)
-    user2 = create(:user)
+    user = create(:user, census_id: 65)
+    user2 = create(:user, census_id: 66)
     exercise = create(:exercise)
     create(:solution, user: user, exercise: exercise)
     solution = create(:solution, user: user2, exercise: exercise)

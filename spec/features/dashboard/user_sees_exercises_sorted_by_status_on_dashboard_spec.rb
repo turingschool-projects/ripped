@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "/dashboard" do
   it "a user can see a list of exercises in progress on their dashboard", :vcr do
-    user = create(:user)
+    user = create(:user, census_id: 57)
     exercise1 = create(:exercise)
     exercise2 = create(:exercise)
     solution1 = create(:solution, exercise_id: exercise2.id, user_id: user.id, status: "Submitted")

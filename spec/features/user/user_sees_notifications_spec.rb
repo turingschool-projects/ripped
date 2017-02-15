@@ -43,7 +43,7 @@ describe "when a user visits the site" do
 
     scenario "they see the correct notification number as a student", :vcr do
       exercise = create(:exercise)
-      user_1 = create(:user, census_id: 18)
+      user_1 = create(:user)
       solution_1 = Solution.create!(content: "Hello", user_id: user_1.id, exercise_id: exercise.id, status: 1)
 
       visit '/'

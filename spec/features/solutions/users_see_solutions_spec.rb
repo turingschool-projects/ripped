@@ -13,7 +13,7 @@ describe "/exercises/:id/solutions" do
   end
   
   scenario "student sees all solutions for an exercise for which they have also submitted a solution", :vcr do
-    user = create(:user)
+    user = create(:user, census_id: 70)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     exercise = create(:exercise)
     solution_1 = create(:solution, exercise_id: exercise.id)
