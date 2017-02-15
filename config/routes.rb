@@ -4,8 +4,8 @@ Rails.application.routes.draw do
     resources :solutions, only: [:index, :show, :new, :create]
   end
 
-  resources :solutions, except: [:index] do
-    resources :feedbacks, except: [:show]
+  resources :solutions, only: [:none] do
+    resources :feedbacks, except: [:index, :show]
   end
 
 

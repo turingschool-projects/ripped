@@ -9,5 +9,6 @@ FactoryGirl.define do
     sequence :content do |n|
       "exercise content #{n}"
     end
+    tags { [create(:tag)] }
   end
 end

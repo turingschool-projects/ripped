@@ -1,7 +1,7 @@
 require "rails_helper"
 
-describe "a user visits a show page for another user's solution that they have left feedback on" do
-  scenario "and clicks the delete button next to their own feedback" do
+describe "a user visits a show page for a solution that they have left feedback on" do
+  scenario "and clicks the delete button next to their own feedback", :vcr do
     user = create(:user)
     user2 = create(:user)
     exercise = create(:exercise)
@@ -22,7 +22,7 @@ describe "a user visits a show page for another user's solution that they have l
     expect(page).to have_content("Your feedback has been deleted.")
   end
 
-  scenario "and does not see a delete button next to feedback from other users" do
+  scenario "and does not see a delete button next to feedback from other users", :vcr do
     user = create(:user)
     user2 = create(:user)
     user3 = create(:user)
@@ -40,7 +40,7 @@ describe "a user visits a show page for another user's solution that they have l
     expect(page).to_not have_content("Delete")
   end
 
-  scenario "an instructor can delete anyone's feedback" do
+  scenario "an instructor can delete anyone's feedback", :vcr do
     user = create(:user)
     user2 = create(:user)
     user3 = create(:user, role: 1)
