@@ -20,7 +20,7 @@ describe "/dashboard" do
     end
   end
 
-  it "a user can see finished exercises" do
+  it "a user can see finished exercises", :vcr do
     user = create(:user)
     exercise1 = create(:exercise)
     exercise2 = create(:exercise)

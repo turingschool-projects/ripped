@@ -28,7 +28,7 @@ describe "/exercises/:id" do
     expect(page).to have_content("Submit Solution")
   end
 
-  it "instructor can submit a solution" do
+  it "instructor can submit a solution", :vcr do
         exercise = create(:exercise)
         user = create(:user, role: 1)
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
