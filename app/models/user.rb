@@ -45,7 +45,7 @@ class User < ApplicationRecord
   end
 
   def solution_display(current_user)
-    if current_user.role == 0
+    if current_user.role == "student"
       results = Solution.where(user_id: current_user.id, status: 1)
     else
       results = Solution.where(status: 0)
