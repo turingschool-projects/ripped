@@ -58,8 +58,8 @@ describe "when a user visits the site" do
     scenario "they see the correct notification number as an instructor", :vcr do
       exercise_1 = create(:exercise)
       exercise_2 = create(:exercise)
-      user_1 = create(:user, census_id: 20)
-      user_2 = create(:user, census_id: 21)
+      user_1 = create(:user)
+      user_2 = create(:user)
       solution_1 = Solution.create!(content: "Hello", user_id: user_2.id, exercise_id: exercise_1.id, status: 0)
       solution_2 = Solution.create!(content: "Hello", user_id: user_2.id, exercise_id: exercise_2.id, status: 0)
 
@@ -74,7 +74,7 @@ describe "when a user visits the site" do
 
     scenario "they see the correct notification number as a student with nothing graded" do
       exercise = create(:exercise)
-      user_1 = create(:user, census_id: 9)
+      user_1 = create(:user)
       solution_1 = Solution.create!(content: "Hello", user_id: user_1.id, exercise_id: exercise.id, status: 0)
 
       visit '/'
@@ -92,8 +92,8 @@ describe "when a user visits the site" do
     scenario "they see the correct notification number as an instructor with nothing to grade" do
       exercise_1 = create(:exercise)
       exercise_2 = create(:exercise)
-      user_1 = create(:user, census_id: 12, role: 1)
-      user_2 = create(:user, census_id: 19)
+      user_1 = create(:user, role: 1)
+      user_2 = create(:user)
       solution_1 = Solution.create!(content: "Hello", user_id: user_2.id, exercise_id: exercise_1.id, status: 1)
       solution_2 = Solution.create!(content: "Hello", user_id: user_2.id, exercise_id: exercise_2.id, status: 1)
 
@@ -112,8 +112,8 @@ describe "when a user visits the site" do
     scenario "they see the correct notification on other pages", :vcr do
       exercise_1 = create(:exercise, name: "Hats")
       exercise_2 = create(:exercise, name: "Umbrellas")
-      user_1 = create(:user, census_id: 55, role: 1)
-      user_2 = create(:user, census_id: 47)
+      user_1 = create(:user, role: 1)
+      user_2 = create(:user)
       solution_1 = Solution.create!(content: "Hello", user_id: user_2.id, exercise_id: exercise_1.id, status: 0)
       solution_2 = Solution.create!(content: "Hello", user_id: user_2.id, exercise_id: exercise_2.id, status: 0)
 

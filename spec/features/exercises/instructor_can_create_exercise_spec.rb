@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "/exercises/new" do
   scenario "an instructor can create an exercise" do
-    create(:tag)
+    tag = create(:tag)
     user = create(:user, role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit new_exercise_path
@@ -10,7 +10,7 @@ describe "/exercises/new" do
     fill_in "exercise[name]", with: "exercise name"
     fill_in "exercise[description]", with: "exercise description"
     fill_in "exercise[content]", with: "exercise content"
-    find(:css, "#exercise_tag_ids_1").set(true)
+    find(:css, "#exercise_tag_ids_#{tag.id}").set(true)
     click_on "Create Exercise"
 
     exercise = Exercise.last
@@ -21,7 +21,7 @@ describe "/exercises/new" do
     expect(page).to have_content("You have successfully created an exercise")
   end
   scenario "an instructor sees error when an exercise does not successfully create" do
-    create(:tag)
+    tag = create(:tag)
     user = create(:user, role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -29,7 +29,7 @@ describe "/exercises/new" do
 
     fill_in "exercise[name]", with: "exercise name"
     fill_in "exercise[description]", with: "exercise description"
-    find(:css, "#exercise_tag_ids_1").set(true)
+    find(:css, "#exercise_tag_ids_#{tag.id}").set(true)
     click_on "Create Exercise"
 
     expect(page).to have_content("There was a problem creating your exercise. Please try again.")

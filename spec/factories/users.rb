@@ -1,10 +1,7 @@
 FactoryGirl.define do
   factory :user do
 
-    sequence :census_id do |n|
-      n = rand(59)
-      "#{n}"
-    end
+    census_id 58
 
     sequence :first_name do |n|
       "Joh#{n}"
