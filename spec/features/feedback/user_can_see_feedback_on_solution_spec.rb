@@ -1,7 +1,7 @@
 require "rails_helper"
 
-describe "a user visits a show page for another user's solution" do
-  scenario "and sees a list of feedback items", :vcr do
+describe "a user visits a show page for another user's solution", :vcr do
+  xscenario "and sees a list of feedback items" do
     user = create(:user)
     user2 = create(:user)
     exercise = create(:exercise)
@@ -21,7 +21,7 @@ describe "a user visits a show page for another user's solution" do
     expect(page).to have_content(feedback3.comment)
   end
 
-  scenario "and sees a form to add feedback", :vcr do
+  scenario "and sees a form to add feedback" do
     user = create(:user)
     user2 = create(:user)
     exercise = create(:exercise)
