@@ -41,7 +41,7 @@ describe "when a user visits the site" do
       expect(page).to have_content("None")
     end
 
-    scenario "they see the correct notification number as a student" do
+    scenario "they see the correct notification number as a student", :vcr do
       exercise = create(:exercise)
       user_1 = create(:user)
       solution_1 = Solution.create!(content: "Hello", user_id: user_1.id, exercise_id: exercise.id, status: 1)
@@ -55,10 +55,10 @@ describe "when a user visits the site" do
       expect(page).to have_content("1")
     end
 
-    scenario "they see the correct notification number as an instructor" do
+    scenario "they see the correct notification number as an instructor", :vcr do
       exercise_1 = create(:exercise)
       exercise_2 = create(:exercise)
-      user_1 = create(:user, role: 1)
+      user_1 = create(:user)
       user_2 = create(:user)
       solution_1 = Solution.create!(content: "Hello", user_id: user_2.id, exercise_id: exercise_1.id, status: 0)
       solution_2 = Solution.create!(content: "Hello", user_id: user_2.id, exercise_id: exercise_2.id, status: 0)
@@ -109,7 +109,7 @@ describe "when a user visits the site" do
       expect(page).to have_content("None")
     end
 
-    scenario "they see the correct notification on other pages" do
+    scenario "they see the correct notification on other pages", :vcr do
       exercise_1 = create(:exercise, name: "Hats")
       exercise_2 = create(:exercise, name: "Umbrellas")
       user_1 = create(:user, role: 1)

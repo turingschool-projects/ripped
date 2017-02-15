@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe "a user visits a show page for another user's solution that they have left feedback on" do
-  scenario "and clicks the edit button next to their own feedback" do
+  scenario "and clicks the edit button next to their own feedback", :vcr do
     user = create(:user)
     user2 = create(:user)
     exercise = create(:exercise)
@@ -10,6 +10,7 @@ describe "a user visits a show page for another user's solution that they have l
     feedback = create(:feedback, solution_id: solution.id, user: user, comment: "Comment1")
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
 
     visit exercise_solution_path(exercise, solution)
 
@@ -23,7 +24,7 @@ describe "a user visits a show page for another user's solution that they have l
     expect(page).to have_button("Update Feedback")
   end
 
-  scenario "and edits their feedback" do
+  scenario "and edits their feedback", :vcr do
     user = create(:user)
     user2 = create(:user)
     exercise = create(:exercise)
@@ -49,7 +50,7 @@ describe "a user visits a show page for another user's solution that they have l
     expect(page).to have_content("Your feedback has been updated.")
   end
 
-  scenario "and tries to edit feedback that does not belong to them" do
+  scenario "and tries to edit feedback that does not belong to them", :vcr do
     user = create(:user)
     user2 = create(:user)
     exercise = create(:exercise)

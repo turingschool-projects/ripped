@@ -1,8 +1,8 @@
 require "rails_helper"
 
-describe "/dashboard" do
-  it "a user can see feedback on dasboard" do
-    user = User.create(census_id: 1)
+describe "dashboard"  do
+  it "a user can see feedback on dashboard", :vcr do
+    user = create(:user)
     solution = create(:solution, user: user)
     feedback = create(:feedback, solution: solution)
     feedback2 = create(:feedback, solution: solution)
@@ -13,6 +13,7 @@ describe "/dashboard" do
     visit dashboard_path
 
     expect(page).to have_content("Feedback")
+    expect(page).to have_content("Erin Pintozzi")
     expect(page).to have_content(feedback.comment)
     expect(page).to have_content(feedback2.comment)
     expect(page).to have_content(feedback3.comment)

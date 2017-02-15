@@ -3,9 +3,10 @@
 
   <% @solutions.each do |solution| %>
     <div>
+      <%= solution.user.census_name(current_user.token) %> <%= solution.user.census_cohort(current_user.token) %>
       <%= CodeRay.scan(solution.content, :ruby).div.html_safe %>
-      <%= solution.user.id %>
       <%= link_to "Leave feedback", exercise_solution_path(solution.exercise, solution)%>
+      <hr>
   <% end %>
   </div>
 </div>
