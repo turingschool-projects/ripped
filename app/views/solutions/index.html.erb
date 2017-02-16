@@ -1,12 +1,18 @@
 <div class="container">
-  <h2>All solutions for <%= @solutions.first.exercise.name %> </h2>
+  <h2>All solutions for <%= @exercise.name %> </h2>
 
-  <% @solutions.each do |solution| %>
-    <div>
-      <%= solution.user.census_name(current_user.token) %> <%= solution.user.census_cohort(current_user.token) %>
-      <%= CodeRay.scan(solution.content, :ruby).div.html_safe %>
-      <%= link_to "Leave feedback", exercise_solution_path(solution.exercise, solution)%>
-      <hr>
+  <% if @solutions.empty?%>
+    <p>There are no submissions for this exercise yet.</p>
+  <% else %>
+    <% @solutions.each do |solution| %>
+      <div>
+        <%= solution.user.census_name(current_user.token) %> <%= solution.user.census_cohort(current_user.token) %>
+        <%= CodeRay.scan(solution.content, :ruby).div.html_safe %>
+        <%= link_to "Leave feedback", exercise_solution_path(solution.exercise, solution)%>
+        <hr>
+    <% end %>
+      </div>
   <% end %>
-  </div>
+
+
 </div>
