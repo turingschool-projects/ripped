@@ -4,7 +4,7 @@ class Exercise < ApplicationRecord
   validates :description, presence: true
 
   has_many :solutions
-  has_many :exercise_tags
+  has_many :exercise_tags, dependent: :destroy
   has_many :tags, through: :exercise_tags
 
   enum status: [:published, :unpublished]
