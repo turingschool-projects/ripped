@@ -32,6 +32,17 @@ class SolutionsController < ApplicationController
     end
   end
 
+  def edit
+    @solution = Solution.find(params[:id])
+  end
+
+  def update
+    @solution = Solution.find(params[:id])
+    @solution.Solved!
+    redirect_to exercise_solution_path(@solution.exercise)
+  end
+
+
   private
 
   def solution_params

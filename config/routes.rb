@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :exercises do
-    resources :solutions, only: [:index, :show, :new, :create]
+    resources :solutions
   end
 
   resources :solutions, only: [:none] do
