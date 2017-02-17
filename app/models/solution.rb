@@ -7,5 +7,5 @@ class Solution < ApplicationRecord
   belongs_to :exercise
   has_many :feedbacks
 
-  enum status: [:Submitted, :Solved]
+  enum status: [:Submitted, :Solved, :Incorrect ]
 end

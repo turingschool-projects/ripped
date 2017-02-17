@@ -10,7 +10,8 @@
     <br>
     <%= link_to "All submissions for #{@solution.exercise.name}", exercise_solutions_path(@solution.exercise), class: "waves-effect waves-light btn" %>
     <% if current_user.instructor? %>
-    <%= link_to "Mark as Solved", exercise_solution_path(@solution.exercise), class: "waves-effect waves-light btn", :method => :patch %>
+    <%= link_to "Mark as Solved", exercise_solution_path(@solution.exercise, button: 'correct'), class: "waves-effect waves-light btn", :method => :patch %>
+    <%= link_to "Mark as Incorrect", exercise_solution_path(@solution.exercise, button: 'wrong'), class: "waves-effect waves-light btn", :method => :patch %>
     <% end %>
     <br>
     <h4>Feedback</h4>

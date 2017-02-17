@@ -38,8 +38,13 @@ class SolutionsController < ApplicationController
 
   def update
     @solution = Solution.find(params[:id])
-    @solution.Solved!
-    redirect_to exercise_solution_path(@solution.exercise)
+    if params[:button] == "correct"
+      @solution.Solved!
+      redirect_to exercise_solution_path(@solution.exercise)
+    elsif params[:button] == "wrong"
+      @solution.Incorrect!
+      redirect_to exercise_solution_path(@solution.exercise)
+    end
   end
 
 
