@@ -15,7 +15,7 @@ describe 'GET /api/v1/exercises/:id' do
     expect(exercise_json).to have_key("content")
     expect(exercise_json).to have_key("name")
     expect(exercise_json).to have_key("solutions")
-    
+
     expect(exercise_json).to_not have_key("created_at")
     expect(exercise_json).to_not have_key("updated_at")
   end
@@ -27,9 +27,19 @@ describe 'GET /api/v1/exercises/:id' do
     get "/api/v1/exercises/#{exercise.id}"
 
     exercise_json = JSON.parse(response.body)
+    solutions_json = exercise_json["solutions"]
+    solution_json = solutions_json[0]
 
     expect(response).to be_success
     expect(exercise_json).to be_a(Hash)
-    expect(exercise_json["solutions"]).to be_an(Array)
+    expect(solutions_json).to be_an(Array)
+
+    expect(solution_json).to be_a(Hash)
+    expect(solution_json).to have_key("id")
+    expect(solution_json).to have_key("content")
+    expect(solution_json).to have_key("exercise_id")
+
+    expect(solution_json).to_not have_key("created_at")
+    expect(solution_json).to_not have_key("updated_at")
   end
 end
