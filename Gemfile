@@ -21,6 +21,7 @@ gem 'thin'
 gem "select2-rails"
 gem 'faraday'
 gem 'cancancan'
+gem 'react-rails'
 
 group :production do
   gem 'rails_12factor'
