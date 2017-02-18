@@ -21,6 +21,7 @@ gem 'thin'
 gem "select2-rails"
 gem 'faraday'
 gem 'cancancan'
+gem 'active_model_serializers', '~> 0.10.0'
 
 group :production do
   gem 'rails_12factor'
