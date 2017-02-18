@@ -11,6 +11,7 @@ describe 'GET /api/v1/exercises/:exercise_id/solutions/:id' do
 
     expect(response).to be_success
     expect(solution_json).to be_a(Hash)
+    expect(solution_json).to have_key("id")
     expect(solution_json).to have_key("exercise_id")
     expect(solution_json).to have_key("content")
   end

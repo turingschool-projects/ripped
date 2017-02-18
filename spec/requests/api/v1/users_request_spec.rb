@@ -10,5 +10,7 @@ describe 'GET /api/v1/users/:id' do
 
     expect(response).to be_success
     expect(user_json).to be_a(Hash)
+    expect(user_json).to have_key("id")
+    expect(user_json).to have_key("census_id")
   end
 end
