@@ -1,5 +1,30 @@
 require 'rails_helper'
 
+describe 'GET /api/v1/exercises' do
+  it 'returns all exercises' do
+    exercise = create(:exercise)
+    exercise2 = create(:exercise)
+
+    get "/api/v1/exercises"
+
+    exercises_json = JSON.parse(response.body)
+    exercise_json = exercises_json[0]
+
+    expect(exercises_json).to be_an(Array)
+    expect(exercises_json.count).to eq(2)
+
+    expect(exercise_json).to be_a(Hash)
+    expect(exercise_json).to have_key("id")
+    expect(exercise_json).to have_key("description")
+    expect(exercise_json).to have_key("content")
+    expect(exercise_json).to have_key("name")
+    expect(exercise_json).to have_key("solutions")
+
+    expect(exercise_json).to_not have_key("created_at")
+    expect(exercise_json).to_not have_key("updated_at")
+  end
+end
+
 describe 'GET /api/v1/exercises/:id' do
   it 'returns a single exercise' do
     exercise = create(:exercise)
