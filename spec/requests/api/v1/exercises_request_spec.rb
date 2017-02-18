@@ -15,6 +15,9 @@ describe 'GET /api/v1/exercises/:id' do
     expect(exercise_json).to have_key("content")
     expect(exercise_json).to have_key("name")
     expect(exercise_json).to have_key("solutions")
+    
+    expect(exercise_json).to_not have_key("created_at")
+    expect(exercise_json).to_not have_key("updated_at")
   end
 
   it 'includes solutions to the exercise' do

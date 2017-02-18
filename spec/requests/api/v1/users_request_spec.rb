@@ -12,5 +12,8 @@ describe 'GET /api/v1/users/:id' do
     expect(user_json).to be_a(Hash)
     expect(user_json).to have_key("id")
     expect(user_json).to have_key("census_id")
+
+    expect(user_json).to_not have_key("created_at")
+    expect(user_json).to_not have_key("updated_at")
   end
 end
