@@ -1,5 +1,5 @@
 class ExercisesController < ApplicationController
-  load_and_authorize_resource only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  authorize_resource only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   def index
     @exercises = Exercise.where(status: 0)
@@ -16,7 +16,14 @@ class ExercisesController < ApplicationController
   end
 
   def create
-    @exercise = Exercise.new(exercise_params)
+    e_params = exercise_params
+    tag_ids = e_params.delete(:tag_ids).delete_if(&:empty?)
+    @exercise = Exercise.new(e_params)
+
+    tag_ids.each do |tag|
+      @exercise.tags << Tag.where(name: tag).first_or_initialize
+    end
+
     if @exercise.save
       flash[:success] = "You have successfully created an exercise"
       redirect_to exercise_path(@exercise)
