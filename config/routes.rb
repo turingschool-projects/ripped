@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [:show]
+      resources :exercises, only: [:index, :show] do
+        resources :solutions, only: [:show]
+      end
+      resources :solutions, only: [:none] do
+        resources :feedbacks, only: [:show, :update]
+      end
+    end
+  end
 
   resources :exercises do
     resources :solutions, only: [:index, :show, :new, :create]

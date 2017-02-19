@@ -40,4 +40,20 @@ RSpec.describe Feedback, type: :model do
       expect(feedback).to respond_to(:solution)
     end
   end
+  
+  describe "statuses" do
+    it { should define_enum_for(:status).with([:unread, :read])}
+  
+    it "is created with the status of unread" do
+      feedback = create(:feedback)
+      expect(feedback.status).to eq("unread")
+    end
+
+    it "can have the status of read" do
+      feedback = create(:feedback)
+      expect(feedback.status).to eq("unread")
+      feedback.status = 1
+      expect(feedback.status).to eq("read")
+    end
+  end
 end
