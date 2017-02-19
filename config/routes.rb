@@ -6,7 +6,7 @@ Rails.application.routes.draw do
         resources :solutions, only: [:show]
       end
       resources :solutions, only: [:none] do
-        resources :feedbacks, only: [:show, :index, :update]
+        resources :feedbacks, only: [:show, :update]
       end
     end
   end
