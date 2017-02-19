@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "/exercises/new" do
   scenario "an instructor can create an exercise" do
-    tag = create(:tag)
+    create(:tag)
     user = create(:user, role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit new_exercise_path
@@ -21,7 +21,7 @@ describe "/exercises/new" do
     expect(page).to have_content("You have successfully created an exercise")
   end
   scenario "an instructor sees error when an exercise does not successfully create" do
-    tag = create(:tag)
+    create(:tag)
     user = create(:user, role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
