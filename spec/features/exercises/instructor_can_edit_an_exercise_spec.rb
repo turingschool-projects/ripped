@@ -12,7 +12,7 @@ describe "/exercises/:id/edit" do
     fill_in "exercise[name]", with: "new exercise name"
     fill_in "exercise[description]", with: "new exercise description"
     fill_in "exercise[content]", with: "new exercise content"
-    find(:css, "#exercise_tag_ids_#{tag.id}").set(true)
+    find('#exercise_tag_names').find(:xpath, 'option[1]').select_option
     click_on "Update Exercise"
 
     expect(page).to have_content("You have successfully updated this exercise.")
@@ -35,7 +35,7 @@ describe "/exercises/:id/edit" do
     fill_in "exercise[name]", with: "new exercise name"
     fill_in "exercise[description]", with: "new exercise description"
     fill_in "exercise[content]", with: ""
-    find(:css, "#exercise_tag_ids_#{tag.id}").set(true)
+    find('#exercise_tag_names').find(:xpath, 'option[1]').select_option
     click_on "Update Exercise"
 
     expect(page).to have_content("There was a problem updating your exercise. Please try again.")

@@ -6,11 +6,11 @@ describe "/exercises/new" do
     user = create(:user, role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit new_exercise_path
-
     fill_in "exercise[name]", with: "exercise name"
     fill_in "exercise[description]", with: "exercise description"
     fill_in "exercise[content]", with: "exercise content"
-    find(:css, "#exercise_tag_ids_#{tag.id}").set(true)
+    find('#exercise_tag_names').find(:xpath, 'option[1]').select_option
+
     click_on "Create Exercise"
 
     exercise = Exercise.last
@@ -29,7 +29,7 @@ describe "/exercises/new" do
 
     fill_in "exercise[name]", with: "exercise name"
     fill_in "exercise[description]", with: "exercise description"
-    find(:css, "#exercise_tag_ids_#{tag.id}").set(true)
+    find('#exercise_tag_names').find(:xpath, 'option[1]').select_option
     click_on "Create Exercise"
 
     expect(page).to have_content("There was a problem creating your exercise. Please try again.")
