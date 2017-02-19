@@ -21,6 +21,8 @@ gem 'thin'
 gem "select2-rails"
 gem 'faraday'
 gem 'cancancan'
+gem 'github_webhook', '~> 1.0.2'
+gem 'octokit'
 
 group :production do
   gem 'rails_12factor'
