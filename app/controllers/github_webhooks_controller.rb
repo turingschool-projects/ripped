@@ -8,7 +8,9 @@ class GithubWebhooksController < ActionController::Base
 
 
   def github_create
-
+    uri = URI('https://api.github.com/repos/NZenitram/exercises/contents/')
+    binding.pry
+    GitHelper.get_object(uri)
   end
 
   def webhook_secret(payload)

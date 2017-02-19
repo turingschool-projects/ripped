@@ -23,6 +23,7 @@ gem 'faraday'
 gem 'cancancan'
 gem 'github_webhook', '~> 1.0.2'
 gem 'octokit'
+gem 'github_api'
 
 group :production do
   gem 'rails_12factor'
