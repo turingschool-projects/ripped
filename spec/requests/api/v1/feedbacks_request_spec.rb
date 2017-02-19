@@ -20,6 +20,15 @@ describe 'GET /api/v1/solutions/:solution_id/feedbacks/:id' do
     expect(feedback_json).to have_key("updated_at")
     expect(feedback_json).to have_key("status")
   end
+
+  it "returns a 400 response when feedback does not exist" do
+    solution = create(:solution)
+
+    get "/api/v1/solutions/#{solution.id}/feedbacks/1"
+
+    expect(response.status).to eq(400)
+    expect(response.body).to eq("")
+  end
 end
 
 describe 'PATCH /api/v1/solutions/:solution_id/feedbacks/:id' do
