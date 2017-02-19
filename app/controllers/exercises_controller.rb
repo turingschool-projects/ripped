@@ -17,12 +17,9 @@ class ExercisesController < ApplicationController
 
   def create
     e_params = exercise_params
-    tag_ids = e_params.delete(:tag_ids).delete_if(&:empty?)
+    tag_ids = e_params.delete(:tag_names).delete_if(&:empty?)
     @exercise = Exercise.new(e_params)
-
-    tag_ids.each do |tag|
-      @exercise.tags << Tag.where(name: tag).first_or_initialize
-    end
+    @exercise.tag_names = tag_ids
 
     if @exercise.save
       flash[:success] = "You have successfully created an exercise"
@@ -38,8 +35,12 @@ class ExercisesController < ApplicationController
   end
 
   def update
+    e_params = exercise_params
+    tag_ids = e_params.delete(:tag_names).delete_if(&:empty?)
     @exercise = Exercise.find(params[:id])
-    if @exercise.update(exercise_params)
+    @exercise.tag_names = tag_ids
+
+    if @exercise.update(e_params)
       flash[:success] = "You have successfully updated this exercise."
       redirect_to exercise_path(@exercise)
     else
@@ -65,7 +66,7 @@ class ExercisesController < ApplicationController
   attr_reader :student_notifications
 
   def exercise_params
-    params.require(:exercise).permit(:id, :name, :description, :content, :tag_ids => [])
+    params.require(:exercise).permit(:id, :name, :description, :content, :tag_names => [])
   end
 
   def student_notifications(current_user)

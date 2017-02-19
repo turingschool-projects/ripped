@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $("#exercise_tag_ids").select2({
+  $("#exercise_tag_names").select2({
     tags: true
   });
 });

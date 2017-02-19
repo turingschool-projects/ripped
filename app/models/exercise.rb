@@ -14,4 +14,14 @@ class Exercise < ApplicationRecord
     solutions.where(user: user).count > 0
   end
 
+  def tag_names
+    tags.map(&:name)
+  end
+
+  def tag_names=(tags)
+    self.tags = tags.map do |tag|
+      Tag.where(name: tag).first_or_initialize
+    end
+  end
+
 end

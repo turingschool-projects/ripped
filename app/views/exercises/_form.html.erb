@@ -8,7 +8,7 @@
   <%= f.label :content %>
   <%= f.text_area :content, class: "submission-box" %>
 
-  <%= f.collection_select(:tag_ids, Tag.all, :name, :name, {}, {multiple: 'multiple'}) %>
+  <%= f.collection_select(:tag_names, Tag.all, :name, :name, {}, {multiple: 'multiple'}) %>
 </br>
   <%= f.submit class: "waves-effect waves-light btn" %>
 <% end %>
