@@ -25,7 +25,6 @@ describe 'GET /api/v1/exercises/:exercise_id/solutions/:id' do
     feedback = create(:feedback, solution: solution)
 
     get "/api/v1/exercises/#{exercise.id}/solutions/#{solution.id}"
-    binding.pry
 
     solution_json = JSON.parse(response.body)
     feedbacks_json = solution_json["feedbacks"]
