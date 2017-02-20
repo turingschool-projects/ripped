@@ -60,6 +60,27 @@ GET 'https://staging-ripped.herokuapp.com/api/v1/exercises/:id'
 Path parameters:
 * id: The unique id for the exercise
 
+```
+{
+  "id": 1,
+  "name": "Hello World",
+  "content": "class HelloWorldTest < Minitest::Test\n  def test_no_name\n    assert_equal 'Hello, World!', HelloWorld.hello\n  end\n\n  def test_sample_name\n    assert_equal 'Hello, Alice!', HelloWorld.hello('Alice')\n  end\n\n  def test_other_sample_name\n    assert_equal 'Hello, Bob!', HelloWorld.hello('Bob')\n  end\nend",
+  "description": "First exercise!",
+  "solutions": [
+    {
+      "id": 1,
+      "content": "solution",
+      "exercise_id": 1,
+    },
+    {
+      "id": 2,
+      "content": "puts \"Hello World\"",
+      "exercise_id": 1,
+    }
+  ]
+}
+```
+
 ###To receive a solution for an exercise by ID:
 ```
 GET 'https://staging-ripped.herokuapp.com/api/v1/exercises/:exercise_id/solutions/:id'
