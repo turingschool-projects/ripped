@@ -11,6 +11,7 @@ var Content = React.createClass({
     $.ajax({
       url: `/api/v1/solutions/${solution_id}/feedbacks/${id}`,
       type: 'PATCH',
+      data: {feedback: {status: 'read'} },
       success(response) {
         console.log('changed status to read', response)
       }
