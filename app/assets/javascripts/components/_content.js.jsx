@@ -8,23 +8,26 @@ var Content = React.createClass({
   },
   
   handleDelete(id) {
-    // $.ajax({
-    //   url: `/api/v1/solutions/${id}/feedbacks/`
-    // })
+    $.ajax({
+      url: `/api/v1/solutions/${id}/feedbacks/`
+    })
   },
   
   render(){
-    console.table(this.state.solutions[0])
     var feedbacks = this.state.solutions.map((solution) => {
-      return (
-        <div key={solution.id}>
+      var returnFeedbacks = 
+      solution.feedbacks.map((feedback) => {
+        return (
+        <div key={feedback.id}>
           <li>
-            <p>New comment on your solution for:</p>
-            <p>{solution.exercise.name}</p>
-            <button onClick={this.handleDelete.bind(this, solution.id)}>X</button>
+            <p>Unread feedback:</p>
+            <p>{feedback.comment}</p>
+            <button onClick={this.handleDelete.bind(this, feedback.id)}>X</button>
           </li>
         </div>
-      )
+        )
+      });
+      return returnFeedbacks
     });
     
     return(
