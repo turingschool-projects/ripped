@@ -11,35 +11,35 @@ An Exercism-like application for the Turing School of Software and Design.
 
 ## API Endpoints
 
-To receive a user by ID:
+###To receive a user by ID:
 ```
 GET 'https://staging-ripped.herokuapp.com/api/v1/users/:id'
 ```
-To receive all exercises:
+###To receive all exercises:
 ```
 GET 'https://staging-ripped.herokuapp.com/api/v1/exercises'
 ```
-To receive an exercise by ID:
+###To receive an exercise by ID:
 ```
 GET 'https://staging-ripped.herokuapp.com/api/v1/exercises/:id'
 ```
-To receive an exercise by ID:
+###To receive an exercise by ID:
 ```
 GET 'https://staging-ripped.herokuapp.com/api/v1/exercises/:id'
 ```
-To receive a solution for an exercise by ID:
+###To receive a solution for an exercise by ID:
 ```
 GET 'https://staging-ripped.herokuapp.com/api/v1/exercises/:exercise_id/solutions/:id'
 ```
-To receive a solution for an exercise by ID:
+###To receive a solution for an exercise by ID:
 ```
 GET 'https://staging-ripped.herokuapp.com/api/v1/exercises/:exercise_id/solutions/:id'
 ```
-To receive a feedback item for a solution by ID:
+###To receive a feedback item for a solution by ID:
 ```
 GET 'https://staging-ripped.herokuapp.com/api/v1/solutions/:solution_id/feedbacks/:id'
 ```
-To update a feedback item's status:
+###To update a feedback item's status:
 ```
 PATCH 'https://staging-ripped.herokuapp.com/api/v1/solutions/:solution_id/feedbacks/:id'
 ```
