@@ -1,26 +1,16 @@
 $(document).ready(function(){
 
-
-  $('.all-button').click(function(){
-    $("#all-exercises").show();
-    $("#ruby_exercises").hide();
-    $("#js_exercises").hide();
+  $('.tag_buttons').click(function(e){
+    e.preventDefault();
+    // alert(this.name);
+    var tag = this.name;
+    $('#all-exercises div').each(function(){
+      var tags = $(this).attr('data-exercise').split(',');
+      if(tags.includes(tag)) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
   });
-
-  $('.js-button').click(function(){
-    $("#js_exercises").show();
-    $("#ruby_exercises").hide();
-    $("#all-exercises").hide();
-  });
-
-$('.ruby-button').click(function(){
-  $("#ruby_exercises").show();
-  $("#js_exercises").hide();
-  $("#all-exercises").hide();
-});
-
-
-
-
-
 });
