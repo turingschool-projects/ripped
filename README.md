@@ -11,13 +11,13 @@ An Exercism-like application for the Turing School of Software and Design.
 
 ## API Endpoints:
 * [GET user](#to-receive-a-user-by-id)
-* [GET exercises](#get-exercises)
-* [GET exercise](#get-exercise)
-* [GET solution](#get-solution)
-* [GET feedback](#get-feedback)
-* [PATCH feedback](#patch-feedback)
+* [GET exercises](#to-receive-all-exercises)
+* [GET exercise](#to-receive-an-exercise-by-id)
+* [GET solution](#to-receive-a-solution-to-an-exercise-by-id)
+* [GET feedback](#to-receive-a-feedback-item-for-a-solution-by-id)
+* [PATCH feedback](#to-update-a-feedback-items-status)
 
-###To receive a user by ID:]
+###To receive a user by ID:
 ```
 GET '/api/v1/users/:id'
 ```
@@ -34,7 +34,7 @@ GET '/api/v1/users/:id'
   "census_id": 55,
 }
 ```
-### [To receive all exercises:](#get-exercises)
+###To receive all exercises:
 ```
 GET '/api/v1/exercises'
 ```
@@ -65,7 +65,7 @@ GET '/api/v1/exercises'
   }
 ]
 ```
-### [To receive an exercise by ID:](#get-exercise)
+###To receive an exercise by ID:
 ```
 GET '/api/v1/exercises/:id'
 ```
@@ -97,7 +97,7 @@ Path parameters:
 }
 ```
 
-### [To receive a solution for an exercise by ID:](#get-solution)
+###To receive a solution for an exercise by ID:
 ```
 GET '/api/v1/exercises/:exercise_id/solutions/:id'
 ```
@@ -137,7 +137,7 @@ Path parameters:
 }
 ```
 
-### [To receive a feedback item for a solution by ID:](#get-feedback)
+###To receive a feedback item for a solution by ID:
 ```
 GET '/api/v1/solutions/:solution_id/feedbacks/:id'
 ```
@@ -161,7 +161,7 @@ Path parameters:
 }
 ```
 
-### [To update a feedback item's status:](#patch-feedback)
+###To update a feedback item's status:
 ```
 PATCH '/api/v1/solutions/:solution_id/feedbacks/:id'
 ```
