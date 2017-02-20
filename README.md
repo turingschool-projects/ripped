@@ -38,6 +38,7 @@ GET '/api/v1/users/:id'
 **Error Response:**
 
 **Code:** 400 </br>
+---
 ###To receive all exercises:
 ```
 GET '/api/v1/exercises'
@@ -72,6 +73,7 @@ GET '/api/v1/exercises'
 **Error Response:**
 
 **Code:** 400 </br>
+---
 ###To receive an exercise by ID:
 ```
 GET '/api/v1/exercises/:id'
@@ -106,6 +108,7 @@ Path parameters:
 **Error Response:**
 
 **Code:** 400 </br>
+---
 ###To receive a solution for an exercise by ID:
 ```
 GET '/api/v1/exercises/:exercise_id/solutions/:id'
@@ -148,6 +151,7 @@ Path parameters:
 **Error Response:**
 
 **Code:** 400 </br>
+---
 ###To receive a feedback item for a solution by ID:
 ```
 GET '/api/v1/solutions/:solution_id/feedbacks/:id'
@@ -174,6 +178,7 @@ Path parameters:
 **Error Response:**
 
 **Code:** 400 </br>
+---
 ###To update a feedback item's status:
 ```
 PATCH '/api/v1/solutions/:solution_id/feedbacks/:id'
