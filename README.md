@@ -82,7 +82,7 @@ Code: 400 </br>
 ```
 GET '/api/v1/exercises/:id'
 ```
-Path parameters:
+**Path parameters:**
 * id: The unique id for the exercise
 
 **Success Response:**
@@ -118,7 +118,7 @@ Code: 400 </br>
 ```
 GET '/api/v1/exercises/:exercise_id/solutions/:id'
 ```
-Path parameters:
+**Path parameters:**
 * exercise_id: The unique id for the exercise
 * id: The unique id for a solution belonging to the exercise
 
@@ -162,7 +162,7 @@ Code: 400 </br>
 ```
 GET '/api/v1/solutions/:solution_id/feedbacks/:id'
 ```
-Path parameters:
+**Path parameters:**
 * solution_id: The unique id for the solution
 * id: The unique id for a feedback item belonging to the solution
 
