@@ -6,27 +6,27 @@ module GitHelper
     get_language_folder(list_of_languages)
   end
 
-  def get_language_folder(list_of_languages)
+  def self.get_language_folder(list_of_languages)
     list_of_languages.each do |lang|
-      @folder = lang[:name]
+      folder = lang[:name]
       uri = URI("https://api.github.com/repos/NZenitram/exercises/contents/#{folder}")
       language_folder = Net::HTTP.get(uri)
       exercise_object = JSON.parse(language_folder, symbolize_names: true)
-      get_and_save_exercise(exercise_object)
+      get_and_save_exercise(exercise_object, folder)
     end
   end
 
-  def get_and_save_exercise(exercise_object)
+  def self.get_and_save_exercise(exercise_object, folder)
     exercise_object.each do |exercise_folder|
       exercise = exercise_folder[:name]
-      uriURI("https://api.github.com/repos/NZenitram/exercises/contents/#{folder}/#{exercise}")
+      uri = URI("https://api.github.com/repos/NZenitram/exercises/contents/#{folder}/#{exercise}")
       exercise_folder = Net::HTTP.get(uri)
       lesson_folder = JSON.parse(exercise_folder, symbolize_names: true)
-      retrieve_lesson_content(lesson_folder)
+      retrieve_lesson_content(lesson_folder, folder, exercise)
     end
   end
 
-  def retrieve_lesson_content(lesson_folder)
+  def self.retrieve_lesson_content(lesson_folder, folder, exercise)
     exercise_items = {}
     lesson_folder.each do |exercise_name|
       name = exercise_name[:name]
@@ -39,12 +39,13 @@ module GitHelper
         exercise_items[:content] = exercise
         exercise_items[:name] = name
       end
-      find_tags_and_save(exercise_items)
+      exercise_items
     end
+    find_tags_and_save(exercise_items, folder)
   end
 
-  def find_tags_and_save(exercise_items)
-    language_tag = Tag.find_by(name: @folder)
+  def self.find_tags_and_save(exercise_items, folder)
+    language_tag = Tag.find_by(name: folder)
     difficulty = Tag.first
     exercise = Exercise.new(name: exercise_items[:name], content: exercise_items[:content], description: exercise_items[:description])
     exercise.tags = [language_tag, difficulty]
