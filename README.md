@@ -20,15 +20,15 @@ GET '/api/v1/users/:id'
 
 **Success Response:**
 
-**Code:** 200
+  **Code:** 200
 
-**Content:**
-```
-{
-  "id": 2,
-  "census_id": 55,
-}
-```
+  **Content:**
+  ```
+  {
+    "id": 2,
+    "census_id": 55,
+  }
+  ```
 ###To receive all exercises:
 ```
 GET '/api/v1/exercises'
