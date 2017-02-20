@@ -8,13 +8,13 @@ var Content = React.createClass({
   },
   
   handleDelete(id) {
-    $.ajax({
-      url: `/api/v1/`
-    })
+    // $.ajax({
+    //   url: `/api/v1/solutions/${id}/feedbacks/`
+    // })
   },
   
   render(){
-    debugger
+    console.table(this.state.solutions[0])
     var feedbacks = this.state.solutions.map((solution) => {
       return (
         <div key={solution.id}>

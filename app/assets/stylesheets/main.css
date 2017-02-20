@@ -80,10 +80,30 @@ h1, h2, h3, h4, h5, h6{
 /* Homepage Image */
 
 .root-page {
-  background-image: url(https://source.unsplash.com/ttbCwN_mWic/);
+  background-image: url(https://source.unsplash.com/njM4it9erx4/);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover !important;
   background-color: transparent;
+}
+
+.turing-logo {
+  text-align: center;
+  justify-content: center;
+  margin-top: 6rem;
+}
+
+.turing-logo > img {
+  height: 10% !important;
+  width: 10%;
+  border-radius: 50%;
+  -webkit-transition: -webkit-transform 4s ease-in-out;
+  transition:           transform 4s ease-in-out;
+
+}
+
+.turing-logo > img:hover {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
 }
