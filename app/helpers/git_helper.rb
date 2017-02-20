@@ -45,10 +45,17 @@ module GitHelper
   end
 
   def self.find_tags_and_save(exercise_items, folder)
-    language_tag = Tag.find_by(name: folder)
-    difficulty = Tag.first
-    exercise = Exercise.new(name: exercise_items[:name], content: exercise_items[:content], description: exercise_items[:description])
-    exercise.tags = [language_tag, difficulty]
-    exercise.save
+    corrected_name = exercise_items[:name].split('.')[0].titleize
+    match = Exercise.joins(:tags).where({ tags: {name: folder} })
+    exercise = Exercise.find_by(name: corrected_name)
+    if match.include?(exercise)
+      exercise.update(name: corrected_name, content: exercise_items[:content], description: exercise_items[:description]).save
+    else
+      new_exercise = Exercise.new(name: corrected_name, content: exercise_items[:content], description: exercise_items[:description])
+      language_tag = Tag.find_by(name: folder)
+      difficulty = Tag.first
+      new_exercise.tags = [language_tag, difficulty]
+      new_exercise.save
+    end
   end
 end
