@@ -1,8 +1,8 @@
 var Notifications = React.createClass({
   render() {
     return (
-      <div>
-        <Content />
+      <div id="dropdown1" className="dropdown-content dropdown-custom">
+        ewelkfmdew
       </div>
     )
   }
