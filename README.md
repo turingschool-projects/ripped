@@ -201,7 +201,7 @@ PATCH '/api/v1/solutions/:solution_id/feedbacks/:id'
 **Request body example:**
 ```
 { "feedback":
-  {"status": "read"}
+  { "status": "read" }
 }
 ```
 
