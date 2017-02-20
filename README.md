@@ -190,13 +190,20 @@ Path parameters:
 ```
 PATCH '/api/v1/solutions/:solution_id/feedbacks/:id'
 ```
-Path parameters:
+**Path parameters:**
 * solution_id: The unique id for the solution
 * id: The unique id for a feedback item belonging to the solution
 
-Request body parameters:
+**Request body parameters:**
 * feedback
 * status: read or unread
+
+**Request body example:**
+```
+{ "feedback":
+  {"status": "read"}
+}
+```
 
 **Success Response:**
 
