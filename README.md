@@ -10,14 +10,14 @@ An Exercism-like application for the Turing School of Software and Design.
  - login is - at the moment - handled through [Census](https://github.com/turingschool-projects/census). as this is not yet in production you will probably need to stub out your users - we'll update as soon as this changes. You'll need Census access to run the app.
 
 ## API Endpoints:
-* [GET user](#get-user)
+* [GET user](#to-receive-a-user-by-id)
 * [GET exercises](#get-exercises)
 * [GET exercise](#get-exercise)
 * [GET solution](#get-solution)
 * [GET feedback](#get-feedback)
 * [PATCH feedback](#patch-feedback)
 
-### [To receive a user by ID:](#get-user)
+###To receive a user by ID:]
 ```
 GET '/api/v1/users/:id'
 ```
