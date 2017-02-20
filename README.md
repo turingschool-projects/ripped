@@ -29,6 +29,30 @@ Response format:
 ```
 GET 'https://staging-ripped.herokuapp.com/api/v1/exercises'
 ```
+
+Response format:
+```
+[
+  {
+    "id": 1,
+    "name": "Hello World",
+    "content": "class HelloWorldTest < Minitest::Test\n  def test_no_name\n    assert_equal 'Hello, World!', HelloWorld.hello\n  end\n\n  def test_sample_name\n    assert_equal 'Hello, Alice!', HelloWorld.hello('Alice')\n  end\n\n  def test_other_sample_name\n    assert_equal 'Hello, Bob!', HelloWorld.hello('Bob')\n  end\nend",
+    "description": "First exercise!",
+    "solutions": [
+      {
+        "id": 1,
+        "content": "solution",
+        "exercise_id": 1,
+      },
+      {
+        "id": 2,
+        "content": "puts \"Hello World\"",
+        "exercise_id": 1,
+      }
+    ]
+  }
+]
+```
 ###To receive an exercise by ID:
 ```
 GET 'https://staging-ripped.herokuapp.com/api/v1/exercises/:id'
