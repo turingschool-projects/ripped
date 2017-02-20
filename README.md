@@ -49,8 +49,8 @@ GET '/api/v1/exercises'
 
 **Success Response:**
 
-**Code:** 200 </br>
-**Content:**
+Code: 200 </br>
+Content:
 ```
 [
   {
@@ -75,7 +75,7 @@ GET '/api/v1/exercises'
 ```
 **Error Response:**
 
-**Code:** 400 </br>
+Code: 400 </br>
 
 ---
 ###To receive an exercise by ID:
@@ -87,8 +87,8 @@ Path parameters:
 
 **Success Response:**
 
-**Code:** 200 </br>
-**Content:**
+Code: 200 </br>
+Content:
 ```
 {
   "id": 1,
@@ -111,7 +111,7 @@ Path parameters:
 ```
 **Error Response:**
 
-**Code:** 400 </br>
+Code: 400 </br>
 
 ---
 ###To receive a solution for an exercise by ID:
@@ -124,8 +124,8 @@ Path parameters:
 
 **Success Response:**
 
-**Code:** 200 </br>
-**Content:**
+Code: 200 </br>
+Content:
 ```
 {
   "id": 1,
@@ -155,7 +155,7 @@ Path parameters:
 ```
 **Error Response:**
 
-**Code:** 400 </br>
+Code: 400 </br>
 
 ---
 ###To receive a feedback item for a solution by ID:
@@ -168,8 +168,8 @@ Path parameters:
 
 **Success Response:**
 
-**Code:** 200 </br>
-**Content:**
+Code: 200 </br>
+Content:
 ```
 {
   "id": 1,
@@ -183,7 +183,7 @@ Path parameters:
 ```
 **Error Response:**
 
-**Code:** 400 </br>
+Code: 400 </br>
 
 ---
 ###To update a feedback item's status:
@@ -207,8 +207,8 @@ PATCH '/api/v1/solutions/:solution_id/feedbacks/:id'
 
 **Success Response:**
 
-**Code:** 200 </br>
-**Content:**
+Code: 200 </br>
+Content:
 ```
 {
   "id": 1,
@@ -222,4 +222,4 @@ PATCH '/api/v1/solutions/:solution_id/feedbacks/:id'
 ```
 **Error Response:**
 
-**Code:** 400 </br>
+Code: 400 </br>
