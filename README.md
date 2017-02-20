@@ -126,6 +126,19 @@ Path parameters:
 * solution_id: The unique id for the solution
 * id: The unique id for a feedback item belonging to the solution
 
+Response format:
+```
+{
+  "id": 1,
+  "user_id": 1,
+  "solution_id": 1,
+  "comment": "Comment",
+  "created_at": "2017-02-08T23:57:47.836Z",
+  "updated_at": "2017-02-08T23:57:47.836Z",
+  "status": "unread"
+}
+```
+
 ###To update a feedback item's status:
 ```
 PATCH 'https://staging-ripped.herokuapp.com/api/v1/solutions/:solution_id/feedbacks/:id'
