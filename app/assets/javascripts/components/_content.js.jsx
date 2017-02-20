@@ -17,7 +17,7 @@ var Content = React.createClass({
       return (
         <div key={solution.id}>
           <li>
-            <p>Comment on your solution for:</p>
+            <p>New comment on your solution for:</p>
             <p>{solution.exercise.name}</p>
             <button onClick={this.handleDelete}>X</button>
           </li>
