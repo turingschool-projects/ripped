@@ -60,9 +60,12 @@ describe "/exercises" do
 
     visit exercises_path
 
-    expect(page).to have_content(tag_1.name)
-    expect(page).to have_content(tag_2.name)
-    expect(page).to_not have_content(tag_3.name)
+    within('#all-exercises') do
+      expect(page).to have_content(tag_1.name)
+      expect(page).to have_content(tag_2.name)
+      expect(page).to_not have_content(tag_3.name)
+    end
+
   end
 
   it "student sees multiple tags on exercises" do
@@ -76,9 +79,11 @@ describe "/exercises" do
 
     visit exercises_path
 
-    expect(page).to have_content(tag_1.name)
-    expect(page).to have_content(tag_2.name)
-    expect(page).to_not have_content(tag_3.name)
+    within('#all-exercises') do
+      expect(page).to have_content(tag_1.name)
+      expect(page).to have_content(tag_2.name)
+      expect(page).to_not have_content(tag_3.name)
+    end
   end
 
 end

@@ -12,5 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require select2
+//= require select2-full
 //= require_tree .
