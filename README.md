@@ -17,6 +17,7 @@ GET 'https://staging-ripped.herokuapp.com/api/v1/users/:id'
 ```
 Path parameters:
 * id: The unique id for the user
+
 ###To receive all exercises:
 ```
 GET 'https://staging-ripped.herokuapp.com/api/v1/exercises'
