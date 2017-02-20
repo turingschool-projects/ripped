@@ -48,10 +48,16 @@ h1, h2, h3, h4, h5, h6{
 
 .dropdown-custom {
   margin-top: 20px;
+  background-color: #fff !important;
 }
 
 .dropdown-button {
   background-color: #1C2833 !important;
+}
+
+.dropdown-item > p {
+  color: #000 !important;
+  margin-left: 20px;
 }
 
 .navbar-button {
