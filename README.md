@@ -18,7 +18,7 @@ GET 'https://staging-ripped.herokuapp.com/api/v1/users/:id'
 Path parameters:
 * id: The unique id for the user
 
-Response format:
+Response format (JSON):
 ```
 {
   "id": 2,
@@ -30,7 +30,7 @@ Response format:
 GET 'https://staging-ripped.herokuapp.com/api/v1/exercises'
 ```
 
-Response format:
+Response format (JSON):
 ```
 [
   {
@@ -60,6 +60,7 @@ GET 'https://staging-ripped.herokuapp.com/api/v1/exercises/:id'
 Path parameters:
 * id: The unique id for the exercise
 
+Response format (JSON):
 ```
 {
   "id": 1,
@@ -89,7 +90,7 @@ Path parameters:
 * exercise_id: The unique id for the exercise
 * id: The unique id for a solution belonging to the exercise
 
-Response format:
+Response format (JSON):
 ```
 {
   "id": 1,
@@ -126,7 +127,7 @@ Path parameters:
 * solution_id: The unique id for the solution
 * id: The unique id for a feedback item belonging to the solution
 
-Response format:
+Response format (JSON):
 ```
 {
   "id": 1,
