@@ -11,6 +11,7 @@ class Api::V1::SolutionsController < ApiController
   def index
     solutions = Solution.where(user_id: params[:user_id])
     @unreads = find_solutions_for_unread_feedbacks(solutions)
+    binding.pry
     if !@unreads.nil?
       render json: @unreads, status: 200
     else
@@ -34,11 +35,12 @@ class Api::V1::SolutionsController < ApiController
   def find_solutions_for_unread_feedbacks(solutions)
     solutions_to_display = find_only_unread_feedbacks(solutions)
     if !solutions_to_display.nil?
-      notifications = solutions_to_display.each do |solution|
+      notifications = solutions_to_display.map do |solution|
         Solution.where(id: solution)
       end
-    solutions
+    notifications
     end
-    solutions
+    binding.pry
+    notifications
   end
 end
