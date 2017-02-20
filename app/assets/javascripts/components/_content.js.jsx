@@ -7,8 +7,10 @@ var Content = React.createClass({
     $.getJSON('/api/v1/users/2/solutions', (response) => { this.setState({ solutions: response }) })
   },
   
-  handleDelete() {
-    console.log('in delete');
+  handleDelete(id) {
+    $.ajax({
+      url: `/api/v1/`
+    })
   },
   
   render(){
@@ -19,7 +21,7 @@ var Content = React.createClass({
           <li>
             <p>New comment on your solution for:</p>
             <p>{solution.exercise.name}</p>
-            <button onClick={this.handleDelete}>X</button>
+            <button onClick={this.handleDelete.bind(this, solution.id)}>X</button>
           </li>
         </div>
       )

@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "/exercises/:id/edit" do
   scenario "an instructor can edit an existing exercise" do
-    tag = create(:tag)
+    create(:tag)
     exercise = create(:exercise, content: "old content", description: "old description")
     user = create(:user, role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -12,7 +12,7 @@ describe "/exercises/:id/edit" do
     fill_in "exercise[name]", with: "new exercise name"
     fill_in "exercise[description]", with: "new exercise description"
     fill_in "exercise[content]", with: "new exercise content"
-    find(:css, "#exercise_tag_ids_#{tag.id}").set(true)
+    find('#exercise_tag_names').find(:xpath, 'option[1]').select_option
     click_on "Update Exercise"
 
     expect(page).to have_content("You have successfully updated this exercise.")
@@ -26,7 +26,7 @@ describe "/exercises/:id/edit" do
 
   scenario "an instructor sees error when an exercise does not successfully update" do
     exercise = create(:exercise)
-    tag = create(:tag)
+    create(:tag)
     user = create(:user, role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -35,7 +35,7 @@ describe "/exercises/:id/edit" do
     fill_in "exercise[name]", with: "new exercise name"
     fill_in "exercise[description]", with: "new exercise description"
     fill_in "exercise[content]", with: ""
-    find(:css, "#exercise_tag_ids_#{tag.id}").set(true)
+    find('#exercise_tag_names').find(:xpath, 'option[1]').select_option
     click_on "Update Exercise"
 
     expect(page).to have_content("There was a problem updating your exercise. Please try again.")

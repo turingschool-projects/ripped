@@ -1,3 +1,6 @@
+<% if @exercise.errors %>
+  <%= @exercise.errors.full_messages.join(" ") %>
+<% end %>
 <%= form_for @exercise do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
@@ -8,7 +11,8 @@
   <%= f.label :content %>
   <%= f.text_area :content, class: "submission-box" %>
 
-  <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %>
+  <%= f.label "Choose or create tags" %>
+  <%= f.collection_select(:tag_names, Tag.all, :name, :name, {}, {multiple: 'multiple'}) %>
 </br>
   <%= f.submit class: "waves-effect waves-light btn" %>
 <% end %>
