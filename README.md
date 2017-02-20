@@ -13,7 +13,7 @@ An Exercism-like application for the Turing School of Software and Design.
 * [GET user](#to-receive-a-user-by-id)
 * [GET exercises](#to-receive-all-exercises)
 * [GET exercise](#to-receive-an-exercise-by-id)
-* [GET solution](#to-receive-a-solution-to-an-exercise-by-id)
+* [GET solution](#to-receive-a-solution-for-an-exercise-by-id)
 * [GET feedback](#to-receive-a-feedback-item-for-a-solution-by-id)
 * [PATCH feedback](#to-update-a-feedback-items-status)
 
