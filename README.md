@@ -26,7 +26,7 @@ GET '/api/v1/users/:id'
 **Path parameters:**
 * id: The unique id for the user
 
-**Success Response:**
+###Success Response:
 
 **Code:** 200 </br>
 **Content:**
@@ -37,7 +37,7 @@ GET '/api/v1/users/:id'
 }
 ```
 
-**Error Response:**
+###Error Response:
 
 **Code:** 400 </br>
 
