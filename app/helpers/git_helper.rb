@@ -12,24 +12,27 @@ module GitHelper
             exercise = exercise_folder[:name]
             uri = URI("https://api.github.com/repos/NZenitram/exercises/contents/#{folder}/#{exercise}")
             exercise_folder = Net::HTTP.get(uri)
-            folder = JSON.parse(exercise_folder, symbolize_names: true)
-              folder.each do |exercise_name|
+            lesson_folder = JSON.parse(exercise_folder, symbolize_names: true)
+            new_test = {}
+              lesson_folder.each do |exercise_name|
                 name = exercise_name[:name]
-                binding.pry
-                uri = URI("https://api.github.com/repos/NZenitram/exercises/contents/#{folder}/#{exercise}/#{name}")
-                readme = URI("https://api.github.com/repos/NZenitram/exercises/contents/#{folder}/#{exercise}/README.md")
-                lesson = Net::HTTP.get(uri)
-                description = Net::HTTP.get(uri)
+                uri = URI("https://raw.githubusercontent.com/NZenitram/exercises/master/#{folder}/#{exercise}/#{name}")
+                if name == "README.md"
+                  text = Net::HTTP.get(uri)
+                  new_test[:description] = text
+                else
+                  exercise = Net::HTTP.get(uri)
+                  new_test[:content] = exercise
+                  new_test[:name] = name
+                end
               end
-              binding.pry
+              tag = Tag.find_by(name: folder)
+              difficulty = Tag.first
+              j_cas = Exercise.new(name: new_test[:name], content: new_test[:content], description: new_test[:description])
+              j_cas.tags = [tag, difficulty]
+              j_cas.save
           end
       end
   end
-
-  def get_files_ruby
-    binding.pry
-  end
-
-
 
 end
