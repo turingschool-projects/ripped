@@ -17,6 +17,8 @@ An Exercism-like application for the Turing School of Software and Design.
 * [GET feedback](#to-receive-a-feedback-item-for-a-solution-by-id)
 * [PATCH feedback](#to-update-a-feedback-items-status)
 
+---
+
 ###To receive a user by ID:
 ```
 GET '/api/v1/users/:id'
