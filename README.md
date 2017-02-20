@@ -9,9 +9,15 @@ An Exercism-like application for the Turing School of Software and Design.
  - we're using a custom version of a gem for staging, so also run: `bundle update`
  - login is - at the moment - handled through [Census](https://github.com/turingschool-projects/census). as this is not yet in production you will probably need to stub out your users - we'll update as soon as this changes. You'll need Census access to run the app.
 
-## API Endpoints
+## API Endpoints:
+* [GET user](#get-user)
+* [GET exercises](#get-exercises)
+* [GET exercise](#get-exercise)
+* [GET solution](#get-solution)
+* [GET feedback](#get-feedback)
+* [PATCH feedback](#patch-feedback)
 
-###To receive a user by ID:
+### [To receive a user by ID:](#get-user)
 ```
 GET '/api/v1/users/:id'
 ```
@@ -28,7 +34,7 @@ GET '/api/v1/users/:id'
   "census_id": 55,
 }
 ```
-###To receive all exercises:
+### [To receive all exercises:](#get-exercises)
 ```
 GET '/api/v1/exercises'
 ```
@@ -59,7 +65,7 @@ GET '/api/v1/exercises'
   }
 ]
 ```
-###To receive an exercise by ID:
+### [To receive an exercise by ID:](#get-exercise)
 ```
 GET '/api/v1/exercises/:id'
 ```
@@ -91,7 +97,7 @@ Path parameters:
 }
 ```
 
-###To receive a solution for an exercise by ID:
+### [To receive a solution for an exercise by ID:](#get-solution)
 ```
 GET '/api/v1/exercises/:exercise_id/solutions/:id'
 ```
@@ -131,7 +137,7 @@ Path parameters:
 }
 ```
 
-###To receive a feedback item for a solution by ID:
+### [To receive a feedback item for a solution by ID:](#get-feedback)
 ```
 GET '/api/v1/solutions/:solution_id/feedbacks/:id'
 ```
@@ -155,7 +161,7 @@ Path parameters:
 }
 ```
 
-###To update a feedback item's status:
+### [To update a feedback item's status:](#patch-feedback)
 ```
 PATCH '/api/v1/solutions/:solution_id/feedbacks/:id'
 ```
