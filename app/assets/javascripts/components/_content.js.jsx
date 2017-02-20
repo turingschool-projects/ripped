@@ -12,10 +12,18 @@ var Content = React.createClass({
       url: `/api/v1/solutions/${solution_id}/feedbacks/${id}`,
       type: 'PATCH',
       data: {feedback: {status: 'read'} },
-      success(response) {
-        console.log('changed status to read', response)
+      success: () => {
+        this.removeNotificationFromDOM(id);
       }
     })
+  },
+  
+  removeNotificationFromDOM(id) {
+    var newNotifications = this.state.solutions.filter((solution) => {
+      return solution.id != id;
+    });
+    
+    this.setState({ solutions: newNotifications });
   },
   
   render(){
