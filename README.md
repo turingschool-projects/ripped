@@ -20,8 +20,9 @@ GET '/api/v1/users/:id'
 
 **Success Response:**
 
-Code: 200
-Content:
+**Code:** 200
+
+**Content:**
 ```
 {
   "id": 2,
