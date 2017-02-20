@@ -38,15 +38,19 @@ describe "/exercises" do
     exercise_ruby.tags = [tag_2]
 
     visit exercises_path
-    click_button "JavaScript"
+    click_button "javascript"
 
-    expect(page).to have_content(exercise_js.name)
-    expect(page).to have_content(exercise_js.description)
+    within('#all-exercises') do
+      expect(page).to have_content(exercise_js.name)
+      expect(page).to have_content(exercise_js.description)
+    end
 
     visit exercises_path
-    click_button "Ruby"
+    click_button "ruby"
 
-    expect(page).to have_content(exercise_ruby.name)
-    expect(page).to have_content(exercise_ruby.description)
+    within('#all-exercises') do
+      expect(page).to have_content(exercise_ruby.name)
+      expect(page).to have_content(exercise_ruby.description)
+    end
   end
 end
