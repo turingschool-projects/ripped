@@ -33,7 +33,10 @@ GET '/api/v1/users/:id'
 GET '/api/v1/exercises'
 ```
 
-Response format (JSON):
+**Success Response:**
+
+**Code:** 200 </br>
+**Content:**
 ```
 [
   {
@@ -63,7 +66,10 @@ GET '/api/v1/exercises/:id'
 Path parameters:
 * id: The unique id for the exercise
 
-Response format (JSON):
+**Success Response:**
+
+**Code:** 200 </br>
+**Content:**
 ```
 {
   "id": 1,
@@ -93,7 +99,10 @@ Path parameters:
 * exercise_id: The unique id for the exercise
 * id: The unique id for a solution belonging to the exercise
 
-Response format (JSON):
+**Success Response:**
+
+**Code:** 200 </br>
+**Content:**
 ```
 {
   "id": 1,
@@ -130,7 +139,10 @@ Path parameters:
 * solution_id: The unique id for the solution
 * id: The unique id for a feedback item belonging to the solution
 
-Response format (JSON):
+**Success Response:**
+
+**Code:** 200 </br>
+**Content:**
 ```
 {
   "id": 1,
@@ -154,3 +166,19 @@ Path parameters:
 Request body parameters:
 * feedback
 * status: read or unread
+
+**Success Response:**
+
+**Code:** 200 </br>
+**Content:**
+```
+{
+  "id": 1,
+  "user_id": 1,
+  "solution_id": 1,
+  "comment": "Comment",
+  "created_at": "2017-02-08T23:57:47.836Z",
+  "updated_at": "2017-02-08T23:57:47.836Z",
+  "status": "read"
+}
+```
