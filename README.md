@@ -22,12 +22,12 @@ GET '/api/v1/users/:id'
 
   * **Code:** 200 </br>
   **Content:**
-  ```
-  {
-    "id": 2,
-    "census_id": 55,
-  }
-  ```
+```
+{
+  "id": 2,
+  "census_id": 55,
+}
+```
 ###To receive all exercises:
 ```
 GET '/api/v1/exercises'
