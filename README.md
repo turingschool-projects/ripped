@@ -19,8 +19,10 @@ GET '/api/v1/users/:id'
 * id: The unique id for the user
 
 **Success Response:**
+
 Code: 200
-Content: ```
+Content:
+```
 {
   "id": 2,
   "census_id": 55,
