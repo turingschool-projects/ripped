@@ -47,7 +47,7 @@ GET '/api/v1/users/:id'
 GET '/api/v1/exercises'
 ```
 
-**Success Response:**
+###Success Response:
 
 **Code:** 200 </br>
 **Content:**
@@ -73,7 +73,7 @@ GET '/api/v1/exercises'
   }
 ]
 ```
-**Error Response:**
+###Error Response:
 
 **Code:** 400 </br>
 
@@ -85,7 +85,7 @@ GET '/api/v1/exercises/:id'
 Path parameters:
 * id: The unique id for the exercise
 
-**Success Response:**
+###Success Response:
 
 **Code:** 200 </br>
 **Content:**
@@ -109,7 +109,7 @@ Path parameters:
   ]
 }
 ```
-**Error Response:**
+###Error Response:
 
 **Code:** 400 </br>
 
@@ -122,7 +122,7 @@ Path parameters:
 * exercise_id: The unique id for the exercise
 * id: The unique id for a solution belonging to the exercise
 
-**Success Response:**
+###Success Response:
 
 **Code:** 200 </br>
 **Content:**
@@ -153,7 +153,7 @@ Path parameters:
   ]
 }
 ```
-**Error Response:**
+###Error Response:
 
 **Code:** 400 </br>
 
@@ -166,7 +166,7 @@ Path parameters:
 * solution_id: The unique id for the solution
 * id: The unique id for a feedback item belonging to the solution
 
-**Success Response:**
+###Success Response:
 
 **Code:** 200 </br>
 **Content:**
@@ -181,7 +181,7 @@ Path parameters:
   "status": "unread"
 }
 ```
-**Error Response:**
+###Error Response:
 
 **Code:** 400 </br>
 
@@ -205,7 +205,7 @@ PATCH '/api/v1/solutions/:solution_id/feedbacks/:id'
 }
 ```
 
-**Success Response:**
+###Success Response:
 
 **Code:** 200 </br>
 **Content:**
@@ -220,6 +220,6 @@ PATCH '/api/v1/solutions/:solution_id/feedbacks/:id'
   "status": "read"
 }
 ```
-**Error Response:**
+###Error Response:
 
 **Code:** 400 </br>
