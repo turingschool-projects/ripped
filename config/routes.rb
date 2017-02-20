@@ -2,12 +2,12 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, only: [:show] do
-        resources :solutions, only: [:show] do
+        resources :solutions, only: [:show, :index] do
           resources :feedbacks, only: [:index, :show, :update]
         end
       end
       resources :exercises, only: [:index, :show] do
-        resources :solutions, only: [:show]
+        resources :solutions, only: [:show, :index]
       end
     end
   end

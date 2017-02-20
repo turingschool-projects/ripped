@@ -4,10 +4,10 @@ var Content = React.createClass({
   },
   
   componentDidMount() {
-    $.getJSON('/api/v1/users/1/solutions/1/feedbacks.json', (response) => { this.setState({ skills: response }) });
+    $.getJSON('/api/v1/users/2/solutions', (response) => { this.setState({ solutions: response }) })
   },
   
-  handleDelete(){
+  handleDelete() {
     console.log('in delete');
   },
   
@@ -15,7 +15,8 @@ var Content = React.createClass({
     var feedbacks = this.state.solutions.map((solution) => {
       return (
         <div key={solution.id}>
-          <h3>{solution}</h3>
+          <p>Comment on your solution for:</p>
+          <p>{solution.exercise.name}</p>
           <button onClick={this.handleDelete}>X</button>
         </div>
       )
