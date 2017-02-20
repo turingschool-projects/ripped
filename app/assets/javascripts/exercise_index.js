@@ -7,6 +7,12 @@ $(document).ready(function(){
       return element.name;
     });
 
+    $(this).blur();
+    if(activeTags.length == 0){
+      $('#all-exercises div').show();
+      return
+    }
+
     $('#all-exercises div').each(function(){
       var tags = $(this).attr('data-exercise').split(',');
       var match = false;
