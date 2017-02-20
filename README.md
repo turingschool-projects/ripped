@@ -13,13 +13,14 @@ An Exercism-like application for the Turing School of Software and Design.
 
 ###To receive a user by ID:
 ```
-GET 'https://staging-ripped.herokuapp.com/api/v1/users/:id'
+GET '/api/v1/users/:id'
 ```
-Path parameters:
+**Path parameters:**
 * id: The unique id for the user
 
-Response format (JSON):
-```
+**Success Response:**
+Code: 200
+Content: ```
 {
   "id": 2,
   "census_id": 55,
@@ -27,7 +28,7 @@ Response format (JSON):
 ```
 ###To receive all exercises:
 ```
-GET 'https://staging-ripped.herokuapp.com/api/v1/exercises'
+GET '/api/v1/exercises'
 ```
 
 Response format (JSON):
@@ -55,7 +56,7 @@ Response format (JSON):
 ```
 ###To receive an exercise by ID:
 ```
-GET 'https://staging-ripped.herokuapp.com/api/v1/exercises/:id'
+GET '/api/v1/exercises/:id'
 ```
 Path parameters:
 * id: The unique id for the exercise
@@ -84,7 +85,7 @@ Response format (JSON):
 
 ###To receive a solution for an exercise by ID:
 ```
-GET 'https://staging-ripped.herokuapp.com/api/v1/exercises/:exercise_id/solutions/:id'
+GET '/api/v1/exercises/:exercise_id/solutions/:id'
 ```
 Path parameters:
 * exercise_id: The unique id for the exercise
@@ -121,7 +122,7 @@ Response format (JSON):
 
 ###To receive a feedback item for a solution by ID:
 ```
-GET 'https://staging-ripped.herokuapp.com/api/v1/solutions/:solution_id/feedbacks/:id'
+GET '/api/v1/solutions/:solution_id/feedbacks/:id'
 ```
 Path parameters:
 * solution_id: The unique id for the solution
@@ -142,7 +143,7 @@ Response format (JSON):
 
 ###To update a feedback item's status:
 ```
-PATCH 'https://staging-ripped.herokuapp.com/api/v1/solutions/:solution_id/feedbacks/:id'
+PATCH '/api/v1/solutions/:solution_id/feedbacks/:id'
 ```
 Path parameters:
 * solution_id: The unique id for the solution
