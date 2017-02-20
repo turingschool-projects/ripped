@@ -7,9 +7,13 @@ var Content = React.createClass({
     $.getJSON('/api/v1/users/2/solutions', (response) => { this.setState({ solutions: response }) })
   },
   
-  handleDelete(id) {
+  handleDelete(solution_id, id) {
     $.ajax({
-      url: `/api/v1/solutions/${id}/feedbacks/`
+      url: `/api/v1/solutions/${solution_id}/feedbacks/${id}`,
+      type: 'PATCH',
+      success(response) {
+        console.log('changed status to read', response)
+      }
     })
   },
   
@@ -22,7 +26,7 @@ var Content = React.createClass({
           <li>
             <p>Unread feedback:</p>
             <p>{feedback.comment}</p>
-            <button onClick={this.handleDelete.bind(this, feedback.id)}>X</button>
+            <button onClick={this.handleDelete.bind(this, feedback.solution_id, feedback.id)}>X</button>
           </li>
         </div>
         )
