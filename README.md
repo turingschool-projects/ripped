@@ -89,6 +89,35 @@ Path parameters:
 * exercise_id: The unique id for the exercise
 * id: The unique id for a solution belonging to the exercise
 
+Response format:
+```
+{
+  "id": 1,
+  "content": "puts 'Hello World'",
+  "exercise_id": 1,
+  "feedbacks": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "solution_id": 1,
+      "comment": "Comment",
+      "created_at": "2017-02-08T23:57:47.836Z",
+      "updated_at": "2017-02-08T23:57:47.836Z",
+      "status": "unread"
+    },
+    {
+      "id": 3,
+      "user_id": 2,
+      "solution_id": 1,
+      "comment": "Another comment",
+      "created_at": "2017-02-08T23:58:40.247Z",
+      "updated_at": "2017-02-08T23:58:40.247Z",
+      "status": "unread"
+    }
+  ]
+}
+```
+
 ###To receive a feedback item for a solution by ID:
 ```
 GET 'https://staging-ripped.herokuapp.com/api/v1/solutions/:solution_id/feedbacks/:id'
