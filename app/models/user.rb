@@ -23,24 +23,25 @@ class User < ApplicationRecord
   def student?
     role == "student"
   end
-  attr_reader :notification_display, :solution_display
+  attr_reader :notification_display, :solution_display, :count
 
   def notification_display(current_user)
     if instructor?
-      notifier_count = Solution.where(status: 0).count
+      notifier_count = find_uncommented_solution_count
+      display_info = instructor_notifier_count_handler(notifier_count)
     else
       notifier_count = (Solution.where(user_id: current_user.id, status: 1)).count
     end
-    notifier_count_handler(notifier_count)
+    display_info
   end
 
-  def notifier_count_handler(notifier_count)
+  def instructor_notifier_count_handler(notifier_count)
     if notifier_count == 0
       "Recent Updates: None"
     elsif notifier_count == 1
-      "Recent Updates: 1"
+      "1 Solution Needs Feedback"
     else
-      "Recent Updates: " + notifier_count.to_s
+      notifier_count.to_s + "Solutions Need Feedback"
     end
   end
 
@@ -51,5 +52,17 @@ class User < ApplicationRecord
       results = Solution.where(status: 0)
     end
     results
+  end
+  
+  def find_uncommented_solution_count
+    solutions = Solution.all
+    uncommented_solutions = []
+    solutions.map do |solution|
+      if solution.feedbacks.empty?
+        uncommented_solutions << solution
+      end
+      uncommented_solutions
+    end
+    count = uncommented_solutions.count
   end
 end
