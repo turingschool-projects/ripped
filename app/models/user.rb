@@ -55,15 +55,6 @@ class User < ApplicationRecord
       notifier_count.to_s + " Unread Feedbacks"
     end
   end
-
-  def solution_display(current_user)
-    if current_user.role == "student"
-      results = Solution.where(user_id: current_user.id, status: 1)
-    else
-      results = Solution.where(status: 0)
-    end
-    results
-  end
   
   def find_uncommented_solution_count
     solutions = Solution.all
@@ -89,7 +80,7 @@ class User < ApplicationRecord
   def filter_feedbacks_for_solution(solution)
     feedbacks_that_need_to_be_read = []
     solution.feedbacks.each do |feedback|
-      if feedback.status = "unread"
+      if feedback.unread?
         feedbacks_that_need_to_be_read << feedback
       end
       feedbacks_that_need_to_be_read
