@@ -57,9 +57,20 @@ h1, h2, h3, h4, h5, h6{
 
 .dropdown-item > p {
   color: #000 !important;
+  font-size: 8px;
 }
 
+.student-dropdown-item > p {
+  color: #000 !important;
+  text-align: center;
+}
 
+.student-dropdown-item > a {
+  background-color: inherit !important;
+  color: #000 !important;
+  text-align: center;
+  text-decoration: none;
+}
 
 .instructor-dropdown-item {
   color: #000 !important;

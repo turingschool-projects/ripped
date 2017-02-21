@@ -32,9 +32,8 @@ var Content = React.createClass({
       solution.feedbacks.map((feedback) => {
         return (
         <div key={feedback.id}>
-          <li className="dropdown-item">
-            <p>Unread feedback:</p>
-            <a href={'/exercises/' + solution.exercise_id + '/solutions/' + feedback.solution_id } onClick={this.handleDelete.bind(this, feedback.solution_id, feedback.id)}>{feedback.comment}</a>
+          <li className="student-dropdown-item">
+            <a href={'/exercises/' + solution.exercise_id + '/solutions/' + feedback.solution_id } onClick={this.handleDelete.bind(this, feedback.solution_id, feedback.id)}>Unread feedback: {feedback.comment}</a>
           </li>
         </div>
         )

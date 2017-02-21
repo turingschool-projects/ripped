@@ -38,7 +38,7 @@ class User < ApplicationRecord
 
   def instructor_notifier_count_handler(notifier_count)
     if notifier_count == 0
-      "Recent Updates: None"
+      "No Solutions Need Feedback"
     elsif notifier_count == 1
       "1 Solution Needs Feedback"
     else
