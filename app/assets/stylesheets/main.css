@@ -57,7 +57,18 @@ h1, h2, h3, h4, h5, h6{
 
 .dropdown-item > p {
   color: #000 !important;
-  margin-left: 20px;
+}
+
+.instructor-dropdown-item {
+  color: #000 !important;
+  text-align: center;
+}
+
+.instructor-dropdown-item > a {
+  background-color: inherit !important;
+  color: #000 !important;
+  text-align: center;
+  text-decoration: none;
 }
 
 .navbar-button {

@@ -12,7 +12,7 @@ var List = React.createClass({
       return(
         <div key={solution.id}>
           <li className="dropdown-item">
-            <p>A solution to <a href={'/exercises/' + solution.exercise_id + '/solutions/' + solution.id }>{ solution.exercise.name } needs feedback.</a></p>
+            <p className="instructor-dropdown-item"><a href={'/exercises/' + solution.exercise_id + '/solutions/' + solution.id }>A solution to { solution.exercise.name } needs feedback.</a></p>
           </li>
         </div>
       )
