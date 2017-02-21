@@ -36,8 +36,10 @@
         </ul>
       </div>
       <div>
-        <% if current_user %>
+        <% if current_user && current_user.student? %>
           <%= react_component 'Notifications' %>
+        <% elsif current_user && current_user.instructor? %>
+          <%= react_component 'Uncommented' %>
         <% end %>
     </nav>
     <% flash.each do |type, message| %>

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       resources :solutions, only: [:none] do
         resources :feedbacks, only: [:show, :update]
       end
+      
+      get '/solutions', to: 'solutions#uncommented'
     end
   end
 
