@@ -4,7 +4,8 @@ var Content = React.createClass({
   },
   
   componentDidMount() {
-    $.getJSON('/api/v1/users/2/solutions', (response) => { this.setState({ solutions: response }) })
+    const userId = this.props.currentUser
+    $.getJSON(`/api/v1/users/${userId}/solutions`, (response) => { this.setState({ solutions: response }) })
   },
   
   handleDelete(solution_id, id) {
