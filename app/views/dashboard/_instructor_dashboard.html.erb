@@ -1,20 +1,33 @@
 <div class="container">
   <h3>Welcome <%= current_user.census_name(current_user.token) %>!</h3>
   <h5>Instructor Dashboard</h5>
-  <div class="row">
+
+  <% @instructor_presenter.cohorts.each do |cohort| %>
+    <button type="button" name="<%=cohort%>" class="cohort_buttons">
+      <% if cohort.nil? %>
+        unspecified
+      <% else %>
+        <%= cohort %>
+      <% end %>
+    </button>
+  <% end %>
+
+  <div class="row all-solutions">
     <div class="col s4">
       <h5>Submitted Exercises</h5>
       <ul id="all-submitted">
         <% @instructor_presenter.submitted.each do |solution| %>
-          <li><%= link_to solution.exercise.name, exercise_solution_path(solution.exercise, solution) %></li>
-          <li>Submitted by: <%= solution.user.census_name(current_user.token) %></li>
-          <li>Cohort: <%= solution.user.census_cohort(current_user.token) %></li>
-          <li>Exercise Name:  <%= solution.exercise.name %></li>
-          <li>
-            Exercise Tags:  <% solution.exercise.tags.each do |tag| %>
-                              <%= tag.name %>,
-                            <% end %>
-          </li>
+          <div class="dash-solutions" data-solution="<%= solution.user.census_cohort(current_user.token)%>">
+            <li><%= link_to solution.exercise.name, exercise_solution_path(solution.exercise, solution) %></li>
+            <li>Submitted by: <%= solution.user.census_name(current_user.token) %></li>
+            <li>Cohort: <%= solution.user.census_cohort(current_user.token) %></li>
+            <li>Exercise Name:  <%= solution.exercise.name %></li>
+            <li>
+              Exercise Tags:  <% solution.exercise.tags.each do |tag| %>
+                                <%= tag.name %>,
+                              <% end %>
+            </li>
+          </div>
         <% end %>
       </ul>
     </div>

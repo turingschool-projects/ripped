@@ -93,6 +93,8 @@ h1, h2, h3, h4, h5, h6{
   font-weight: bold;
 }
 
+/* Filter buttons */
+
 .alert {
   text-align: center;
   margin-top: 10px;
@@ -105,6 +107,13 @@ h1, h2, h3, h4, h5, h6{
  .waves-effect.waves-light.btn:hover{
    color: #fff;
    background-color: #1C2833;
+ }
+
+ /* Instructor Dashboard*/
+
+ .dash-solutions {
+   padding-top: 8px;
+   padding-bottom: 10px;
  }
 
 /* Homepage Image */
@@ -145,6 +154,8 @@ h1, h2, h3, h4, h5, h6{
 .brand-logo {
   margin-right: 10px !important;
 }
+
+/* Shield */
 
 .shield {
   padding-top: 5%;
