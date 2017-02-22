@@ -73,4 +73,21 @@ describe 'GET /api/v1/solutions' do
     expect(solution_json[0]["exercise"]["solutions"][0]).to have_value(solution1.content)
     expect(solution_json[0]["exercise"]["solutions"][0]).to_not have_value(solution2.content)
   end
+
+  it 'returns nothing if all solutions have feedbacks' do
+    exercise = create(:exercise)
+    solution1 = create(:solution)
+    solution2 = create(:solution)
+    feedback1 = create(:feedback, solution_id: solution1.id)
+    feedback2 = create(:feedback, solution_id: solution2.id)
+    
+    get "/api/v1/solutions"
+
+    solution_json = JSON.parse(response.body)
+
+    expect(response).to be_success
+
+    expect(solution_json).to be_a(Array)
+    expect(solution_json.empty?).to be(true)
+  end
 end
