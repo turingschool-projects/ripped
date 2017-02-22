@@ -15,8 +15,15 @@
       </ul>
     </div>
     <div class="col s4">
-      <h5>Exercises in Progress</h5>
-      <ul id="in-progress">
+      <h5>Solved Exercises</h5>
+      <ul id="all-solved">
+        <% @instructor_presenter.solved.each do |solution| %>
+          <li><%= link_to solution.exercise.name, exercise_solution_path(solution.exercise, solution) %></li>
+          <li>Submitted by: <%= solution.user.first_name %> <%= solution.user.last_name %>
+          <li>Exercise Name:  <%= solution.exercise.name %>
+          <li>Exercise Language:  <%= solution.exercise.tags.second.name %>
+          <li>Exercise Difficulty:  <%= solution.exercise.tags.first.name %>
+        <% end %>
       </ul>
     </div>
     <div class="col s4">
