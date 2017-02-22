@@ -51,7 +51,7 @@ describe 'GET /api/v1/users/:user_id/solutions/:solution_id/feedbacks' do
     exercise = create(:exercise)
     solution1 = create(:solution, user_id: user.id)
     feedback1 = create(:feedback, solution_id: solution1.id, status: "unread")
-    feedback2 = create(:feedback, solution_id: solution1.id, status: "unread")
+    feedback2 = create(:feedback, solution_id: solution1.id, status: "read")
     
     get "/api/v1/users/#{user.id}/solutions/#{solution1.id}/feedbacks"
     
@@ -63,9 +63,8 @@ describe 'GET /api/v1/users/:user_id/solutions/:solution_id/feedbacks' do
 
     expect(solution_json[0]).to have_key("id")
     expect(solution_json[0]).to have_key("exercise_id")
-    expect(solution_json[0]).to have_key("feedbacks")
-    expect(solution_json[0]["feedbacks"].count).to eq(2)
-    # do not trust this test
+    expect(solution_json[0]).to have_key("feedbacks_unread")
+    expect(solution_json[0]["feedbacks_unread"].count).to eq(1)
   end
 
   it 'returns no feedbacks if there are no feedbacks' do
@@ -81,6 +80,6 @@ describe 'GET /api/v1/users/:user_id/solutions/:solution_id/feedbacks' do
 
     expect(solution_json).to be_a(Array)
 
-    expect(solution_json[0]["feedbacks"].empty?).to be(true)
+    expect(solution_json[0]["feedbacks_unread"].empty?).to be(true)
   end
 end
