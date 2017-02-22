@@ -16,7 +16,6 @@ describe 'request returns GitHub Objec' do
       list_of_languages = JSON.parse(request_directory, symbolize_names: true)
 
       expect(list_of_languages.class).to eq(Array)
-      expect(list_of_languages.first.class).to eq(Hash)
 
     end
   end
