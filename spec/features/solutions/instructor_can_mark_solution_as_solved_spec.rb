@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe "an instructor can mark a solution as solved" do
-  scenario "and sees a status for that solution" do
+  scenario "and sees a status for that solution", :vcr do
     exercise = create(:exercise)
     user = create(:user, role: 1)
 

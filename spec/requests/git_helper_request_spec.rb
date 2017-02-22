@@ -15,11 +15,9 @@ describe 'request returns GitHub Objec' do
       request_directory = Net::HTTP.get(uri)
       list_of_languages = JSON.parse(request_directory, symbolize_names: true)
 
-
       expect(list_of_languages.class).to eq(Array)
-      expect(list_of_languages.first).to eq(Hash)
+      expect(list_of_languages.first.class).to eq(Hash)
 
-      binding.pry
     end
   end
 
@@ -33,7 +31,7 @@ describe 'request returns GitHub Objec' do
       exercise_object = JSON.parse(language_folder, symbolize_names: true)
 
       expect(exercise_object.class).to eq(Array)
-      expect(exercise_object.first).to eq(Hash)
+      expect(exercise_object.first.class).to eq(Hash)
     end
   end
 
