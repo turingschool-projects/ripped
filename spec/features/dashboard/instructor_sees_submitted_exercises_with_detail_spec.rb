@@ -1,8 +1,4 @@
 require 'rails_helper'
-# As an authenticated instructor
-# When I view my dashboard
-# I can see a list of submitted exercises
-# and the student's name, the language of the exercise, the difficulty, and the name
 
 describe "a user accesses the dashboard" do
   context "a user is logged in as a student" do
@@ -54,5 +50,35 @@ describe "a user accesses the dashboard" do
       end
 
     end
+
+    scenario "and can see the students name and exercise details", :vcr do
+      user1 = create(:user, role: "instructor")
+      user2 = create(:user)
+      tag_1 = create(:tag, name: "ruby")
+      tag_2 = create(:tag, name: "easy")
+      exercise1 = create(:exercise)
+      exercise1.tags =[tag_1, tag_2]
+      solution1 = create(:solution, exercise_id: exercise1.id, user_id: user2.id, status: "Submitted")
+
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
+
+      visit dashboard_path
+
+      expect(page).to have_content("Instructor Dashboard")
+      expect(page).to have_content("Submitted Exercises")
+      within(:css, "#all-submitted") do
+        expect(page).to have_content(user2.first_name)
+        expect(page).to have_content(user2.last_name)
+        expect(page).to have_content(tag_1.name)
+        expect(page).to have_content(tag_2.name)
+        expect(page).to have_content(solution1.exercise.name)
+      end
+    end
   end
 end
+
+
+
+
+
