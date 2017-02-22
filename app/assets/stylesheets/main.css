@@ -124,16 +124,24 @@ h1, h2, h3, h4, h5, h6{
   margin-top: 6rem;
 }
 
-.turing-logo > img {
-  height: 10% !important;
-  width: 10%;
-  border-radius: 50%;
-  -webkit-transition: -webkit-transform 4s ease-in-out;
-  transition:           transform 4s ease-in-out;
-
+.turing-navbar-logo {
+  height: 3rem !important;
+  width: 3rem;
+  float: left;
+  clear: both;
+  margin-top: 8px;
+  margin-right: 10px;
 }
 
-.turing-logo > img:hover {
-  -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
+/* Brand Logo Text */
+
+.main-brand-logo {
+  font-family: 'Goudy Bookletter 1911', serif !important;
+  letter-spacing: 2.75px;
+}
+
+/* Brand Logo CSS Override */
+
+.brand-logo {
+  margin-right: 10px !important;
 }
