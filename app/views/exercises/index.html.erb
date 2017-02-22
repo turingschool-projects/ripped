@@ -1,11 +1,10 @@
 <div class="container">
-
-
+  <% @tags.each do |tag| %>
+  <button type="button" name="<%=tag.name%>" class="tag_buttons"><%= tag.name %></button>
+  <% end %>
+  
   <div id="exercises">
     <div id="all-exercises" class="container" style="display: show">
-      <% @tags.each do |tag| %>
-      <button type="button" name="<%=tag.name%>" class="tag_buttons"><%= tag.name %></button>
-      <% end %>
       <%= render partial: 'all_exercises' %>
     </div>
   </div>
