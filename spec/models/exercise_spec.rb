@@ -54,5 +54,13 @@ RSpec.describe Exercise, type: :model do
 
       expect(exercise.user_solution?(user)).to eq(true)
     end
+
+    it "returns false if a user has not submitted a solution to the exercise" do
+      user = create(:user)
+      exercise = create(:exercise)
+      solution = create(:solution, exercise: exercise)
+
+      expect(exercise.user_solution?(user)).to eq(false)
+    end
   end
 end
