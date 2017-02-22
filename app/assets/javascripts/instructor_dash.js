@@ -9,7 +9,7 @@ $(document).ready(function(){
 
     $(this).blur();
     if(activeCohorts.length == 0){
-      $('#all-solutions div').show();
+      $('#all-submitted div').show();
       return
     }
 
