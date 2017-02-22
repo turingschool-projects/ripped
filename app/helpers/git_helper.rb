@@ -45,6 +45,7 @@ module GitHelper
   end
 
   def self.find_tags_and_save(exercise_items, folder)
+    binding.pry
     corrected_name = exercise_items[:name].split('.')[0].titleize
     match = Exercise.joins(:tags).where({ tags: {name: folder} })
     exercise = Exercise.find_by(name: corrected_name)
