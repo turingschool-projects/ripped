@@ -1,5 +1,7 @@
 class FeedbacksController < ApplicationController
   load_and_authorize_resource only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_feedback, only: [:edit, :update, :destroy]
+  before_action :set_solution, only: [:create, :edit, :update, :destroy]
 
   def new
     @feedback = Feedback.new()
@@ -7,7 +9,6 @@ class FeedbacksController < ApplicationController
 
   def create
     @feedback = Feedback.new(feedback_params)
-    @solution = Solution.find(params[:solution_id])
     @feedback.user = current_user
     @feedback.solution = @solution
     if @feedback.save
@@ -20,13 +21,10 @@ class FeedbacksController < ApplicationController
   end
 
   def edit
-    @feedback = Feedback.find(params[:id])
     @solution = Solution.find(params[:solution_id])
   end
 
   def update
-    @solution = Solution.find(params[:solution_id])
-    @feedback = Feedback.find(params[:id])
     if @feedback.update(feedback_params)
       flash[:success] = "Your feedback has been updated."
       redirect_to exercise_solution_path(@solution.exercise, @solution)
@@ -37,8 +35,6 @@ class FeedbacksController < ApplicationController
   end
 
   def destroy
-    @feedback = Feedback.find(params[:id])
-    @solution = Solution.find(params[:solution_id])
     @feedback.delete
     redirect_to exercise_solution_path(@solution.exercise, @solution)
     flash[:success] = "Your feedback has been deleted."
@@ -47,6 +43,14 @@ class FeedbacksController < ApplicationController
   private
     def feedback_params
       params.require(:feedback).permit(:comment, :user_id, :solution_id)
+    end
+
+    def set_feedback
+      @feedback = Feedback.find(params[:id])
+    end
+
+    def set_solution
+      @solution = Solution.find(params[:solution_id])
     end
 
 end

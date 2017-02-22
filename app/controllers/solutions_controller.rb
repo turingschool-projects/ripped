@@ -1,25 +1,21 @@
 class SolutionsController < ApplicationController
   load_and_authorize_resource only: [:index, :show, :new, :create]
+  before_action :set_exercise, only: [:show, :index, :new, :create]
 
   def index
-    @exercise = Exercise.find(params[:exercise_id])
     @solutions = @exercise.solutions
   end
 
   def show
-    @solution = Solution.find(params[:id])
-    @user = @solution.user
-    @feedbacks = @solution.feedbacks.all
-    @feedback = @solution.feedbacks.new()
+    @presenter = SolutionsPresenter.new(params[:id])
+    @feedback = @presenter.solution.feedbacks.new()
   end
 
   def new
-    @exercise = Exercise.find(params[:exercise_id])
     @solution = Solution.new()
   end
 
   def create
-    @exercise = Exercise.find(params[:exercise_id])
     @solution = Solution.new(solution_params)
     @solution.exercise = @exercise
     @solution.user = current_user
@@ -52,6 +48,10 @@ class SolutionsController < ApplicationController
 
   def solution_params
     params.require(:solution).permit(:id, :content, :user_id, :exercise_id)
+  end
+
+  def set_exercise
+    @exercise = Exercise.find(params[:exercise_id])
   end
 
 end
