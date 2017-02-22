@@ -15,7 +15,7 @@ describe "Profile" do
   end
 
   context "#all_users" do
-    it "returns details on a user's followers", :vcr do
+    it "returns an array of all users' information", :vcr do
         token = ENV["census_token"]
         users = Profile.all_users(token)
         user = users.first
