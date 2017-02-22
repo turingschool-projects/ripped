@@ -44,3 +44,42 @@ describe 'PATCH /api/v1/solutions/:solution_id/feedbacks/:id' do
     expect(feedback["status"]).to eq("read")
   end
 end
+
+describe 'GET /api/v1/users/:user_id/solutions/:solution_id/feedbacks' do
+  it 'returns all unread feedbacks' do
+    user = create(:user)
+    exercise = create(:exercise)
+    solution1 = create(:solution, user_id: user.id)
+    feedback1 = create(:feedback, solution_id: solution1.id, status: "unread")
+    feedback2 = create(:feedback, solution_id: solution1.id, status: "unread")
+    
+    get "/api/v1/users/#{user.id}/solutions/#{solution1.id}/feedbacks"
+    
+    solution_json = JSON.parse(response.body)
+    
+    expect(response).to be_success
+
+    expect(solution_json).to be_a(Array)
+
+    expect(solution_json[0]).to have_key("id")
+    expect(solution_json[0]).to have_key("exercise_id")
+    expect(solution_json[0]).to have_key("feedbacks")
+    expect(solution_json[0]["feedbacks"].count).to eq(2)
+  end
+
+  it 'returns no feedbacks if there are no feedbacks' do
+    user = create(:user)
+    exercise = create(:exercise)
+    solution1 = create(:solution, user_id: user.id)
+    
+    get "/api/v1/users/#{user.id}/solutions/#{solution1.id}/feedbacks"
+    
+    solution_json = JSON.parse(response.body)
+    
+    expect(response).to be_success
+
+    expect(solution_json).to be_a(Array)
+
+    expect(solution_json[0]["feedbacks"].empty?).to be(true)
+  end
+end
