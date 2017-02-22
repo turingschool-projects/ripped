@@ -45,4 +45,14 @@ RSpec.describe Exercise, type: :model do
       expect(exercise).to respond_to(:tags)
     end
   end
+
+  describe '.user_solution(user)' do
+    it "returns true if a user has submitted a solution to the exercise" do
+      user = create(:user)
+      exercise = create(:exercise)
+      solution = create(:solution, user: user, exercise: exercise)
+
+      expect(exercise.user_solution?(user)).to eq(true)
+    end
+  end
 end

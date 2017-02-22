@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Exercise, type: :model do
+RSpec.describe ExerciseTag, type: :model do
   describe "validations" do
     it "is invalid without an exercise id" do
       tag = create(:tag)
