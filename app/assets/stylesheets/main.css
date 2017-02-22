@@ -23,8 +23,8 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .active {
-  background-color: #05c2d1;
-  color: #fff;
+  background-color: #05c2d1 !important;
+  color: #fff !important;
 }
 
 .submission-box{
@@ -107,6 +107,14 @@ h1, h2, h3, h4, h5, h6{
  .waves-effect.waves-light.btn:hover{
    color: #fff;
    background-color: #1C2833;
+ }
+
+ .cohort_buttons, .tag_buttons {
+   border: 2px solid #1C2833;
+   border-radius: 2px;
+   background-color: #fff;
+   color: #1C2833;
+   margin-top: 10px;
  }
 
  /* Instructor Dashboard*/
