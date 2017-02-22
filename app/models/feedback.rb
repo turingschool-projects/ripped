@@ -5,6 +5,8 @@ class Feedback < ApplicationRecord
 
   belongs_to :user
   belongs_to :solution
+  
+  enum status: [:unread, :read]
 
   def time_posted_or_updated
     if self.created_at == self.updated_at

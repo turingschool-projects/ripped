@@ -24,6 +24,7 @@ gem 'cancancan'
 gem 'github_webhook', '~> 1.0.2'
 gem 'octokit'
 gem 'github_api'
+gem 'active_model_serializers', '~> 0.10.0'
 
 group :production do
   gem 'rails_12factor'
@@ -42,6 +43,8 @@ group :development, :test do
   gem 'vcr'
   gem 'webmock'
   gem 'pry'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development do
