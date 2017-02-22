@@ -7,7 +7,7 @@ describe 'request returns GitHub Objec' do
   end
 
   context 'it returns directory object' do
-    it 'returns list of languages as an array' do
+    xit 'returns list of languages as an array' do
       VCR.turn_off!
       WebMock.disable!
 
@@ -22,7 +22,7 @@ describe 'request returns GitHub Objec' do
   end
 
   context 'it returns exercise object' do
-    it 'returns list of exercises for a language as an array' do
+    xit 'returns list of exercises for a language as an array' do
       VCR.turn_off!
       WebMock.disable!
 
@@ -36,7 +36,7 @@ describe 'request returns GitHub Objec' do
   end
 
   context 'it returns a lesson' do
-    it 'returns the lesson in the exercises folder' do
+    xit 'returns the lesson in the exercises folder' do
       VCR.turn_off!
       WebMock.disable!
 
