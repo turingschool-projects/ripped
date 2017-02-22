@@ -145,3 +145,13 @@ h1, h2, h3, h4, h5, h6{
 .brand-logo {
   margin-right: 10px !important;
 }
+
+.shield {
+  padding-top: 5%;
+  width: 225px;
+  margin: auto;
+}
+
+#shield {
+  width: 100%;
+}
