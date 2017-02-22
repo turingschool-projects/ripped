@@ -53,3 +53,24 @@ describe 'GET /api/v1/exercises/:exercise_id/solutions/:id' do
     expect(response.body).to eq("")
   end
 end
+
+describe 'GET /api/v1/solutions' do
+  it 'returns only solutions with no feedbacks' do
+    exercise = create(:exercise)
+    solution1 = create(:solution)
+    solution2 = create(:solution)
+    feedback1 = create(:feedback, solution_id: solution2.id)
+    
+    get "/api/v1/solutions"
+
+    solution_json = JSON.parse(response.body)
+
+    expect(response).to be_success
+    expect(solution_json).to be_a(Array)
+    expect(solution_json[0]).to have_key("id")
+    expect(solution_json[0]).to have_key("exercise_id")
+    expect(solution_json[0]).to have_key("content")
+    expect(solution_json[0]["exercise"]["solutions"][0]).to have_value(solution1.content)
+    expect(solution_json[0]["exercise"]["solutions"][0]).to_not have_value(solution2.content)
+  end
+end
