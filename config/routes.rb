@@ -12,18 +12,19 @@ Rails.application.routes.draw do
   end
 
   resources :exercises do
-    resources :solutions, only: [:index, :show, :new, :create]
+    resources :solutions
   end
 
   resources :solutions, only: [:none] do
     resources :feedbacks, except: [:index, :show]
   end
 
-
   get '/dashboard', to: 'dashboard#show'
 
   get 'signout', to: 'sessions#destroy', as: 'signout'
   get 'auth/:provider/callback', to: 'sessions#create'
+
+  resource :github_webhooks, only: :create, defaults: { formats: :json }, to: 'github_webhooks#github_create'
 
   root to: 'home#index'
 
