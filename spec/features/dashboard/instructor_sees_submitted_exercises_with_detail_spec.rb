@@ -68,8 +68,8 @@ describe "a user accesses the dashboard" do
       expect(page).to have_content("Instructor Dashboard")
       expect(page).to have_content("Submitted Exercises")
       within(:css, "#all-submitted") do
-        expect(page).to have_content(user2.first_name)
-        expect(page).to have_content(user2.last_name)
+        expect(page).to have_content(user2.census_name(ENV['census_token']))
+        expect(page).to have_content(user2.census_cohort(ENV['census_token']))
         expect(page).to have_content(tag_1.name)
         expect(page).to have_content(tag_2.name)
         expect(page).to have_content(solution1.exercise.name)
