@@ -65,6 +65,7 @@ describe 'GET /api/v1/users/:user_id/solutions/:solution_id/feedbacks' do
     expect(solution_json[0]).to have_key("exercise_id")
     expect(solution_json[0]).to have_key("feedbacks")
     expect(solution_json[0]["feedbacks"].count).to eq(2)
+    # do not trust this test
   end
 
   it 'returns no feedbacks if there are no feedbacks' do
