@@ -41,7 +41,6 @@ group :development, :test do
   gem 'vcr'
   gem 'webmock'
   gem 'pry'
-  gem 'better_errors'
   gem 'binding_of_caller'
 end
 

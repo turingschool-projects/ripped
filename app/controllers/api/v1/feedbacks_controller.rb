@@ -1,12 +1,8 @@
 class Api::V1::FeedbacksController < ApiController
   def index
-    solutions = Solution.where(user_id: params[:user_id])
-    @feedbacks = solutions.each do |solution|
-      solution.feedbacks
-    end
-
-    if !@feedbacks.nil?
-      render json: @feedbacks, status: 200
+    @solutions = Solution.where(user_id: params[:user_id])
+    if !@solutions.nil?
+      render json: @solutions, status: 200
     else 
       render body: nil, status: 400
     end
