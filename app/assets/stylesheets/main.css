@@ -87,3 +87,13 @@ h1, h2, h3, h4, h5, h6{
   background-size: cover !important;
   background-color: transparent;
 }
+
+.shield {
+  padding-top: 18%;
+  width: 250px;
+  margin: auto;
+}
+
+#shield {
+  width: 100%;
+}
