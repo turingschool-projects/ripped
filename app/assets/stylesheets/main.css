@@ -1,0 +1,180 @@
+nav {
+  background-color: #67809F !important;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+  color: #7c8c8e;
+}
+
+a {
+  color: #05c2d1;
+  font-family: 'Open Sans', sans-serif;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #22A7F0;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Open Sans', sans-serif;
+  color: #3c4040;
+}
+
+.active {
+  background-color: #05c2d1 !important;
+  color: #fff !important;
+}
+
+.submission-box{
+  height: 200px;
+}
+
+.tag-badges {
+  margin: 0px;
+  float: left !important;
+  background-color: #05c2d1;
+  border-radius: 2px;
+  color: #fff !important;
+}
+
+/* Notification Styles */
+
+.notification-button {
+  color: #fff !important;
+  background: rgba(255,0,0,0) !important;
+}
+
+.dropdown-custom {
+  margin-top: 20px;
+  background-color: #fff !important;
+}
+
+.dropdown-button {
+  background-color: #1C2833 !important;
+}
+
+.dropdown-item > p {
+  color: #000 !important;
+  font-size: 8px;
+}
+
+.student-dropdown-item > p {
+  color: #000 !important;
+  text-align: center;
+}
+
+.student-dropdown-item > a {
+  background-color: inherit !important;
+  color: #000 !important;
+  text-align: center;
+  text-decoration: none;
+}
+
+.student-read-notification {
+  display: none !important;
+}
+
+.instructor-dropdown-item {
+  color: #000 !important;
+  text-align: center;
+}
+
+.instructor-dropdown-item > a {
+  background-color: inherit !important;
+  color: #000 !important;
+  text-align: center;
+  text-decoration: none;
+}
+
+.navbar-button {
+  background-color: #1C2833 !important;
+}
+
+.brand-logo {
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+/* Filter buttons */
+
+.alert {
+  text-align: center;
+  margin-top: 10px;
+ }
+
+ .waves-effect.waves-light.btn{
+   background-color: #67809F;
+ }
+
+ .waves-effect.waves-light.btn:hover{
+   color: #fff;
+   background-color: #1C2833;
+ }
+
+ .cohort_buttons, .tag_buttons {
+   border: 2px solid #1C2833;
+   border-radius: 2px;
+   background-color: #fff;
+   color: #1C2833;
+   margin-top: 10px;
+ }
+
+ /* Instructor Dashboard*/
+
+ .dash-solutions {
+   padding-top: 8px;
+   padding-bottom: 10px;
+ }
+
+/* Homepage Image */
+
+.root-page {
+  background-image: url(https://source.unsplash.com/njM4it9erx4/);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover !important;
+  background-color: transparent;
+}
+
+.turing-logo {
+  text-align: center;
+  justify-content: center;
+  margin-top: 6rem;
+}
+
+.turing-navbar-logo {
+  height: 3rem !important;
+  width: 3rem;
+  float: left;
+  clear: both;
+  margin-top: 8px;
+  margin-right: 10px;
+}
+
+/* Brand Logo Text */
+
+.main-brand-logo {
+  font-family: 'Goudy Bookletter 1911', serif !important;
+  letter-spacing: 2.75px;
+}
+
+/* Brand Logo CSS Override */
+
+.brand-logo {
+  margin-right: 10px !important;
+}
+
+/* Shield */
+
+.shield {
+  padding-top: 5%;
+  width: 225px;
+  margin: auto;
+}
+
+#shield {
+  width: 100%;
+}

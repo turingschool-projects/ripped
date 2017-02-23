@@ -5,18 +5,32 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails_12factor', group: :production
 gem 'figaro'
 gem 'rails', '~> 5.0.1'
 gem 'pg', '~> 0.18'
-gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
-gem 'omniauth-census', git: "https://github.com/bcgoss/omniauth-census"
+gem 'coderay'
+gem 'omniauth-oauth2'
+gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
+gem 'thin'
+gem "select2-rails"
+gem 'faraday'
+gem 'cancancan'
+gem 'github_webhook', '~> 1.0.2'
+gem 'octokit'
+gem 'github_api'
+gem 'active_model_serializers', '~> 0.10.0'
+gem 'react-rails'
+
+group :production do
+  gem 'rails_12factor'
+  gem 'puma', '~> 3.0'
+end
 
 group :development, :test do
   gem 'rspec-rails'
@@ -29,6 +43,8 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'vcr'
   gem 'webmock'
+  gem 'pry'
+  gem 'binding_of_caller'
 end
 
 group :development do

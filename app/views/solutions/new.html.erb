@@ -1,0 +1,9 @@
+<div class="container">
+  <h2>Submit Solution</h2>
+
+  <%= form_for [@exercise, @solution] do |f| %>
+  <%= f.label "Paste solution here:" %>
+  <%= f.text_area :content, class: "submission-box" %>
+  <%= f.submit "Submit Solution", class: "waves-effect waves-light btn" %>
+  <% end %>
+</div>

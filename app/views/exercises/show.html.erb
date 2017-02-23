@@ -1,0 +1,31 @@
+<div class="container">
+  <h3><%= @exercise.name %></h3>
+    <% if @exercise.unpublished? %>
+      <h6>unpublished</h6>
+    <% end %>
+    <% if current_user.instructor? %>
+      <%= link_to edit_exercise_path(@exercise), class: "btn-floating btn-small waves-effect waves-light red" do %>
+        <i class="small material-icons">mode_edit</i>
+      <% end %>
+      <% if @exercise.published? %>
+        <%= link_to exercise_path(@exercise), method: 'delete', class: "btn-floating btn-small waves-effect waves-light red" do %>
+          <i class="material-icons">delete</i>
+        <% end %>
+
+      <% else %>
+        <%= link_to exercise_path(@exercise), method: 'delete', class: "btn-floating btn-small waves-effect waves-light red" do %>
+          <i class="material-icons">note_add</i>
+        <% end %>
+      <% end %>
+    <% end %>
+
+
+  <p><% @exercise.tags.each do |tag| %>
+      <span class="badge tag-badges"><%= tag.name %></span>
+    <% end %></p></br>
+  <%= @exercise.description %>
+  <%= CodeRay.scan(@exercise.content, :ruby).div.html_safe %>
+
+  <%= link_to "Submit your solution", new_exercise_solution_path(@exercise), class: "waves-effect waves-light btn" %>
+  <%= link_to "See all submissions", exercise_solutions_path(@exercise), class: "waves-effect waves-light btn" %>
+</div>

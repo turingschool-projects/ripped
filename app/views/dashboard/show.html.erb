@@ -1,0 +1,5 @@
+<% if current_user.student? %>
+  <%= render "student_dashboard" %>
+<% elsif current_user.instructor? %>
+  <%= render "instructor_dashboard" %>
+<% end %>

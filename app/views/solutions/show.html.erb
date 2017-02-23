@@ -1,0 +1,44 @@
+<div class="container">
+  <% if @exercise.user_solution?(current_user) || current_user.instructor? %>
+    <% if @presenter.user == current_user %>
+      <h3>Your solution for <%=@exercise.name %> </h3>
+    <% else %>
+      <h3><%= @presenter.user.census_name(current_user.token) %>'s solution for <%=@exercise.name %> </h3>
+    <% end %>
+    <h5>Status: <%= @presenter.solution.status %></h5>
+    <%= CodeRay.scan(@presenter.solution.content, :ruby).div.html_safe %>
+    <br>
+    <%= link_to "All submissions for #{@solution.exercise.name}", exercise_solutions_path(@solution.exercise), class: "waves-effect waves-light btn" %>
+    <% if current_user.instructor? %>
+    <%= link_to "Mark as Solved", exercise_solution_path(@solution.exercise, button: 'correct'), class: "waves-effect waves-light btn", :method => :patch %>
+    <%= link_to "Mark as Incorrect", exercise_solution_path(@solution.exercise, button: 'wrong'), class: "waves-effect waves-light btn", :method => :patch %>
+    <% end %>
+    <br>
+    <h4>Feedback</h4>
+    <ul>
+      <% @presenter.feedbacks.each do |fb| %>
+        <li>
+          <strong><%= fb.user.census_name(current_user.token) %></strong> <%= fb.user.census_cohort(current_user.token) %>
+          <span style="float:right; font-size: 12px;"> <%= time_ago_in_words(fb.time_posted_or_updated) %> ago</span>
+            <% if fb.user.instructor? %>
+              (Instructor)
+            <% end %>
+
+          <p><%= fb.comment %></p>
+          <% if fb.user == current_user || current_user.instructor? %>
+            <%= link_to "Edit Feedback", edit_solution_feedback_path(@presenter.solution, fb) %>
+            <span style="float:right"><%= link_to "Delete", [@presenter.solution, fb], :method => :delete %></span>
+          <% end %>
+          <hr>
+        </li>
+      <% end %>
+    </ul>
+    <h5>Leave Feedback</h5>
+    <%= form_for [@presenter.solution, @feedback] do |f| %>
+      <p><%= f.text_area :comment, id: "feedback-content" %></p>
+      <p><%= f.submit class: "waves-effect waves-light btn" %></p>
+    <% end %>
+  <% else %>
+    <h5>You must submit a solution to see this page: <%= link_to "Submit to this exercise", exercise_path(@exercise) %></h5>
+  <% end %>
+</div>

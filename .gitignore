@@ -12,9 +12,19 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+public/assets/
 
 # Ignore Byebug command history file.
 .byebug_history
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore coverage
+/coverage
+
+# Ignore vcr fixtures
+/spec/fixtures
+
+# Ignore public assets
+/public/assets
