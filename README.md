@@ -12,6 +12,7 @@ An Exercism-like application for the Turing School of Software and Design.
   - [The file tree](#the-file-tree)
   - [The webhook](#the-webhook)
   - [GitHelper](#GitHelper)
+  - [Additional Functionality](#additional-functionality)
 
 
 ## API Endpoints:
@@ -284,7 +285,7 @@ class GithubWebhooksController < ActionController::Base
   include GithubWebhook::Processor
 
 def github_create
-    uri = URI('https://api.github.com/repos/#{user_name}/#{repo_name}/contents/')
+    uri = URI("https://api.github.com/repos/#{ENV['GITHUB_USER']}/#{ENV['GITHUB_USER']}/contents/")
     GitHelper.get_directory_object(uri)
 end
 ```
@@ -337,6 +338,12 @@ exercise_item = {name: "Hello World",
                  description: "This explains what the exercise is for"})
 ```
 
-This is where the folder object we have passed through each method is now used. If you recall, the folder variable was set to the name of the folder the block in get_language_folder is currently using. We pass this through the module because the name of that folder is the same as the language the exercise is written in. We use that string, in this case "javascript" to build the tag for the exercise that is going to be created.
+This is where the folder object we have passed through each method is now used. If you recall, the folder variable was set to the name of the folder in the block in the get_language_folder method. We pass this through the module because the name of that folder is the same as the language the exercise is written in. We use that string, in this case "javascript" to build the tag for the exercise that is going to be created and generate a collection of the exercises that already exist in your database for that language.
 
-In the find_tags_and_save method we use an ActiveRecord join clause to create an object that searches ouR database for all records that use the "javascript" or folder tag. This object is called match. We then search the database for the exercise by name and match that return against the collection of exercises of the same type. If the exercise exists, the method updates the exercise in the database, otherwise the object is created in the database.
+In the find_tags_and_save method we use an ActiveRecord join clause to create an object that searches our database for all records that use the "javascript" or folder tag. This object is called match. We then search the database for the exercise by name and match that return against the collection of exercises of the same type. If the exercise exists, the method updates the exercise in the database, otherwise the object is created in the database.
+
+### Additional Functionality
+
+The goal for the Webhook functionality needs to be expanded to include updating the tags of the exercises and deleting or un-publishing exercises through the push. In its current state, if an instructor pushes the exercises repo, the module is unable to update the published and unpublished status of the exercise (in our exercise table, we don't delete exercises through the application, we have provided functionality to only publish or un-publish exercises, this determines if they appear on the show and index pages.)
+
+To accomplish this, the application would need to compare entire sets of objects against one another, one coming from the application database and the other that is created from the data that is sent when the exercises repo is pushed to git. Adding dynamic tag update and creating for the difficulty levels could be down through formatting the READMEs of the exercises so they include metadata that is parsed out the description. 

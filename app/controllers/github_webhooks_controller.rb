@@ -8,7 +8,7 @@ class GithubWebhooksController < ActionController::Base
 
 
   def github_create
-    uri = URI('https://api.github.com/repos/NZenitram/exercises/contents/')
+    uri = URI("https://api.github.com/repos/#{ENV['GITHUB_USER']}/#{ENV['GITHUB_REPO']}/contents/")
     GitHelper.get_directory_object(uri)
   end
 
