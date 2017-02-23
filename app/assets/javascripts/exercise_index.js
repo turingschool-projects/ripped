@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
-  $('.tag_buttons').click(function(e){
-    e.preventDefault();
+  $('.tag_buttons').click(function(event){
+    event.preventDefault();
     $(this).toggleClass('active');
     var activeTags = $.map($('.tag_buttons.active'), function(element){
       return element.name;
@@ -15,13 +15,7 @@ $(document).ready(function(){
 
     $('#all-exercises div').each(function(){
       var tags = $(this).attr('data-exercise').split(',');
-      var match = false;
-      activeTags.forEach(function(tag){
-        if(tags.includes(tag)){
-          match = true;
-        }
-      });
-      if(match) {
+      if ($(activeTags).not(tags).length === 0) {
         $(this).show();
       } else {
         $(this).hide();
