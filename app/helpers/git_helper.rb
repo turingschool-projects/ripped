@@ -9,7 +9,7 @@ module GitHelper
   def self.get_language_folder(list_of_languages)
     list_of_languages.each do |lang|
       folder = lang[:name]
-      uri = URI("https://api.github.com/repos/NZenitram/exercises/contents/#{folder}")
+      uri = URI("https://api.github.com/repos/#{ENV['GITHUB_USER']}/#{ENV['GITHUB_REPO']}/contents/#{folder}")
       language_folder = Net::HTTP.get(uri)
       exercise_object = JSON.parse(language_folder, symbolize_names: true)
       get_and_save_exercise(exercise_object, folder)
@@ -19,7 +19,7 @@ module GitHelper
   def self.get_and_save_exercise(exercise_object, folder)
     exercise_object.each do |exercise_folder|
       exercise = exercise_folder[:name]
-      uri = URI("https://api.github.com/repos/NZenitram/exercises/contents/#{folder}/#{exercise}")
+      uri = URI("https://api.github.com/repos/#{ENV['GITHUB_USER']}/#{ENV['GITHUB_REPO']}/contents/#{folder}/#{exercise}")
       exercise_folder = Net::HTTP.get(uri)
       lesson_folder = JSON.parse(exercise_folder, symbolize_names: true)
       retrieve_lesson_content(lesson_folder, folder, exercise)
@@ -30,7 +30,7 @@ module GitHelper
     exercise_items = {}
     lesson_folder.each do |exercise_name|
       name = exercise_name[:name]
-      uri = URI("https://raw.githubusercontent.com/NZenitram/exercises/master/#{folder}/#{exercise}/#{name}")
+      uri = URI("https://raw.githubusercontent.com/#{ENV['GITHUB_USER']}/#{ENV['GITHUB_REPO']}/master/#{folder}/#{exercise}/#{name}")
       if name == "README.md"
         text = Net::HTTP.get(uri)
         exercise_items[:description] = text
