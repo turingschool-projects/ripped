@@ -1,5 +1,5 @@
 <div class="container">
-  <% if @exercise.user_solution?(current_user) %>
+  <% if @exercise.user_solution?(current_user) || current_user.instructor? %>
     <% if @presenter.user == current_user %>
       <h3>Your solution for <%=@exercise.name %> </h3>
     <% else %>
@@ -39,6 +39,6 @@
       <p><%= f.submit class: "waves-effect waves-light btn" %></p>
     <% end %>
   <% else %>
-    <%= render :file => 'public/404.html' %>
+    <h5>You must submit a solution to see this page: <%= link_to "Submit to this exercise", exercise_path(@exercise) %></h5>
   <% end %>
 </div>
