@@ -19,9 +19,8 @@ class Api::V1::FeedbacksController < ApiController
 
   def update
     @feedback = Feedback.find_by(id: params[:id])
-    @solutions = Solution.where(user_id: @feedback.solution.user_id)
     if @feedback.update(feedback_params)
-      render json: @solutions, each_serializer: SolutionWithUnreadFeedbackSerializer, status: 200
+      render json: @feedback, status: 200
     else
       render body: nil, status: 400
     end

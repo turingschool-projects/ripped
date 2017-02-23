@@ -63,8 +63,8 @@ describe 'GET /api/v1/users/:user_id/solutions/:solution_id/feedbacks' do
 
     expect(solution_json[0]).to have_key("id")
     expect(solution_json[0]).to have_key("exercise_id")
-    expect(solution_json[0]).to have_key("feedbacks_unread")
-    expect(solution_json[0]["feedbacks_unread"].count).to eq(1)
+    expect(solution_json[0]).to have_key("feedbacks")
+    expect(solution_json[0]["feedbacks"].count).to eq(1)
   end
 
   it 'returns no feedbacks if there are no feedbacks' do
@@ -80,6 +80,6 @@ describe 'GET /api/v1/users/:user_id/solutions/:solution_id/feedbacks' do
 
     expect(solution_json).to be_a(Array)
 
-    expect(solution_json[0]["feedbacks_unread"].empty?).to be(true)
+    expect(solution_json[0]["feedbacks"].empty?).to be(true)
   end
 end
