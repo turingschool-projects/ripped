@@ -45,7 +45,7 @@ RSpec.describe Solution, type: :model do
   end
 
   describe "statuses" do
-    it { should define_enum_for(:status).with([:Submitted, :Solved])}
+    it { should define_enum_for(:status).with([:Submitted, :Solved, :Incorrect])}
 
     it "is created with the status of submitted" do
       solution = create(:solution)
