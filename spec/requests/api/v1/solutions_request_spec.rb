@@ -130,6 +130,6 @@ describe 'GET /api/v1/users/:user_id/solutions' do
     expect(response).to be_success
     expect(solution_json).to be_a(Array)
 
-    expect(solution_json.empty?).to be(true)
+    expect(solution_json[0]["feedbacks"].empty?).to be(true)
   end
 end
