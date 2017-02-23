@@ -9,10 +9,9 @@ class Api::V1::SolutionsController < ApiController
   end
   
   def index
-    solutions = Solution.where(user_id: params[:user_id])
-    @unreads = find_only_unread_feedbacks(solutions)
-    if !@unreads.nil?
-      render json: @unreads, status: 200
+    @solutions = Solution.where(user_id: params[:user_id])
+    if !@solutions.nil?
+      render json: @solutions, each_serializer: SolutionWithUnreadFeedbackSerializer, status: 200
     else
       render body: nil, status: 400
     end

@@ -72,6 +72,10 @@ h1, h2, h3, h4, h5, h6{
   text-decoration: none;
 }
 
+.student-read-notification {
+  display: none !important;
+}
+
 .instructor-dropdown-item {
   color: #000 !important;
   text-align: center;
