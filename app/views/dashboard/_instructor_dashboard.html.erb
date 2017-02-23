@@ -1,7 +1,7 @@
 <div class="container">
   <h3>Welcome <%= current_user.census_name(current_user.token) %>!</h3>
   <h5>Instructor Dashboard</h5><br>
-  <h6>Filter by cohort:</h6>
+  <h6>Filter "Submitted" by cohort:</h6>
   <% @instructor_presenter.cohorts.each do |cohort| %>
     <button type="button" name="<%=cohort%>" class="cohort_buttons">
       <% if cohort.nil? %>
