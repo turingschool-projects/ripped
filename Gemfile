@@ -21,7 +21,11 @@ gem 'thin'
 gem "select2-rails"
 gem 'faraday'
 gem 'cancancan'
+gem 'github_webhook', '~> 1.0.2'
+gem 'octokit'
+gem 'github_api'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'react-rails'
 
 group :production do
   gem 'rails_12factor'

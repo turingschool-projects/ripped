@@ -1,0 +1,32 @@
+<div class="container">
+  <h3>Welcome <%= current_user.census_name(current_user.token) %>!</h3>
+  <div class="row">
+    <div class="col s4">
+      <h5>Feedback</h5>
+      <% @presenter.solutions.each do |solution| %>
+        <% if solution.feedbacks.count > 0 %>
+          <% solution.feedbacks.each do |fb| %>
+            <strong><%= fb.user.census_name(current_user.token) %></strong> <%= fb.user.census_cohort(current_user.token) %>:
+            <%= link_to fb.comment, exercise_solution_path(fb.solution.exercise, fb.solution) %></p>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col s4">
+      <h5>Exercises in Progress</h5>
+      <ul id="in-progress">
+        <% @presenter.in_progress.each do |solution| %>
+          <li><%= link_to solution.exercise.name, exercise_solution_path(solution.exercise, solution) %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col s4">
+      <h5> Completed Exercises</h5>
+      <ul id="completed">
+        <% @presenter.completed.each do |solution| %>
+          <li><%= link_to solution.exercise.name, exercise_solution_path(solution.exercise, solution) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
