@@ -278,7 +278,7 @@ Each language folder should contain another collection of folders with the name 
 
 ### The Webhook
 
-When the repo is pushed after being updated on your local machine, a webhook that is set to the repo through the GitHub repos settings page will trigger a POST event to the github_webhooks_controller.rb file on your application. This route will hit the github_create action on that controller, which will set off a series of API calls to GitHub that require the setup of ENV variables for the application.
+When the repo is pushed after being updated on your local machine, a webhook that is set to the repo through the GitHub repos settings page will trigger a POST event to the github_webhooks_controller.rb file on your application. This route will hit the github_create action on that controller, which will set off a series of API calls to GitHub that require the setup of ENV variables for the application. Those environment variables are currently being set in the application.yml and will need to be manually updated in the environment on your server.
 
 ```ruby
 class GithubWebhooksController < ActionController::Base
@@ -315,7 +315,7 @@ This response is sent to the GitHelper where it is sent through a series of API 
 
 ### GitHelper
 
-The first method, get_directory_object uses the URI from the controller and pulls down an object that contains the language folders (the snippet above is an example of that return). The next method, get_language_folder iterates over that object of language folders. That folder name is sent to the get_and_save_exercise method with the exercise_object that is parsed from the folder request (we are going to carry the folder name with use through the methods to use in our update and create methods).
+The first method, get_directory_object uses the URI from the controller and pulls down an object that contains the language folders (the snippet above is an example of that return, however it only includes one language folder). The next method, get_language_folder iterates over that object of language folders. That folder name is sent to the get_and_save_exercise method with the exercise_object that is parsed from the folder request (we are going to carry the folder name with us through the methods to use in our update and create methods at the bottom of the script).
 
 Each method sends its child to the next, digging one level deeper into the repo each time. The retrieve_lesson_content method iterates over the last folder in the file tree and selects the exercise file and the README file within it. The exercise_items hash is then created with keys that point to each attribute the exercise object in your database requires.
 
@@ -338,12 +338,20 @@ exercise_item = {name: "Hello World",
                  description: "This explains what the exercise is for"})
 ```
 
-This is where the folder object we have passed through each method is now used. If you recall, the folder variable was set to the name of the folder in the block in the get_language_folder method. We pass this through the module because the name of that folder is the same as the language the exercise is written in. We use that string, in this case "javascript" to build the tag for the exercise that is going to be created and generate a collection of the exercises that already exist in your database for that language.
+This is where the folder object we have passed through each method is now used. If you recall, the folder variable was set to the name of the folder in the block in the get_language_folder method. We pass this through the module because the name of that folder is the same as the language the exercise is written in. We use that string, in this case "javascript", to build the tag for the exercise that is going to be created and generate a collection of the exercises that already exist in your database for that language.
 
-In the find_tags_and_save method we use an ActiveRecord join clause to create an object that searches our database for all records that use the "javascript" or folder tag. This object is called match. We then search the database for the exercise by name and match that return against the collection of exercises of the same type. If the exercise exists, the method updates the exercise in the database, otherwise the object is created in the database.
+```ruby
+def self.find_tags_and_save(exercise_items, folder)
+  corrected_name = exercise_items[:name].split('.')[0].titleize
+  match = Exercise.joins(:tags).where({ tags: {name: folder} })
+  exercise = Exercise.find_by(name: corrected_name)
+  if match.include?(exercise)
+  ...
+end
+```
+
+In the find_tags_and_save method we use an ActiveRecord join clause to create an object that searches our database for all records that use the "javascript" or folder tag. This object is called 'match'. We then search the database for the exercise by name and match that return against the collection of exercises of the same type. If the exercise exists, the method updates the exercise in the database, otherwise the object is created in the database.
 
 ### Additional Functionality
 
-The goal for the Webhook functionality needs to be expanded to include updating the tags of the exercises and deleting or un-publishing exercises through the push. In its current state, if an instructor pushes the exercises repo, the module is unable to update the published and unpublished status of the exercise (in our exercise table, we don't delete exercises through the application, we have provided functionality to only publish or un-publish exercises, this determines if they appear on the show and index pages.)
-
-To accomplish this, the application would need to compare entire sets of objects against one another, one coming from the application database and the other that is created from the data that is sent when the exercises repo is pushed to git. Adding dynamic tag update and creating for the difficulty levels could be down through formatting the READMEs of the exercises so they include metadata that is parsed out the description. 
+The goal for the Webhook functionality needs to be expanded to include updating the tags of the exercises and deleting or un-publishing exercises through the push. In its current state, if an instructor pushes the exercises repo, the module is unable to update the published and unpublished status of the exercise (in our exercise table, we don't delete exercises through the application, we have provided functionality to only publish or un-publish exercises, this determines if they appear on the show and index pages.) Adding dynamic tag update and creating for the difficulty levels could be done through formatting the READMEs of the exercises so they include metadata that is parsed out the description and carried into the update/create methods. 
