@@ -9,4 +9,5 @@ class Solution < ApplicationRecord
   has_many :feedbacks
 
   enum status: [:Submitted, :Solved, :Incorrect ]
+
 end

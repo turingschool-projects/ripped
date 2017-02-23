@@ -23,8 +23,8 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .active {
-  background-color: #05c2d1;
-  color: #fff;
+  background-color: #05c2d1 !important;
+  color: #fff !important;
 }
 
 .submission-box{
@@ -48,10 +48,44 @@ h1, h2, h3, h4, h5, h6{
 
 .dropdown-custom {
   margin-top: 20px;
+  background-color: #fff !important;
 }
 
 .dropdown-button {
   background-color: #1C2833 !important;
+}
+
+.dropdown-item > p {
+  color: #000 !important;
+  font-size: 8px;
+}
+
+.student-dropdown-item > p {
+  color: #000 !important;
+  text-align: center;
+}
+
+.student-dropdown-item > a {
+  background-color: inherit !important;
+  color: #000 !important;
+  text-align: center;
+  text-decoration: none;
+}
+
+.student-read-notification {
+  display: none !important;
+}
+
+.instructor-dropdown-item {
+  color: #000 !important;
+  text-align: center;
+}
+
+.instructor-dropdown-item > a {
+  background-color: inherit !important;
+  color: #000 !important;
+  text-align: center;
+  text-decoration: none;
 }
 
 .navbar-button {
@@ -62,6 +96,8 @@ h1, h2, h3, h4, h5, h6{
   margin-left: 15px;
   font-weight: bold;
 }
+
+/* Filter buttons */
 
 .alert {
   text-align: center;
@@ -77,13 +113,68 @@ h1, h2, h3, h4, h5, h6{
    background-color: #1C2833;
  }
 
+ .cohort_buttons, .tag_buttons {
+   border: 2px solid #1C2833;
+   border-radius: 2px;
+   background-color: #fff;
+   color: #1C2833;
+   margin-top: 10px;
+ }
+
+ /* Instructor Dashboard*/
+
+ .dash-solutions {
+   padding-top: 8px;
+   padding-bottom: 10px;
+ }
+
 /* Homepage Image */
 
 .root-page {
-  background-image: url(https://source.unsplash.com/ttbCwN_mWic/);
+  background-image: url(https://source.unsplash.com/njM4it9erx4/);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover !important;
   background-color: transparent;
+}
+
+.turing-logo {
+  text-align: center;
+  justify-content: center;
+  margin-top: 6rem;
+}
+
+.turing-navbar-logo {
+  height: 3rem !important;
+  width: 3rem;
+  float: left;
+  clear: both;
+  margin-top: 8px;
+  margin-right: 10px;
+}
+
+/* Brand Logo Text */
+
+.main-brand-logo {
+  font-family: 'Goudy Bookletter 1911', serif !important;
+  letter-spacing: 2.75px;
+}
+
+/* Brand Logo CSS Override */
+
+.brand-logo {
+  margin-right: 10px !important;
+}
+
+/* Shield */
+
+.shield {
+  padding-top: 5%;
+  width: 225px;
+  margin: auto;
+}
+
+#shield {
+  width: 100%;
 }

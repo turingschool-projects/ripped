@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ripped</title>
+    <title>Code of Arms</title>
     <%= csrf_meta_tags %>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Goudy+Bookletter+1911" rel="stylesheet">
     <%= javascript_include_tag 'application' %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -16,7 +17,7 @@
   <body>
     <nav>
       <div class="nav-wrapper">
-        <a href="/" class="brand-logo">Code of Arms</a>
+        <a href="/" class="brand-logo main-brand-logo"><%= image_tag 'turing_logo.png', alt: "Turing School Logo", class: "turing-navbar-logo" %> Code of Arms</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <% if logged_in? %>
             <li> <%=link_to "Dashboard", dashboard_path, class:"btn waves-effect waves-light navbar-button"%> </li>
@@ -35,19 +36,19 @@
 
         </ul>
       </div>
-      <ul id='dropdown1' class='dropdown-content dropdown-custom'>
-        <% if current_user %>
-          <% current_user.solution_display(current_user).each do |solution| %>
-            <li><%= link_to "#{solution.exercise.name}, submitted by: #{solution.user.census_name(current_user.token)}", exercise_solution_path(solution.exercise.id, solution.id) %></li>
-          <% end %>
-          <% end %>
-      </ul>
+      <div>
+        <% if current_user && current_user.student? %>
+          <%= react_component 'Notifications', {current_user: current_user } %>
+        <% elsif current_user && current_user.instructor? %>
+          <%= react_component 'Uncommented' %>
+        <% end %>
     </nav>
     <% flash.each do |type, message| %>
       <div class="alert alert-<%= type %>">
        <strong><%= message %></strong>
       </div>
     <% end %>
+
     <%= yield %>
   </body>
 </html>
