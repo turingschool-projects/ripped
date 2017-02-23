@@ -3,7 +3,7 @@ require "rails_helper"
 describe "a user submits a solution" do
   scenario "and sees a status for that solution" do
     exercise = create(:exercise)
-    user = create(:user)
+    user = create(:user, census_id: 14)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -26,8 +26,8 @@ describe "a user submits a solution" do
 
   scenario "and it is specific for their account" do
     exercise = create(:exercise)
-    user_1 = create(:user)
-    user_2 = create(:user)
+    user_1 = create(:user, census_id: 14)
+    user_2 = create(:user, census_id: 21)
 
     solution_1 = Solution.create!(content: "Hello", user_id: user_1.id, exercise_id: exercise.id, status: 0)
     solution_2 = Solution.create!(content: "Hello", user_id: user_2.id, exercise_id: exercise.id, status: 1)

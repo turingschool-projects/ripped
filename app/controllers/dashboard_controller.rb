@@ -2,9 +2,11 @@ class DashboardController < ApplicationController
   authorize_resource class: false
 
   def show
-    @user = current_user
-    @solutions = @user.solutions.all
-    @in_progress = @user.solutions.where(status: "Submitted")
-    @completed = @user.solutions.where(status: "Solved")
+    if current_user.student?
+      @presenter = DashboardPresenter.new(current_user)
+    elsif current_user.instructor?
+      @instructor_presenter = InstructorDashboardPresenter.new(current_user)
+    end
   end
+  
 end

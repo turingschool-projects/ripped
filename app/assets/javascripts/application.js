@@ -12,5 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require select2
+//= require react
+//= require react_ujs
+//= require components
 //= require select2-full
 //= require_tree .

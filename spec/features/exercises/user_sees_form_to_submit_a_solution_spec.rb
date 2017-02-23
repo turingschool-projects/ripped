@@ -30,7 +30,7 @@ describe "/exercises/:id" do
 
   it "instructor can submit a solution", :vcr do
         exercise = create(:exercise)
-        user = create(:user, role: 1)
+        user = create(:user, census_id: 16, role: 1)
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
         visit exercise_path(exercise)

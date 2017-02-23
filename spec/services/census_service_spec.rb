@@ -15,7 +15,7 @@ describe "CensusService" do
   end
   context "#get_one_user" do
     it "returns a single user", :vcr do
-        user = CensusService.new(ENV["census_token"]).get_one_user(55)
+        user = CensusService.new(ENV["census_token"]).get_one_user(20)
         expect(user).to be_a(Hash)
         expect(user[:first_name]).to eq("Anna")
         expect(user[:cohort]).to eq("1608-BE")

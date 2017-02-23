@@ -2,8 +2,8 @@ require "rails_helper"
 
 describe "a user visits a show page for another user's solution that they have left feedback on" do
   scenario "and clicks the edit button next to their own feedback", :vcr do
-    user = create(:user)
-    user2 = create(:user)
+    user = create(:user, census_id: 14)
+    user2 = create(:user, census_id: 21)
     exercise = create(:exercise)
     create(:solution, user: user, exercise: exercise)
     solution = create(:solution, user: user2, exercise: exercise)
@@ -25,8 +25,8 @@ describe "a user visits a show page for another user's solution that they have l
   end
 
   scenario "and edits their feedback", :vcr do
-    user = create(:user)
-    user2 = create(:user)
+    user = create(:user, census_id: 14)
+    user2 = create(:user, census_id: 21)
     exercise = create(:exercise)
     create(:solution, user: user, exercise: exercise)
     solution = create(:solution, user: user2, exercise: exercise)
@@ -51,8 +51,8 @@ describe "a user visits a show page for another user's solution that they have l
   end
 
   scenario "and tries to edit feedback that does not belong to them", :vcr do
-    user = create(:user)
-    user2 = create(:user)
+    user = create(:user, census_id: 14)
+    user2 = create(:user, census_id: 21)
     exercise = create(:exercise)
     solution = create(:solution, user: user, exercise: exercise)
     feedback = create(:feedback, solution_id: solution.id, user: user2, comment: "Comment1")
