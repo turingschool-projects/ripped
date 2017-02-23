@@ -31,8 +31,5 @@ class Api::V1::SolutionsController < ApiController
     else
       render body: nil, status: 400
     end
-  end
-  
-  private
-  
+  end  
 end

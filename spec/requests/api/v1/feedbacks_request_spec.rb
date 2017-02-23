@@ -29,6 +29,7 @@ describe 'GET /api/v1/solutions/:solution_id/feedbacks/:id' do
     expect(response.status).to eq(400)
     expect(response.body).to eq("")
   end
+
 end
 
 describe 'PATCH /api/v1/solutions/:solution_id/feedbacks/:id' do
@@ -82,4 +83,5 @@ describe 'GET /api/v1/users/:user_id/solutions/:solution_id/feedbacks' do
 
     expect(solution_json[0]["feedbacks"].empty?).to be(true)
   end
+  
 end
