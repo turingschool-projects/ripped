@@ -1,9 +1,10 @@
 class InstructorDashboardPresenter
-  attr_reader :submitted, :solved, :cohorts
+  attr_reader :submitted, :solved, :cohorts, :incorrect
 
   def initialize(user)
     @submitted = Solution.where(status: "Submitted")
     @solved = Solution.where(status: "Solved")
+    @incorrect = Solution.where(status: "Incorrect")
     @cohorts = all_cohorts(user)
   end
 
