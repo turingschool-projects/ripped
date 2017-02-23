@@ -55,7 +55,7 @@ class User < ApplicationRecord
       notifier_count.to_s + " Unread Feedbacks"
     end
   end
-  
+
   def find_uncommented_solution_count
     solutions = Solution.all
     uncommented_solutions = []
@@ -67,7 +67,7 @@ class User < ApplicationRecord
     end
     count = uncommented_solutions.count
   end
-  
+
   def find_solutions_with_new_comments_count(current_user)
     solutions = Solution.where(user_id: current_user.id)
     commented_solutions = 0
@@ -76,7 +76,7 @@ class User < ApplicationRecord
     end
     commented_solutions
   end
-  
+
   def filter_feedbacks_for_solution(solution)
     feedbacks_that_need_to_be_read = []
     solution.feedbacks.each do |feedback|
