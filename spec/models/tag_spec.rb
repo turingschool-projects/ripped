@@ -6,6 +6,20 @@ RSpec.describe Solution, type: :model do
       tag = Tag.create()
       expect(tag).to be_invalid
     end
+    it "is invalid if duplicated" do
+      tag = Tag.create(name: "ruby")
+      tag2 = Tag.create(name: "ruby")
+
+      expect(tag).to be_valid
+      expect(tag2).to be_invalid
+    end
+    it "is invalid if duplicated in a different case" do
+      tag = Tag.create(name: "ruby")
+      tag2 = Tag.create(name: "RuBy")
+
+      expect(tag).to be_valid
+      expect(tag2).to be_invalid
+    end
   end
   describe "relationships" do
     it "has many exercises" do
