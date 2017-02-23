@@ -1,6 +1,6 @@
 class ExercisesController < ApplicationController
   authorize_resource only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  before_action :set_exercise, only: [:show, :edit, :update, :destroy]
+  # before_action :set_exercise, only: [:show, :edit, :update, :destroy]
 
   def index
     @tags = Tag.all
@@ -8,6 +8,8 @@ class ExercisesController < ApplicationController
   end
 
   def show
+    @exercise = Exercise.find(params[:id])
+
   end
 
   def new
@@ -30,9 +32,12 @@ class ExercisesController < ApplicationController
   end
 
   def edit
+    @exercise = Exercise.find(params[:id])
   end
 
   def update
+    @exercise = Exercise.find(params[:id])
+
     e_params = exercise_params
     tag_ids = e_params.delete(:tag_names).delete_if(&:empty?)
     @exercise.tag_names = tag_ids
@@ -47,6 +52,8 @@ class ExercisesController < ApplicationController
   end
 
   def destroy
+    @exercise = Exercise.find(params[:id])
+
     if @exercise.published?
       @exercise.update(status: 1)
       flash[:alert] = "#{@exercise.name} has been unpublished."
