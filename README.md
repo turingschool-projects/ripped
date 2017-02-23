@@ -277,7 +277,7 @@ Each language folder should contain another collection of folders with the name 
 
 ### The Webhook
 
-When the #{repo_name} is pushed after being updated on your local machine, a webhook that is set to the repo through the GitHub repos settings page will trigger a POST event to the github_webhooks_controller.rb file on your application. This route will hit the github_create action on that controller, which will set off a series of API calls to GitHub that require the setup of ENV variables for the application.
+When the repo is pushed after being updated on your local machine, a webhook that is set to the repo through the GitHub repos settings page will trigger a POST event to the github_webhooks_controller.rb file on your application. This route will hit the github_create action on that controller, which will set off a series of API calls to GitHub that require the setup of ENV variables for the application.
 
 ```ruby
 class GithubWebhooksController < ActionController::Base
