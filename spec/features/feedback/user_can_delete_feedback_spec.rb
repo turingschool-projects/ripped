@@ -2,8 +2,8 @@ require "rails_helper"
 
 describe "a user visits a show page for a solution that they have left feedback on" do
   scenario "and clicks the delete button next to their own feedback", :vcr do
-    user = create(:user)
-    user2 = create(:user)
+    user = create(:user, census_id: 14)
+    user2 = create(:user, census_id:22)
     exercise = create(:exercise)
     create(:solution, user: user, exercise: exercise)
     solution = create(:solution, user: user2, exercise: exercise)
@@ -23,9 +23,9 @@ describe "a user visits a show page for a solution that they have left feedback 
   end
 
   scenario "and does not see a delete button next to feedback from other users", :vcr do
-    user = create(:user)
-    user2 = create(:user)
-    user3 = create(:user)
+    user = create(:user, census_id: 14)
+    user2 = create(:user, census_id: 21)
+    user3 = create(:user, census_id: 22)
     exercise = create(:exercise)
     create(:solution, user: user3, exercise: exercise)
     solution = create(:solution, user: user2, exercise: exercise)
@@ -41,9 +41,9 @@ describe "a user visits a show page for a solution that they have left feedback 
   end
 
   scenario "an instructor can delete anyone's feedback", :vcr do
-    user = create(:user)
-    user2 = create(:user)
-    user3 = create(:user, role: 1)
+    user = create(:user, census_id: 14)
+    user2 = create(:user, census_id: 21)
+    user3 = create(:user, census_id: 16, role: 1)
     exercise = create(:exercise)
     create(:solution, user: user3, exercise: exercise)
     solution = create(:solution, user: user2, exercise: exercise)

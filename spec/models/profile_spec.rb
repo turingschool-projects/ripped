@@ -4,7 +4,7 @@ describe "Profile" do
   context "#find_user" do
     it "returns a user's information", :vcr do
         token = ENV["census_token"]
-        id = 55
+        id = 20
         user = Profile.find_user(token, id)
 
         expect(user).to be_a(Profile)
