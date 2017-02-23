@@ -3,7 +3,7 @@ require "rails_helper"
 describe "dashboard"  do
   it "a user can see feedback on dashboard", :vcr do
     user = create(:user, census_id: 14)
-    solution = create(:solution, user: user)
+    solution = create(:solution, user_id: user.id)
     feedback = create(:feedback, solution: solution)
     feedback2 = create(:feedback, solution: solution)
     feedback3 = create(:feedback, solution: solution)

@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user do
 
-    census_id 58
+    census_id 14
 
     sequence :first_name do |n|
       "Joh#{n}"
