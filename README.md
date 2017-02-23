@@ -114,6 +114,87 @@ Content:
 Code: 400 </br>
 
 ---
+###To retrieve all of a users solutions and only the unread feedback for those solutions
+
+Note: this provides content for the student dropdown component. Though it returns solutions (and their feedback) the code for the action "lives" in the feedbacks controller as its purpose is to return feedback.
+
+```
+GET '/api/v1/users/:user_id/solutions'
+```
+**Path parameters:**
+* user_id: The unique id for a user
+
+**Success Response:**
+
+Code: 200 </br>
+Content:
+```
+{
+  {
+      "id": 1,
+      "content": "Here's where the solution would go",
+      "exercise_id": 2,
+      "feedbacks": [
+        {
+          "id": 1,
+          "user_id": 2,
+          "solution_id": 1,
+          "comment": "And it's a great solution",
+          "created_at": "2017-02-22T00:04:17.058Z",
+          "updated_at": "2017-02-23T16:28:33.947Z",
+          "status": "unread"
+        },
+        {
+          "id": 3,
+          "user_id": 2,
+          "solution_id": 1,
+          "comment": "The code is so beautiful I could cry",
+          "created_at": "2017-02-22T20:42:23.947Z",
+          "updated_at": "2017-02-23T16:28:33.958Z",
+          "status": "unread"
+        }
+      ]}
+```
+**Error Response:**
+
+Code: 400 </br>
+
+###To retrieve all solutions with no feedback
+
+Note: this provides content for the instructor dropdown component.
+
+```
+GET '/api/v1/solutions'
+```
+**Success Response:**
+
+Code: 200 </br>
+Content:
+```
+[
+  {
+    "id": 3,
+    "content": "Here is a test solution",
+    "exercise_id": 2,
+    "feedbacks": [],
+    "exercise": exercise text and data will be here
+  },
+  {
+    "id": 4,
+    "content": "and here is another test solution",
+    "exercise_id": 3,
+    "feedbacks": [],
+    "exercise": exercise text and data will be here
+    }
+  }
+]
+```
+**Error Response:**
+
+Code: 400 </br>
+
+
+---
 ###To receive a solution for an exercise by ID:
 ```
 GET '/api/v1/exercises/:exercise_id/solutions/:id'
