@@ -1,6 +1,6 @@
 GIT
-  remote: https://github.com/NZenitram/census_staging_oauth
-  revision: 082f9c376dd85e6d65415f8d1dac0e054971433c
+  remote: https://github.com/turingschool-projects/omniauth-census
+  revision: 3d28a5040e79eae620c3550b90e94aeed8234571
   specs:
     omniauth-census (0.1.1)
       omniauth-oauth2
@@ -54,10 +54,6 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.4)
     bcrypt (3.1.11)
-    better_errors (2.1.1)
-      coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
-      rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.3)
@@ -270,7 +266,6 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.10.0)
   bcrypt (~> 3.1.7)
-  better_errors
   binding_of_caller
   byebug
   cancancan
