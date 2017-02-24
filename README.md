@@ -52,7 +52,76 @@ Cool. Leave the "scope" section blank and hit submit. On the next page you'll be
  
  CENSUS_SECRET: here's where you put the census secret
  ```
- - Cool. Almost there. 
+ - Cool. Almost there. Here's where things get interesting (not that they weren't already) and I'll add this primer for setting up HTTPS access on localhost from @NZenitram. You'll need to be able to run your server following these instructions, otherwise the Census OAuth authentication system won't work.
+
+## Getting set up with HTTPS
+_(The following has been borrowed from [this](https://github.com/NZenitram/census_staging_oauth/blob/master/README.md) readme. You may need to follow the staging environment directions found at that link, depending on the circumstances under which you're working.)_
+
+Please note that in order to use the Census OmniAuth strategy, your application must be configured to handle secured HTTPS requests. This is not the default setting on typical Rails applications run locally. For instructions on configuring SSL on a development version of your application. The following steps will supply your application with and SSL cert and allow you to use HTTPS from your local host.
+
+Add this line to your application's Gemfile:
+
+```ruby
+# Gemfile
+
+gem 'thin'
+```
+
+The execute:
+
+```
+$ bundle install
+```
+
+Now work through the following steps:
+
+```
+## 1) Create your private key (any password will do, we remove it below)
+
+$ cd ~/.ssh
+$ openssl genrsa -des3 -out server.orig.key 2048
+
+## 2) Remove the password
+
+$ openssl rsa -in server.orig.key -out server.key
+
+
+## 3) Generate the csr (Certificate signing request) (Details are important!)
+
+$ openssl req -new -key server.key -out server.csr
+
+## IMPORTANT
+## MUST have localhost.ssl as the common name to keep browsers happy
+## (has to do with non internal domain names ... which sadly can be
+## avoided with a domain name with a "." in the middle of it somewhere)
+
+Country Name (2 letter code) [AU]:
+
+#### Just press enter to get past prompts until you reach:
+...
+Common Name: localhost.ssl
+...
+#### Fill out the Common Name field and skip the rest.
+
+## 4) Generate self signed ssl certificate
+
+$ openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+
+## 5) Finally Add localhost.ssl to your hosts file
+
+$ echo "127.0.0.1 localhost.ssl" | sudo tee -a /private/etc/hosts
+
+
+# 6) To start the SSL webserver open another terminal window and run
+
+thin start -p 3001 --ssl --ssl-key-file ~/.ssh/server.key --ssl-cert-file ~/.ssh/server.crt
+```
+
+'Thin start -p 3001' will start your local host on port 3001. You will need to run the command in step 6.) in your application's directory. After it has started open your browser and visit 'localhost:3001'.
+
+You will also need to visit your Census application profile and add "https://localhost:3001/auth/census/callback" to the list of redirect URLs.
+
+## Now it's up and running - what next?
  
  * [Setting up the webhook](#setting-up-the-webhook)
   - [The file tree](#the-file-tree)
