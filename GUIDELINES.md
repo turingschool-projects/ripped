@@ -2,20 +2,21 @@
 
 ## What do I need to know to help?
 
-If you are looking to help to with a code contribution, our project uses Ruby on Rails, Javascript, and React. If you don't feel ready to make a code contribution yet, no problem! You can also check out the documentation issues [link to the docs label or tag on your issue tracker].
+If you are looking to help to with a code contribution, our project uses Ruby on Rails, Javascript, and React. If you don't feel ready to make a code contribution yet, no problem! You can also check out the [good for beginners](https://github.com/turingschool-projects/ripped/labels/good%20for%20beginners) issues or the [documentation issues](https://github.com/turingschool-projects/ripped/labels/documentation%20issues).
 
 If you are interested in making a code contribution and would like to learn more about the technologies that we use, check out the (non-exhaustive) list below.
 
- - Rails
- - Javascript
- - React
- - Thin Client
- - Census
- - OmniAuth
- - Github Webhooks
- - RESTful APIs
- - RSpec / Capybara
- - VCR / Webmock
+ - [Rails](http://docs.railsbridge.org/intro-to-rails/)
+ - [Javascript](http://frontend.turing.io/lessons/module-1/js-1.html)
+ - [React](http://frontend.turing.io/lessons/react-in-theory.html) also check out the [Creact](https://github.com/applegrain/creact) (React and Rails) tutorial.
+ - [Thin Client/Localhost HTTPS](https://github.com/NZenitram/census_staging_oauth#important-note)
+ - [Census](https://github.com/turingschool-projects/census#census---an-identity-manager)
+ - [OmniAuth/Census](https://github.com/turingschool-projects/omniauth-census)
+ - [Github Webhooks](https://developer.github.com/webhooks/) also see the Code of Arms documentation
+ - [RESTful APIs](https://github.com/turingschool/lesson_plans/blob/master/ruby_02-web_applications_with_ruby/outlines/rest_routing_and_controllers_in_rails.markdown)
+ - [RSpec / Capybara](https://robots.thoughtbot.com/how-we-test-rails-applications)
+ - [VCR / Webmock](https://github.com/turingschool/lesson_plans/blob/master/ruby_03-professional_rails_applications/testing_against_third_party_apis.md)
+ - [CanCanCan](https://github.com/CanCanCommunity/cancancan)
 
 ## How do I make a contribution?
 
