@@ -30,7 +30,29 @@ An Exercism-like application designed for the [Turing School of Software and Des
   - [Additional Functionality](#additional-functionality)
 * [License](#license)
 * [Contributors](#contributors)
-  
+
+## Using the app
+Code of Arms is an Exercism-like application for the Turing School of Software and Design to help students practice coding and instructors give feedback in a streamlined manner.
+
+To use Code of Arms, visit https://code-of-arms.herokuapp.com and log in with your [Census](https://turing-census.herokuapp.com) account. Upon login, you will see an index of all the available exercises. You can filter the exercise options using the buttons at the top of the page.
+
+### Students
+
+Click on an exercise name to see the full instructions and test suite that can be copied into your editor of choice. Once you pass all the tests, click on the "Submit your solution" button and copy/paste your answer into the form. After submitting your answer, your instructors and peers can leave feedback. Instructors will also be able to mark your answer as "Solved" or "Incorrect".
+
+To see a summary of your feedback and exercises that have been marked "Solved" click on the "Dashboard" button in the navigation bar.
+
+To leave feedback on your peers' solutions, click the "See all submissions" button from any Exercise detail page. If new feedback has been left on any of your submissions, the notifications button in the navigation will alert you.
+
+### Instructors
+
+Click on an exercise name to see the full instructions and test suite that can be copied into your editor of choice. Once a student passes the tests and has a solution, they can submit it via the "Submit" button on this page, and instructors will receive a notification in the navigation bar to alert that there is a new submission to review.
+
+Instructors can access submissions directly from this notification, or by visiting the Dashboard. On the Dashboard, instructors will see a list of all submissions awaiting feedback and review. These can be filtered using the cohort buttons at the top of the page. Instructors can also see exercises that have already been marked as "Solved" or "Incorrect".
+
+To review an exercise, choose a submission to review and leave feedback directly on the submission. There are also two buttons- one to mark the solutions as "Solved" and a second for "Incorrect."
+
+
 ## Contribution Guidelines
 
 We're very welcoming of pull requests and issue/bug reports. We'd appreciate it if your submissions are fully tested - we're using RSpec/Capybara for our test framework, with Factory Girl for generating assorted objects. You can find a pretty decent intro to the above [here](https://robots.thoughtbot.com/how-we-test-rails-applications). We also use webmock and VCR for external API call testing. If you're seeing lots of failures, take it from us: delete your VCR Cassettes and try again.
@@ -55,7 +77,7 @@ If you don't have rails (or ruby) installed, this [tutorial](http://docs.railsbr
 
 Code of Arms will require the following environment variables. We'll go through how to add them to the project later, but for now, know that you'll need (at _least_) the following:
 
-A [Census](https://turing-census.herokuapp.com) id and secret. Assuming you have a Census account, you'll login, click on Registered Applications, then click on New Application. From there you'll enter a name and a callback URL. At the time of writing there is an occasional hiccup with the callback URI - it sometimes defaults to HTTP instead of the required HTTPS - the hope is that this patched out in a future version of Census. Anyway. Give your app a name and add your callback URI/s. You will need:
+A [Census](https://turing-census.herokuapp.com) `id` and `secret`. Assuming you have a Census account, you'll login, click on Registered Applications, then click on New Application. From there you'll enter a name and a callback URL. At the time of writing there is an occasional hiccup with the callback URI - it sometimes defaults to HTTP instead of the required HTTPS - the hope is that this patched out in a future version of Census. Anyway. Give your app a name and add your callback URI/s. You will need:
 
 ` https://localhost:3001/auth/census/callback ` (local development)
 
@@ -113,7 +135,6 @@ Now work through the following steps:
 ```
 ## 1) Create your private key (any password will do, we remove it below)
 
-<<<<<<< HEAD
 $ cd ~/.ssh
 $ openssl genrsa -des3 -out server.orig.key 2048
 
@@ -162,28 +183,6 @@ You will also need to visit your Census application profile and add "https://loc
 ## Now it's up and running - what next?
 
 You've got a couple of options here. You can experiment with the API:
-=======
-## Using the app
-Code of Arms is an Exercism-like application for the Turing School of Software and Design to help students practice coding and instructors give feedback in a streamlined manner.
-
-To use Code of Arms, visit https://code-of-arms.herokuapp.com and log in with your [Census](https://turing-census.herokuapp.com) account. Upon login, you will see an index of all the available exercises. You can filter the exercise options using the buttons at the top of the page.
-
-### Students
-
-Click on an exercise name to see the full instructions and test suite that can be copied into your editor of choice. Once you pass all the tests, click on the "Submit your solution" button and copy/paste your answer into the form. After submitting your answer, your instructors and peers can leave feedback. Instructors will also be able to mark your answer as "Solved" or "Incorrect".
-
-To see a summary of your feedback and exercises that have been marked "Solved" click on the "Dashboard" button in the navigation bar.
-
-To leave feedback on your peers' solutions, click the "See all submissions" button from any Exercise detail page. If new feedback has been left on any of your submissions, the notifications button in the navigation will alert you.
-
-### Instructors
-
-Click on an exercise name to see the full instructions and test suite that can be copied into your editor of choice. Once a student passes the tests and has a solution, they can submit it via the "Submit" button on this page, and instructors will receive a notification in the navigation bar to alert that there is a new submission to review.
-
-Instructors can access submissions directly from this notification, or by visiting the Dashboard. On the Dashboard, instructors will see a list of all submissions awaiting feedback and review. These can be filtered using the cohort buttons at the top of the page. Instructors can also see exercises that have already been marked as "Solved" or "Incorrect".
-
-To review an exercise, choose a submission to review and leave feedback directly on the submission. There are also two buttons- one to mark the solutions as "Solved" and a second for "Incorrect."
->>>>>>> 6ed1bc9768d592bc54ea742efd7dc0c773a8bb4e
 
 ## API Endpoints:
 
@@ -614,11 +613,10 @@ def self.find_tags_and_save(exercise_items, folder)
 end
 ```
 
-In the find_tags_and_save method we use an ActiveRecord join clause to create an object that searches our database for all records that use the "javascript" or folder tag. This object is called 'match'. We then search the database for the exercise by name and match that return against the collection of exercises of the same type. If the exercise exists, the method updates the exercise in the database, otherwise the object is created in the database.
+In the `find_tags_and_save` method we use an ActiveRecord join clause to create an object that searches our database for all records that use the "javascript" or folder tag. This object is called 'match'. We then search the database for the exercise by name and match that return against the collection of exercises of the same type. If the exercise exists, the method updates the exercise in the database, otherwise the object is created in the database.
 
 ### Additional Functionality
 
-<<<<<<< HEAD
 The goal for the Webhook functionality needs to be expanded to include updating the tags of the exercises and deleting or un-publishing exercises through the push. In its current state, if an instructor pushes the exercises repo, the module is unable to update the published and unpublished status of the exercise (in our exercise table, we don't delete exercises through the application, we have provided functionality to only publish or un-publish exercises, this determines if they appear on the show and index pages.) Adding dynamic tag update and creating for the difficulty levels could be done through formatting the READMEs of the exercises so they include metadata that is parsed out the description and carried into the update/create methods. 
 
 ## License
@@ -637,6 +635,3 @@ The original four, in alphabetical order:
  - [Noah Berman](https://github.com/bermannoah)
 	
  1608BE Turing School of Software and Design
-=======
-The goal for the Webhook functionality needs to be expanded to include updating the tags of the exercises and deleting or un-publishing exercises through the push. In its current state, if an instructor pushes the exercises repo, the module is unable to update the published and unpublished status of the exercise (in our exercise table, we don't delete exercises through the application, we have provided functionality to only publish or un-publish exercises, this determines if they appear on the show and index pages.) Adding dynamic tag update and creating for the difficulty levels could be done through formatting the READMEs of the exercises so they include metadata that is parsed out the description and carried into the update/create methods.
->>>>>>> 6ed1bc9768d592bc54ea742efd7dc0c773a8bb4e
