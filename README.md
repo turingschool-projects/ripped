@@ -52,7 +52,9 @@ Cool. Leave the "scope" section blank and hit submit. On the next page you'll be
  
  CENSUS_SECRET: here's where you put the census secret
  ```
- - Cool. Almost there. Here's where things get interesting (not that they weren't already) and I'll add this primer for setting up HTTPS access on localhost from @NZenitram. You'll need to be able to run your server following these instructions, otherwise the Census OAuth authentication system won't work.
+ - Cool. Almost there. Now, just to make sure you've got things configured properly go ahead and run `rspec` to make sure the tests are passing. You may have a few skipped tests - these primarily deal with the Github Webhook and if you continually run them, you will hit your Github API rate limit extremely quickly. The cost of being thorough! More on the webhook in a moment. 
+  
+ Here's where things get interesting (not that they weren't already) and I'll hand you over to this primer for setting up HTTPS access on localhost from @NZenitram. You'll need to be able to run your server following these instructions, otherwise the Census OAuth authentication system won't work.
 
 ## Getting set up with HTTPS
 _(The following has been borrowed from [this](https://github.com/NZenitram/census_staging_oauth/blob/master/README.md) readme. You may need to follow the staging environment directions found at that link, depending on the circumstances under which you're working.)_
@@ -122,6 +124,8 @@ thin start -p 3001 --ssl --ssl-key-file ~/.ssh/server.key --ssl-cert-file ~/.ssh
 You will also need to visit your Census application profile and add "https://localhost:3001/auth/census/callback" to the list of redirect URLs.
 
 ## Now it's up and running - what next?
+
+You've got a couple of options here. If you'd like, you can set up the webhook, following the instructions below:
  
  * [Setting up the webhook](#setting-up-the-webhook)
   - [The file tree](#the-file-tree)
@@ -129,6 +133,7 @@ You will also need to visit your Census application profile and add "https://loc
   - [GitHelper](#GitHelper)
   - [Additional Functionality](#additional-functionality)
 
+You can also experiment with the API, which is documented (you guessed it) below:
 
 ## API Endpoints:
 * [GET user](#to-receive-a-user-by-id)
@@ -138,7 +143,15 @@ You will also need to visit your Census application profile and add "https://loc
 * [GET feedback](#to-receive-a-feedback-item-for-a-solution-by-id)
 * [PATCH feedback](#to-update-a-feedback-items-status)
 
+## Contribution Guidelines
+
+We're very welcoming of pull requests and issue/bug reports. We'd appreciate it if your submissions are fully tested - we're using RSpec/Capybara for our test framework, with Factory Girl for generating assorted objects. You can find a pretty decent intro to the above [here](https://robots.thoughtbot.com/how-we-test-rails-applications). We also use webmock and VCR for external API call testing. If you're seeing lots of failures, take it from us: delete your VCR Cassettes and try again.
+
+The Turing School Code of Conduct most likely covers everything here, but you can check out this document for some super basic guidelines to contributing the project - especially if you're not a Turing student.
+
+The best way to get in touch with us (because there's a rotating group of people maintaining the project) is probably by filing an issue report. Enjoy, and happy hacking! :)
 ---
+## API Documentation: 
 
 ###To receive a user by ID:
 ```
