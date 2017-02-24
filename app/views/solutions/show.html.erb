@@ -1,7 +1,7 @@
 <div class="container">
   <% if @exercise.user_solution?(current_user) || current_user.instructor? %>
     <% if @presenter.user == current_user %>
-      <h3>Your solution for <%=@exercise.name %> </h3>
+      <h3>Your solution for <%= @exercise.name %> </h3>
     <% else %>
       <h3><%= @presenter.user.census_name(current_user.token) %>'s solution for <%=@exercise.name %> </h3>
     <% end %>

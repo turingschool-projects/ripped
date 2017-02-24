@@ -2,7 +2,7 @@
 ---
 ![image of the homepage](https://github.com/bermannoah/repo-images/blob/master/code-of-arms-shield-homepage.jpg?raw=true)
 
-An Exercism-like application designed for the [Turing School of Software and Design](https://www.turing.io). 
+An Exercism-like application designed for the [Turing School of Software and Design](https://www.turing.io).
 
 [![Build Status](https://travis-ci.org/turingschool-projects/ripped.svg?branch=master)](https://travis-ci.org/turingschool-projects/ripped)
 
@@ -62,7 +62,7 @@ To review an exercise, choose a submission to review and leave feedback directly
 
 We're very welcoming of pull requests and issue/bug reports. We'd appreciate it if your submissions are fully tested - we're using RSpec/Capybara for our test framework, with Factory Girl for generating assorted objects. You can find a pretty decent intro to the above [here](https://robots.thoughtbot.com/how-we-test-rails-applications). We also use webmock and VCR for external API call testing. If you're seeing lots of failures, take it from us: delete your VCR Cassettes and try again.
 
-As far as Turing students, staff, and alumni are concerned: The Turing School Code of Conduct most likely covers everything here, but you can check out [this](https://github.com/turingschool-projects/ripped/blob/master/GUIDELINES.md) document for some basic guidelines to contributing to the project (and to open source in general) - this docuent is also helpful if you're not a current Turing student.
+As far as Turing students, staff, and alumni are concerned: The Turing School Code of Conduct most likely covers everything here, but you can check out our contributor guidelines by clicking [here](https://github.com/turingschool-projects/ripped/blob/master/GUIDELINES.md) for some basic rules to contributing to the project (and to open source in general) - this document is also helpful if you're not a current Turing student.
 
 The best way to get in touch with us (because there's a rotating group of people maintaining the project) is probably by filing an issue report. Enjoy, and happy hacking! :)
 
@@ -96,24 +96,24 @@ Cool. Leave the "scope" section blank and hit submit. On the next page you'll be
 
 ## Installation
 
- - First: clone down this repo: 
-  `git clone https://github.com/turingschool-projects/ripped` 
-   or 
+ - First: clone down this repo:
+  `git clone https://github.com/turingschool-projects/ripped`
+   or
    `git clone git@github.com:turingschool-projects/ripped.git` for SSH.
-   
+
  - run `bundle install` to make sure all your gems are properly added.
  - run `rake db:create db:migrate db:seed db:test:prepare` (you can run those all as one command but I like to have them separated out)
- - once the database is set up, run `figaro install` (`bundle exec figaro install` if you run into trouble). This will create an `application.yml` file in your `config/` directory and add that same file to your `.gitignore`. 
+ - once the database is set up, run `figaro install` (`bundle exec figaro install` if you run into trouble). This will create an `application.yml` file in your `config/` directory and add that same file to your `.gitignore`.
  - EXTRA IMPORTANT: Before committing, run `git status` and be EXTRA CERTAIN that your gitignore is working properly and it's not about to commit all your precious secrets to Github.
  - Now go into your `application.yml` folder and add the following lines:
- 
+
  ```
  CENSUS_ID: here's where you put the census application id
- 
+
  CENSUS_SECRET: here's where you put the census secret
  ```
- - Cool. Almost there. Now, just to make sure you've got things configured properly go ahead and run `rspec` to make sure the tests are passing. You may have a few skipped tests - these primarily deal with the Github Webhook and if you continually run them, you will hit your Github API rate limit extremely quickly. The cost of being thorough! More on the webhook in a moment. 
-  
+ - Cool. Almost there. Now, just to make sure you've got things configured properly go ahead and run `rspec` to make sure the tests are passing. You may have a few skipped tests - these primarily deal with the Github Webhook and if you continually run them, you will hit your Github API rate limit extremely quickly. The cost of being thorough! More on the webhook in a moment.
+
  Here's where things get interesting (not that they weren't already) and I'll hand you over to this primer for setting up HTTPS access on localhost from @NZenitram. You'll need to be able to run your server following these instructions, otherwise the Census OAuth authentication system won't work.
 
 ## Getting set up with HTTPS
@@ -173,7 +173,6 @@ $ openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
 
 $ echo "127.0.0.1 localhost.ssl" | sudo tee -a /private/etc/hosts
 
-
 # 6) To start the SSL webserver open another terminal window and run
 
 thin start -p 3001 --ssl --ssl-key-file ~/.ssh/server.key --ssl-cert-file ~/.ssh/server.crt
@@ -201,7 +200,7 @@ You've got a couple of options here. You can experiment with the API:
 * [PATCH feedback](#to-update-a-feedback-items-status)
 
 You can set also up the webhook (which will allow you to add new exercises by pushing to a Github repo) by following the instructions below:
- 
+
  * [Setting up the webhook](#setting-up-the-webhook)
   - [The file tree](#the-file-tree)
   - [The webhook](#the-webhook)
@@ -210,7 +209,7 @@ You can set also up the webhook (which will allow you to add new exercises by pu
 
 ---
 
-## API Documentation: 
+## API Documentation:
 
 ###To receive a user by ID:
 ```
@@ -498,11 +497,11 @@ Content:
 
 Code: 400 </br>
 
-# Setting Up the Webhook
+## Adding Exercises
 
-## Setting Up the GitHub Webhook and API for Code of Arms
+This application has been set up so that you can host and maintain exercises is a GitHub repo. The instructions that follow will describe how that repo should be set up and how the application interacts with the GitHub API to populate the application's database.
 
-### The File Tree
+## Directory Structure
 
 Create the repo for the exercises you wish to upload. The file tree for the repo should be set up as shown below:
 
@@ -544,9 +543,17 @@ Each branch of the file tree shown above is a folder. Within each of these folde
 
 Each language folder should contain another collection of folders with the name of the exercise that folder will contain. In the example above, the name of the folder containing the 'hello_world.rb' test file and its README is named hello_world.
 
-### The Webhook
+## The Webhook
 
-When the repo is pushed after being updated on your local machine, a webhook that is set to the repo through the GitHub repos settings page will trigger a POST event to the github_webhooks_controller.rb file on your application. This route will hit the github_create action on that controller, which will set off a series of API calls to GitHub that require the setup of ENV variables for the application. Those environment variables are currently being set in the application.yml and will need to be manually updated in the environment on your server.
+To set up the webhook on GitHub visit your profile's setting page and click the 'Personal Access Tokens' link at the bottom of the left hand panel. At the top of the console page that loads next, click 'Generate New Token'. Provide the token a description and select the admin:repo_hook checkboxes. Click on the generate token button at the bottom and copy the new token to your clipboard when it is revealed on the next page.
+
+![amdin_hook](https://s3-us-west-1.amazonaws.com/nzenitramwp/admin+web_hook.png)
+
+Next, visit the repository for your exercises and click on the settings tab. Click on the 'Webhooks' link in the table on the left. The webhooks console will appear; click on the 'Add Webhook' button on the right hand side. Fill out the URL field with your hostname and append it with '/github_webhooks. Change the content type to 'application/json' and paste the key you copied from the previous step into the field provided.
+
+![webhook_setup](https://s3-us-west-1.amazonaws.com/nzenitramwp/hook+set+up.png)
+
+When the repo is pushed after being updated on your local machine, the webhook that is set to the repo will trigger a POST event to the github_webhooks_controller.rb file on your application. This route will hit the github_create action on that controller, which will set off a series of API calls to GitHub that require the setup of ENV variables for the application. Those environment variables are currently being set in the application.yml and will need to be manually updated in the environment on your server.
 
 ```ruby
 class GithubWebhooksController < ActionController::Base
@@ -622,7 +629,7 @@ In the `find_tags_and_save` method we use an ActiveRecord join clause to create 
 
 ### Additional Functionality
 
-The goal for the Webhook functionality needs to be expanded to include updating the tags of the exercises and deleting or un-publishing exercises through the push. In its current state, if an instructor pushes the exercises repo, the module is unable to update the published and unpublished status of the exercise (in our exercise table, we don't delete exercises through the application, we have provided functionality to only publish or un-publish exercises, this determines if they appear on the show and index pages.) Adding dynamic tag update and creating for the difficulty levels could be done through formatting the READMEs of the exercises so they include metadata that is parsed out the description and carried into the update/create methods. 
+The goal for the Webhook functionality needs to be expanded to include updating the tags of the exercises and deleting or un-publishing exercises through the push. In its current state, if an instructor pushes the exercises repo, the module is unable to update the published and unpublished status of the exercise (in our exercise table, we don't delete exercises through the application, we have provided functionality to only publish or un-publish exercises, this determines if they appear on the show and index pages.) Adding dynamic tag update and creating for the difficulty levels could be done through formatting the READMEs of the exercises so they include metadata that is parsed out the description and carried into the update/create methods.
 
 ## License
 
@@ -632,11 +639,11 @@ Code of Arms is released under the MIT license, which is available [here](https:
 
 The original four, in alphabetical order:
  - [Anna Dolan](https://github.com/annadolan)
-	
+
  - [Erin Pintozzi](https://github.com/epintozzi)
-	
+
  - [Nicholas Martinez](https://github.com/NZenitram)
-	
+
  - [Noah Berman](https://github.com/bermannoah)
-	
+
  1608BE Turing School of Software and Design
