@@ -16,7 +16,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'coderay'
 gem 'omniauth-oauth2'
-gem 'omniauth-census', git: "https://github.com/NZenitram/census_staging_oauth"
+gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
 gem 'thin'
 gem "select2-rails"
 gem 'faraday'

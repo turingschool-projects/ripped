@@ -1,4 +1,5 @@
 class Api::V1::FeedbacksController < ApiController
+  
   def index
     @solutions = Solution.where(user_id: params[:user_id])
     if !@solutions.nil?
@@ -31,4 +32,5 @@ class Api::V1::FeedbacksController < ApiController
     def feedback_params
       params.require(:feedback).permit(:status)
     end
+    
 end

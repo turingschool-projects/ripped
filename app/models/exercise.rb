@@ -20,7 +20,7 @@ class Exercise < ApplicationRecord
 
   def tag_names=(tags)
     self.tags = tags.map do |tag|
-      Tag.where(name: tag).first_or_initialize
+      Tag.where('lower(name) = ?', tag.downcase).first_or_initialize
     end
   end
 

@@ -3,7 +3,7 @@ class DashboardPresenter
 
   def initialize(user)
     @solutions = user.solutions.all
-    @in_progress = user.solutions.where(status: "Submitted")
-    @completed = user.solutions.where(status: "Solved")
+    @in_progress = @solutions.where(status: "Submitted")
+    @completed = @solutions.where(status: "Solved")
   end
 end

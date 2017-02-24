@@ -3,8 +3,8 @@ require "rails_helper"
 describe "a user visits a show page for another user's solution" do
   scenario "and successfully creates feedback on that solution", :vcr do
 
-    user = create(:user)
-    user2 = create(:user)
+    user = create(:user, census_id: 14)
+    user2 = create(:user, census_id: 21)
     exercise = create(:exercise)
     create(:solution, user: user, exercise: exercise)
     solution = create(:solution, user: user2, exercise: exercise)
@@ -24,8 +24,8 @@ describe "a user visits a show page for another user's solution" do
   end
 
   scenario "and does not add any content in the comment form", :vcr do
-    user = create(:user)
-    user2 = create(:user)
+    user = create(:user, census_id: 14)
+    user2 = create(:user, census_id: 21)
     exercise = create(:exercise)
     create(:solution, user: user, exercise: exercise)
     solution = create(:solution, user: user2, exercise: exercise)
@@ -43,8 +43,8 @@ describe "a user visits a show page for another user's solution" do
   end
 
   scenario "and has not already submitted a solution for the exercise", :vcr do
-    user = create(:user)
-    user2 = create(:user)
+    user = create(:user, census_id: 14)
+    user2 = create(:user, census_id: 21)
     exercise = create(:exercise)
     solution = create(:solution, user: user2, exercise: exercise)
 
@@ -52,14 +52,14 @@ describe "a user visits a show page for another user's solution" do
 
     visit exercise_solution_path(exercise, solution)
 
-    expect(page).to have_content("You are not authorized to access this page.")
+    expect(page).to have_content("You must submit a solution to see this page:")
   end
 end
 
 describe "a staff member visits a show page for a user's solution" do
   scenario "and successfully creates feedback on that solution", :vcr do
-    user = create(:user, role: "instructor")
-    user2 = create(:user)
+    user = create(:user, census_id: 16, role: "instructor")
+    user2 = create(:user, census_id: 14)
     exercise = create(:exercise)
     create(:solution, user: user, exercise: exercise)
     solution = create(:solution, user: user2, exercise: exercise)

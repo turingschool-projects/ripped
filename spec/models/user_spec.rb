@@ -43,14 +43,14 @@ RSpec.describe User, type: :model do
 
   describe ".census_name(token)" do
     it "returns the user's name from census", :vcr do
-      user = create(:user, census_id: 55)
+      user = create(:user, census_id: 20)
       expect(user.census_name(ENV['census_token'])).to eq("Anna Dolan")
     end
   end
 
   describe ".census_cohort(token)" do
     it "returns the user's cohort from census", :vcr do
-      user = create(:user, census_id: 55)
+      user = create(:user, census_id: 20)
       expect(user.census_cohort(ENV['census_token'])).to eq("1608-BE")
     end
   end

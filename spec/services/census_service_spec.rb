@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "CensusService" do
   context "#get_users" do
-    xit "returns an array of users as JSON objects", :vcr do
+    it "returns an array of users as JSON objects", :vcr do
         users = CensusService.new(ENV["census_token"]).get_users
         user = users.first
 
@@ -14,8 +14,8 @@ describe "CensusService" do
     end
   end
   context "#get_one_user" do
-    xit "returns a single user", :vcr do
-        user = CensusService.new(ENV["census_token"]).get_one_user(55)
+    it "returns a single user", :vcr do
+        user = CensusService.new(ENV["census_token"]).get_one_user(20)
         expect(user).to be_a(Hash)
         expect(user[:first_name]).to eq("Anna")
         expect(user[:cohort]).to eq("1608-BE")
