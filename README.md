@@ -1,13 +1,59 @@
-# Ripped
+# Code of Arms
+---
+An Exercism-like application designed for the Turing School of Software and Design. 
 
-An Exercism-like application for the Turing School of Software and Design.
+[![Build Status](https://travis-ci.org/turingschool-projects/ripped.svg?branch=master)](https://travis-ci.org/turingschool-projects/ripped)
+
+## Table of Contents
+
+## Requirements
+
+```
+Ruby on Rails
+	- Rails version 5.0.1
+	- Ruby version 2.3.0 (2.3.1 should also work)
+	- Bundled with 1.13.6
+PostgreSQL
+Access to a Census account
+```
+If you don't have rails (or ruby) installed, this [tutorial](http://docs.railsbridge.org/intro-to-rails/) is a good place to start.
+
+## Environment Variables
+
+Code of Arms will require the following environment variables. We'll go through how to add them to the project later, but for now, know that you'll need (at _least_) the following:
+
+A [Census](https://turing-census.herokuapp.com) id and secret. Assuming you have a Census account, you'll login, click on Registered Applications, then click on New Application. From there you'll enter a name and a callback URL. At the time of writing there is an occasional hiccup with the callback URI - it sometimes defaults to HTTP instead of the required HTTPS - the hope is that this patched out in a future version of Census. Anyway. Give your app a name and add your callback URI/s. You will need:
+
+` https://localhost:3001/auth/census/callback ` (local development)
+
+and when you have the app on staging or production:
+
+` https://your-app-url.herokuapp.com/auth/census/callback `
+
+(Heroku is used there as an example. Play around with other deployment systems and see what you can do!)
+
+Cool. Leave the "scope" section blank and hit submit. On the next page you'll be given an Application Id and Secret. You'll also be able to edit your callback URI/s if necessary. We'll go over what to do with the Id and Secret in the next section.
 
 ## Installation
 
- - clone down this repo `git clone https://github.com/turingschool-projects/ripped`
- - run `bundle install`
- - we're using a custom version of a gem for staging, so also run: `bundle update`
- - login is - at the moment - handled through [Census](https://github.com/turingschool-projects/census). as this is not yet in production you will probably need to stub out your users - we'll update as soon as this changes. You'll need Census access to run the app.
+ - First: clone down this repo: 
+  `git clone https://github.com/turingschool-projects/ripped` 
+   or 
+   `git clone git@github.com:turingschool-projects/ripped.git` for SSH.
+   
+ - run `bundle install` to make sure all your gems are properly added.
+ - run `rake db:create db:migrate db:seed db:test:prepare` (you can run those all as one command but I like to have them separated out)
+ - once the database is set up, run `figaro install` (`bundle exec figaro install` if you run into trouble). This will create an `application.yml` file in your `config/` directory and add that same file to your `.gitignore`. 
+ - EXTRA IMPORTANT: Before committing, run `git status` and be EXTRA CERTAIN that your gitignore is working properly and it's not about to commit all your precious secrets to Github.
+ - Now go into your `application.yml` folder and add the following lines:
+ 
+ ```
+ CENSUS_ID: here's where you put the census application id
+ 
+ CENSUS_SECRET: here's where you put the census secret
+ ```
+ - Cool. Almost there. 
+ 
  * [Setting up the webhook](#setting-up-the-webhook)
   - [The file tree](#the-file-tree)
   - [The webhook](#the-webhook)
