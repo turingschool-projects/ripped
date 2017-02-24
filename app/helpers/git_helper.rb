@@ -49,7 +49,7 @@ module GitHelper
     match = Exercise.joins(:tags).where({ tags: {name: folder} })
     exercise = Exercise.find_by(name: corrected_name)
     if match.include?(exercise)
-      exercise.update(name: corrected_name, content: exercise_items[:content], description: exercise_items[:description]).save
+      exercise.update(name: corrected_name, content: exercise_items[:content], description: exercise_items[:description])
     else
       new_exercise = Exercise.new(name: corrected_name, content: exercise_items[:content], description: exercise_items[:description])
       language_tag = Tag.find_by(name: folder)
