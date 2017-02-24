@@ -8,6 +8,10 @@ An Exercism-like application designed for the [Turing School of Software and Des
 
 ## Table of Contents
 
+* [Using the app](#using-the-app)
+    - [Students](#students)
+    - [Instructors](#instructors)
+* [Developing for Code of Arms](#developing-for-code-of-arms)
 * [Contribution Guidelines](#contribution-guidelines)
 * [Requirements](#requirements)
 * [Environment Variables](#environment-variables)
@@ -52,6 +56,7 @@ Instructors can access submissions directly from this notification, or by visiti
 
 To review an exercise, choose a submission to review and leave feedback directly on the submission. There are also two buttons- one to mark the solutions as "Solved" and a second for "Incorrect."
 
+# Developing for Code of Arms
 
 ## Contribution Guidelines
 
