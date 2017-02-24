@@ -7,8 +7,8 @@ An Exercism-like application for the Turing School of Software and Design.
  - clone down this repo `git clone https://github.com/turingschool-projects/ripped`
  - run `bundle install`
  - we're using a custom version of a gem for staging, so also run: `bundle update`
- - login is - at the moment - handled through [Census](https://github.com/turingschool-projects/census). as this is not yet in production you will probably need to stub out your users - we'll update as soon as this changes. You'll need Census access to run the app.
- * [Setting up the webhook](#setting-up-the-webhook)
+ - login is - at the moment - is handled through [Census](https://github.com/turingschool-projects/census). You'll need Census access to run the app.
+ * [Adding Exercises](#adding-exercises)
   - [The file tree](#the-file-tree)
   - [The webhook](#the-webhook)
   - [GitHelper](#GitHelper)
@@ -230,11 +230,11 @@ Content:
 
 Code: 400 </br>
 
-# Setting Up the Webhook
+## Adding Exercises
 
-## Setting Up the GitHub Webhook and API for Code of Arms
+This application has been set up so that you can host and maintain exercises is a GitHub repo. The instructions that follow will describe how that repo should be set up and how the application interacts with the GitHub API to populate the application's database.
 
-### The File Tree
+## Directory Structure
 
 Create the repo for the exercises you wish to upload. The file tree for the repo should be set up as shown below:
 
@@ -276,9 +276,17 @@ Each branch of the file tree shown above is a folder. Within each of these folde
 
 Each language folder should contain another collection of folders with the name of the exercise that folder will contain. In the example above, the name of the folder containing the 'hello_world.rb' test file and its README is named hello_world.
 
-### The Webhook
+## The Webhook
 
-When the repo is pushed after being updated on your local machine, a webhook that is set to the repo through the GitHub repos settings page will trigger a POST event to the github_webhooks_controller.rb file on your application. This route will hit the github_create action on that controller, which will set off a series of API calls to GitHub that require the setup of ENV variables for the application. Those environment variables are currently being set in the application.yml and will need to be manually updated in the environment on your server.
+To set up the webhook on GitHub visit your profile's setting page and click the 'Personal Access Tokens' link at the bottom of the left hand panel. At the top of the console page that loads next, click 'Generate New Token'. Provide the token a description and select the admin:repo_hook checkboxes. Click on the generate token button at the bottom and copy the new token to your clipboard when it is revealed on the next page.
+
+![amdin_hook](https://s3-us-west-1.amazonaws.com/nzenitramwp/admin+web_hook.png)
+
+Next, visit the repository for your exercises and click on the settings tab. Click on the 'Webhooks' link in the table on the left. The webhooks console will appear; click on the 'Add Webhook' button on the right hand side. Fill out the URL field with your hostname and append it with '/github_webhooks. Change the content type to 'application/json' and paste the key you copied from the previous step into the field provided.
+
+![webhook_setup](https://s3-us-west-1.amazonaws.com/nzenitramwp/hook+set+up.png)
+
+When the repo is pushed after being updated on your local machine, the webhook that is set to the repo will trigger a POST event to the github_webhooks_controller.rb file on your application. This route will hit the github_create action on that controller, which will set off a series of API calls to GitHub that require the setup of ENV variables for the application. Those environment variables are currently being set in the application.yml and will need to be manually updated in the environment on your server.
 
 ```ruby
 class GithubWebhooksController < ActionController::Base
@@ -354,4 +362,4 @@ In the find_tags_and_save method we use an ActiveRecord join clause to create an
 
 ### Additional Functionality
 
-The goal for the Webhook functionality needs to be expanded to include updating the tags of the exercises and deleting or un-publishing exercises through the push. In its current state, if an instructor pushes the exercises repo, the module is unable to update the published and unpublished status of the exercise (in our exercise table, we don't delete exercises through the application, we have provided functionality to only publish or un-publish exercises, this determines if they appear on the show and index pages.) Adding dynamic tag update and creating for the difficulty levels could be done through formatting the READMEs of the exercises so they include metadata that is parsed out the description and carried into the update/create methods. 
+The goal for the Webhook functionality needs to be expanded to include updating the tags of the exercises and deleting or un-publishing exercises through the push. In its current state, if an instructor pushes the exercises repo, the module is unable to update the published and unpublished status of the exercise (in our exercise table, we don't delete exercises through the application, we have provided functionality to only publish or un-publish exercises, this determines if they appear on the show and index pages.) Adding dynamic tag update and creating for the difficulty levels could be done through formatting the READMEs of the exercises so they include metadata that is parsed out the description and carried into the update/create methods.

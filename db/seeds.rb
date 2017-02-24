@@ -347,7 +347,7 @@ raindrops.tags = [tag.first, tag.last]
 raindrops.save
 
 ## difference of squares
-difference_of_sqaures = Exercise.new(name: "Difference of Squares" , content: "gem 'minitest', '>= 5.0.0'
+difference_of_squares = Exercise.new(name: "Difference of Squares" , content: "gem 'minitest', '>= 5.0.0'
 require 'minitest/autorun'
 require_relative 'difference_of_squares'
 
@@ -417,8 +417,8 @@ The sum of the squares of the first ten natural numbers is
 Hence the difference between the square of the sum of the first
 ten natural numbers and the sum of the squares of the first ten
 natural numbers is 3025 - 385 = 2640.", status: 0)
-difference_of_sqaures.tags = [tag.first, tag.last]
-difference_of_sqaures.save
+difference_of_squares.tags = [tag.first, tag.last]
+difference_of_squares.save
 
 ### Javascript exercises
 ## Hello World
@@ -688,7 +688,7 @@ rainsdrops_js.tags = [tag.first, Tag.find_by(name: 'javascript')]
 rainsdrops_js.save
 
 ## difference of squares
-difference_of_sqaures_js = Exercise.new(name: "Differce of Sqaures", content: "var Squares = require('./difference-of-squares');
+difference_of_squares_js = Exercise.new(name: "Differce of Sqaures", content: "var Squares = require('./difference-of-squares');
 
 describe('Squares', function () {
 
@@ -754,5 +754,5 @@ The sum of the squares of the first ten natural numbers is
 Hence the difference between the square of the sum of the first
 ten natural numbers and the sum of the squares of the first ten
 natural numbers is 3025 - 385 = 2640.", status: 0)
-difference_of_sqaures_js.tags = [tag.first, Tag.find_by(name: 'javascript')]
-difference_of_sqaures_js.save
+difference_of_squares_js.tags = [tag.first, Tag.find_by(name: 'javascript')]
+difference_of_squares_js.save
