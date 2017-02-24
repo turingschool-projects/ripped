@@ -62,7 +62,7 @@ To review an exercise, choose a submission to review and leave feedback directly
 
 We're very welcoming of pull requests and issue/bug reports. We'd appreciate it if your submissions are fully tested - we're using RSpec/Capybara for our test framework, with Factory Girl for generating assorted objects. You can find a pretty decent intro to the above [here](https://robots.thoughtbot.com/how-we-test-rails-applications). We also use webmock and VCR for external API call testing. If you're seeing lots of failures, take it from us: delete your VCR Cassettes and try again.
 
-As far as Turing students, staff, and alumni are concerned: The Turing School Code of Conduct most likely covers everything here, but you can check out [this](https://github.com/turingschool-projects/ripped/blob/master/GUIDELINES.md) document for some basic guidelines to contributing to the project (and to open source in general) - this docuent is also helpful if you're not a current Turing student.
+As far as Turing students, staff, and alumni are concerned: The Turing School Code of Conduct most likely covers everything here, but you can check out our contributor guidelines by clicking [here](https://github.com/turingschool-projects/ripped/blob/master/GUIDELINES.md) for some basic rules to contributing to the project (and to open source in general) - this document is also helpful if you're not a current Turing student.
 
 The best way to get in touch with us (because there's a rotating group of people maintaining the project) is probably by filing an issue report. Enjoy, and happy hacking! :)
 
