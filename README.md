@@ -2,11 +2,42 @@
 ---
 ![image of the homepage](https://github.com/bermannoah/repo-images/blob/master/code-of-arms-shield-homepage.jpg?raw=true)
 
-An Exercism-like application designed for the Turing School of Software and Design. 
+An Exercism-like application designed for the [Turing School of Software and Design](https://www.turing.io). 
 
 [![Build Status](https://travis-ci.org/turingschool-projects/ripped.svg?branch=master)](https://travis-ci.org/turingschool-projects/ripped)
 
 ## Table of Contents
+
+* [Contribution Guidelines](#contribution-guidelines)
+* [Requirements](#requirements)
+* [Environment Variables](#environment-variables)
+* [Installation](#installation)
+* [Using HTTPS on localhost](#getting-set-up-with-https)
+* [Post-Install Options](#now-its-up-and-running---what-next)
+* [API Documentation](#api-endpoints)
+   - [GET user](#to-receive-a-user-by-id)
+   - [GET exercises](#to-receive-all-exercises)
+   - [GET exercise](#to-receive-an-exercise-by-id)
+   - [GET solutions for a user with unread feedbacl](#to-retrieve-all-of-a-users-solutions-and-only-the-unread-feedback-for-those-solutions)
+   - [GET all solutions with no feedback](#to-retrieve-all-solutions-with-no-feedback)
+   - [GET solution](#to-receive-a-solution-for-an-exercise-by-id)
+   - [GET feedback](#to-receive-a-feedback-item-for-a-solution-by-id)
+   - [PATCH feedback](#to-update-a-feedback-items-status)
+* [Setting up the webhook](#setting-up-the-webhook)
+  - [The file tree](#the-file-tree)
+  - [The webhook](#the-webhook)
+  - [GitHelper](#githelper)
+  - [Additional Functionality](#additional-functionality)
+* [License](#license)
+* [Contributors](#contributors)
+  
+## Contribution Guidelines
+
+We're very welcoming of pull requests and issue/bug reports. We'd appreciate it if your submissions are fully tested - we're using RSpec/Capybara for our test framework, with Factory Girl for generating assorted objects. You can find a pretty decent intro to the above [here](https://robots.thoughtbot.com/how-we-test-rails-applications). We also use webmock and VCR for external API call testing. If you're seeing lots of failures, take it from us: delete your VCR Cassettes and try again.
+
+As far as Turing students, staff, and alumni are concerned: The Turing School Code of Conduct most likely covers everything here, but you can check out [this](https://github.com/turingschool-projects/ripped/blob/master/GUIDELINES.md) document for some basic guidelines to contributing to the project (and to open source in general) - this docuent is also helpful if you're not a current Turing student.
+
+The best way to get in touch with us (because there's a rotating group of people maintaining the project) is probably by filing an issue report. Enjoy, and happy hacking! :)
 
 ## Requirements
 
@@ -59,7 +90,7 @@ Cool. Leave the "scope" section blank and hit submit. On the next page you'll be
  Here's where things get interesting (not that they weren't already) and I'll hand you over to this primer for setting up HTTPS access on localhost from @NZenitram. You'll need to be able to run your server following these instructions, otherwise the Census OAuth authentication system won't work.
 
 ## Getting set up with HTTPS
-_(The following has been borrowed from [this](https://github.com/NZenitram/census_staging_oauth/blob/master/README.md) readme. You may need to follow the staging environment directions found at that link, depending on the circumstances under which you're working.)_
+_(The following has been borrowed with permission from [this](https://github.com/NZenitram/census_staging_oauth/blob/master/README.md) readme. You may need to follow the staging environment directions found at that link, depending on the circumstances under which you're working.)_
 
 Please note that in order to use the Census OmniAuth strategy, your application must be configured to handle secured HTTPS requests. This is not the default setting on typical Rails applications run locally. For instructions on configuring SSL on a development version of your application. The following steps will supply your application with and SSL cert and allow you to use HTTPS from your local host.
 
@@ -129,31 +160,26 @@ You will also need to visit your Census application profile and add "https://loc
 
 ## Now it's up and running - what next?
 
-You've got a couple of options here. If you'd like, you can set up the webhook, following the instructions below:
- 
- * [Setting up the webhook](#setting-up-the-webhook)
-  - [The file tree](#the-file-tree)
-  - [The webhook](#the-webhook)
-  - [GitHelper](#GitHelper)
-  - [Additional Functionality](#additional-functionality)
-
-You can also experiment with the API, which is documented (you guessed it) below:
+You've got a couple of options here. You can experiment with the API:
 
 ## API Endpoints:
+
 * [GET user](#to-receive-a-user-by-id)
 * [GET exercises](#to-receive-all-exercises)
 * [GET exercise](#to-receive-an-exercise-by-id)
+* [GET solutions for a user that have unread feedback](#to-retrieve-all-of-a-users-solutions-and-only-the-unread-feedback-for-those-solutions)
+* [GET all solutions with no feedback](#to-retrieve-all-solutions-with-no-feedback)
 * [GET solution](#to-receive-a-solution-for-an-exercise-by-id)
 * [GET feedback](#to-receive-a-feedback-item-for-a-solution-by-id)
 * [PATCH feedback](#to-update-a-feedback-items-status)
 
-## Contribution Guidelines
-
-We're very welcoming of pull requests and issue/bug reports. We'd appreciate it if your submissions are fully tested - we're using RSpec/Capybara for our test framework, with Factory Girl for generating assorted objects. You can find a pretty decent intro to the above [here](https://robots.thoughtbot.com/how-we-test-rails-applications). We also use webmock and VCR for external API call testing. If you're seeing lots of failures, take it from us: delete your VCR Cassettes and try again.
-
-The Turing School Code of Conduct most likely covers everything here, but you can check out [this](https://github.com/turingschool-projects/ripped/blob/master/GUIDELINES.md) document for some basic guidelines to contributing to the project (and to open source in general) - this might be especially useful if you're not a Turing student.
-
-The best way to get in touch with us (because there's a rotating group of people maintaining the project) is probably by filing an issue report. Enjoy, and happy hacking! :)
+You can set also up the webhook (which will allow you to add new exercises by pushing to a Github repo) by following the instructions below:
+ 
+ * [Setting up the webhook](#setting-up-the-webhook)
+  - [The file tree](#the-file-tree)
+  - [The webhook](#the-webhook)
+  - [GitHelper](#githelper)
+  - [Additional Functionality](#additional-functionality)
 
 ---
 
@@ -578,13 +604,12 @@ Code of Arms is released under the MIT license, which is available [here](https:
 ## Contributors
 
 The original four, in alphabetical order:
-
- 	- [Anna Dolan](https://github.com/annadolan)
+ - [Anna Dolan](https://github.com/annadolan)
 	
-	- [Erin Pintozzi](https://github.com/epintozzi)
+ - [Erin Pintozzi](https://github.com/epintozzi)
 	
-	- [Nicholas Martinez](https://github.com/NZenitram)
+ - [Nicholas Martinez](https://github.com/NZenitram)
 	
-	- [Noah Berman](https://github.com/bermannoah)
+ - [Noah Berman](https://github.com/bermannoah)
 	
-	1608BE Turing School of Software and Design
+ 1608BE Turing School of Software and Design
