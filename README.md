@@ -1,5 +1,7 @@
 # Code of Arms
 ---
+![image of the homepage](https://github.com/bermannoah/repo-images/blob/master/code-of-arms-shield-homepage.jpg?raw=true)
+
 An Exercism-like application designed for the Turing School of Software and Design. 
 
 [![Build Status](https://travis-ci.org/turingschool-projects/ripped.svg?branch=master)](https://travis-ci.org/turingschool-projects/ripped)
@@ -123,6 +125,8 @@ thin start -p 3001 --ssl --ssl-key-file ~/.ssh/server.key --ssl-cert-file ~/.ssh
 
 You will also need to visit your Census application profile and add "https://localhost:3001/auth/census/callback" to the list of redirect URLs.
 
+![hello world](https://github.com/bermannoah/repo-images/blob/master/code-of-arms-code-highlighting.jpg?raw=true)
+
 ## Now it's up and running - what next?
 
 You've got a couple of options here. If you'd like, you can set up the webhook, following the instructions below:
@@ -147,10 +151,12 @@ You can also experiment with the API, which is documented (you guessed it) below
 
 We're very welcoming of pull requests and issue/bug reports. We'd appreciate it if your submissions are fully tested - we're using RSpec/Capybara for our test framework, with Factory Girl for generating assorted objects. You can find a pretty decent intro to the above [here](https://robots.thoughtbot.com/how-we-test-rails-applications). We also use webmock and VCR for external API call testing. If you're seeing lots of failures, take it from us: delete your VCR Cassettes and try again.
 
-The Turing School Code of Conduct most likely covers everything here, but you can check out this document for some super basic guidelines to contributing the project - especially if you're not a Turing student.
+The Turing School Code of Conduct most likely covers everything here, but you can check out [this](https://github.com/turingschool-projects/ripped/blob/master/GUIDELINES.md) document for some basic guidelines to contributing to the project (and to open source in general) - this might be especially useful if you're not a Turing student.
 
 The best way to get in touch with us (because there's a rotating group of people maintaining the project) is probably by filing an issue report. Enjoy, and happy hacking! :)
+
 ---
+
 ## API Documentation: 
 
 ###To receive a user by ID:
@@ -567,4 +573,18 @@ The goal for the Webhook functionality needs to be expanded to include updating 
 
 ## License
 
-Code of Arms is released under the MIT license, which is available [here].
+Code of Arms is released under the MIT license, which is available [here](https://github.com/turingschool-projects/ripped/blob/master/LICENSE.txt).
+
+## Contributors
+
+The original four, in alphabetical order:
+
+ 	- [Anna Dolan](https://github.com/annadolan)
+	
+	- [Erin Pintozzi](https://github.com/epintozzi)
+	
+	- [Nicholas Martinez](https://github.com/NZenitram)
+	
+	- [Noah Berman](https://github.com/bermannoah)
+	
+	1608BE Turing School of Software and Design
