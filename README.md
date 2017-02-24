@@ -629,9 +629,6 @@ In the `find_tags_and_save` method we use an ActiveRecord join clause to create 
 
 ### Additional Functionality
 
-<<<<<<< HEAD
-The goal for the Webhook functionality needs to be expanded to include updating the tags of the exercises and deleting or un-publishing exercises through the push. In its current state, if an instructor pushes the exercises repo, the module is unable to update the published and unpublished status of the exercise (in our exercise table, we don't delete exercises through the application, we have provided functionality to only publish or un-publish exercises, this determines if they appear on the show and index pages.) Adding dynamic tag update and creating for the difficulty levels could be done through formatting the READMEs of the exercises so they include metadata that is parsed out the description and carried into the update/create methods.
-=======
 The goal for the Webhook functionality needs to be expanded to include updating the tags of the exercises and deleting or un-publishing exercises through the push. In its current state, if an instructor pushes the exercises repo, the module is unable to update the published and unpublished status of the exercise (in our exercise table, we don't delete exercises through the application, we have provided functionality to only publish or un-publish exercises, this determines if they appear on the show and index pages.) Adding dynamic tag update and creating for the difficulty levels could be done through formatting the READMEs of the exercises so they include metadata that is parsed out the description and carried into the update/create methods.
 
 ## License
@@ -650,4 +647,3 @@ The original four, in alphabetical order:
  - [Noah Berman](https://github.com/bermannoah)
 
  1608BE Turing School of Software and Design
->>>>>>> 3d2a693fdbb44728768b2281c3c06221b9d602aa
