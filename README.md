@@ -564,3 +564,7 @@ In the find_tags_and_save method we use an ActiveRecord join clause to create an
 ### Additional Functionality
 
 The goal for the Webhook functionality needs to be expanded to include updating the tags of the exercises and deleting or un-publishing exercises through the push. In its current state, if an instructor pushes the exercises repo, the module is unable to update the published and unpublished status of the exercise (in our exercise table, we don't delete exercises through the application, we have provided functionality to only publish or un-publish exercises, this determines if they appear on the show and index pages.) Adding dynamic tag update and creating for the difficulty levels could be done through formatting the READMEs of the exercises so they include metadata that is parsed out the description and carried into the update/create methods. 
+
+## License
+
+Code of Arms is released under the MIT license, which is available [here].
