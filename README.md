@@ -62,7 +62,7 @@ To review an exercise, choose a submission to review and leave feedback directly
 
 We're very welcoming of pull requests and issue/bug reports. We'd appreciate it if your submissions are fully tested - we're using RSpec/Capybara for our test framework, with Factory Girl for generating assorted objects. You can find a pretty decent intro to the above [here](https://robots.thoughtbot.com/how-we-test-rails-applications). We also use webmock and VCR for external API call testing. If you're seeing lots of failures, take it from us: delete your VCR Cassettes and try again.
 
-As far as Turing students, staff, and alumni are concerned: The Turing School Code of Conduct most likely covers everything here, but you can check out our contributor guidelines by clicking [here](https://github.com/turingschool-projects/ripped/blob/master/GUIDELINES.md) for some basic rules to contributing to the project (and to open source in general) - this document is also helpful if you're not a current Turing student.
+As far as Turing students, staff, and alumni are concerned: The Turing School Code of Conduct most likely covers everything here, but you can check out our contributor guidelines by clicking [here](https://github.com/turingschool-projects/code-of-arms/blob/master/GUIDELINES.md) for some basic rules to contributing to the project (and to open source in general) - this document is also helpful if you're not a current Turing student.
 
 The best way to get in touch with us (because there's a rotating group of people maintaining the project) is probably by filing an issue report. Enjoy, and happy hacking! :)
 
@@ -97,9 +97,9 @@ Cool. Leave the "scope" section blank and hit submit. On the next page you'll be
 ## Installation
 
  - First: clone down this repo:
-  `git clone https://github.com/turingschool-projects/ripped`
+  `git clone https://github.com/turingschool-projects/code-of-arms`
    or
-   `git clone git@github.com:turingschool-projects/ripped.git` for SSH.
+   `git clone git@github.com:turingschool-projects/code-of-arms.git` for SSH.
 
  - run `bundle install` to make sure all your gems are properly added.
  - run `rake db:create db:migrate db:seed db:test:prepare` (you can run those all as one command but I like to have them separated out)
@@ -633,7 +633,7 @@ The goal for the Webhook functionality needs to be expanded to include updating 
 
 ## License
 
-Code of Arms is released under the MIT license, which is available [here](https://github.com/turingschool-projects/ripped/blob/master/LICENSE.txt).
+Code of Arms is released under the MIT license, which is available [here](https://github.com/turingschool-projects/code-of-arms/blob/master/LICENSE.txt).
 
 ## Contributors
 

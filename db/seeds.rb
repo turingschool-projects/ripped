@@ -1,6 +1,6 @@
 tag = Tag.create([{name: 'easy'}, {name: 'medium'}, {name: 'hard'}, {name: 'javascript'}, {name: 'ruby'}])
 
-user = User.create(census_id: 66, role: 0, first_name: 'User', last_name: 'RippedTest', token: '1d7ff31ba472ed175978ac864cb9b74076208bb9b38798c42e14a0817f804a1b')
+user = User.create(census_id: 66, role: 0, first_name: 'User', last_name: 'CodeOfArmsTest', token: '1d7ff31ba472ed175978ac864cb9b74076208bb9b38798c42e14a0817f804a1b')
 
 ##### Ruby Exercises
 ## HelloWorld

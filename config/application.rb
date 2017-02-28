@@ -16,7 +16,7 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Ripped
+module CodeOfArms
   class Application < Rails::Application
 
   end

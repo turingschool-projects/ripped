@@ -8,4 +8,4 @@ bundler_args: --without production
 services:
   - postgresql
 before_script:
-  - psql -c 'create database ripped_test;' -U postgres
+  - psql -c 'create database code_of_arms_test;' -U postgres

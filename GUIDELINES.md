@@ -2,7 +2,7 @@
 
 ## What do I need to know to help?
 
-If you are looking to help to with a code contribution, our project uses Ruby on Rails, Javascript, and React. If you don't feel ready to make a code contribution yet, no problem! You can also check out the [good for beginners](https://github.com/turingschool-projects/ripped/labels/good%20for%20beginners) issues or the [documentation issues](https://github.com/turingschool-projects/ripped/labels/documentation%20issues).
+If you are looking to help to with a code contribution, our project uses Ruby on Rails, Javascript, and React. If you don't feel ready to make a code contribution yet, no problem! You can also check out the [good for beginners](https://github.com/turingschool-projects/code-of-arms/labels/good%20for%20beginners) issues or the [documentation issues](https://github.com/turingschool-projects/code-of-arms/labels/documentation%20issues).
 
 If you are interested in making a code contribution and would like to learn more about the technologies that we use, check out the (non-exhaustive) list below.
 
